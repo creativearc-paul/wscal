@@ -1,0 +1,30 @@
+<h2>{lang:edit_photo}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <td>{lang:current_photo}</td>
+            <td>
+                {if photo}
+                    <div><img src="{path:member_photo}" width="{photo_width}" height="{photo_height}" title="{lang:my_photo}" alt="{lang:my_photo}" /></div>
+                {/if}
+                {if no_photo}
+                    <div><img src="{path:image_url}icon_profile.gif" title="{name}" alt="{lang:no_photo}" /></div>
+                    <div>{lang:no_photo_exists}</div>
+                {/if}
+            </td>
+        </tr>
+        <tr>
+            <td><strong>{lang:upload_photo}</strong></td>
+            <td><input type="file" name="userfile" size="20" /></td>
+        </tr>
+        <tr>
+            <td>{lang:max_image_size}</td>
+            <td>{lang:allowed_image_types}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="profileCssButton" value='{lang:upload_photo}' name="submit" /> <input type="submit" value='{lang:remove_photo}' name="remove" />
+            </td>
+        </tr>
+    </table>
+</form>

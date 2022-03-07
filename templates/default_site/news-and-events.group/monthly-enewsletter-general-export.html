@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title> Westminster Seminary California</title>
+</head>
+<body class="monthly-enewsletter" style="margin: 0; padding: 0; background-color: #fff;  font-size: 12px;">
+	<table cellpadding="0" cellspacing="0" border="0" align="center" width="720px" style="border: 1px solid #ccc;">
+		<tr>
+			<td align="center">
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="710" style="font-family: Georgia, serif; background-color: #FAFAF0;">
+					<tr>
+						<td align="left" valign="top">
+							<img src="{exp:channel:entries channel='newsletter_general' dynamic='off' limit='1'}{general_banner}{/exp:channel:entries}" alt="" />
+							<h2 style="border: none; color: #524f4b; font-size: 14px; font-weight: bold; padding-bottom: 5px; text-transform: uppercase; margin-left: 10px;">{exp:channel:entries channel="newsletter_general" dynamic="on" limit="1"  show_future_entries="yes" status="open|closed|preview"}{title}{/exp:channel:entries}</h2>
+							<div style="background-image: url('https://wscal.edu/images/graphics/dotted-line-background.gif');background-repeat: repeat-x;line-height: 1px;">
+								&nbsp;
+							</div>
+							{exp:channel:entries channel="newsletter_general" dynamic="on" limit="1" show_future_entries="yes" status="open|closed|preview"} <span style="font-family: Arial, 'Helvetica Neue', 'Helvetica', 'Liberation Sans', FreeSans, sans-serif;  font-size: 10px; text-transform: uppercase; position: absolute; margin-left: 655px; margin-top: -80px; color: #fff">{!--entry_date format="%M.%Y"--}</span>
+								<h3 style="color: #524f4b; font-size: 13px; line-height: 18px; margin: 12px 0 6px 0; color: #165d88; display: block; font-size: 16px; font-weight: normal; line-height: 18px; margin-top: 10px; margin-right: 0; margin-bottom: 3px; margin-left: 10px; text-decoration: none;">{general_title}</h3>
+								<div style="margin-left: 10px; padding-right: 10px; color: #8a8a8a; line-height: 20px;">
+									<span style="font-size: 12px">{newsletter_copy_general}</span>
+								</div>
+							{/exp:channel:entries}
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size: 1px; height: 15px; line-height: 1px;" height="15">
+							&nbsp;
+						</td>
+					</tr>
+				</table> <!-- header-->
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="720" style="font-family: Georgia, serif;">
+					<tr>
+						<td width="515" valign="top" align="left" bgcolor="#ffffff" style="font-family: Georgia, serif; background: #fff;">
+							{exp:channel:entries channel="newsletter_general" dynamic="on" limit="1"  show_future_entries="yes" status="open|closed|preview"}
+
+								{if section_1}
+									<h2 style="margin-top: 30px; text-transform: uppercase !important; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #cccccc; color: #524f4b; font-size: 14px; font-weight: bold; padding-bottom: 5px; text-transform: uppercase; margin-left: 10px;">{section1_title}</h2>
+									<table>
+										{section_1}
+											<tr>
+												<td style="vertical-align: top; padding-left: 10px;">
+													<a href="{section1_link}">{if section1_photo}
+													<img src="{section1_photo}" alt="{section1_title}" />{/if}</a>
+												</td>
+												<td style="font-family: Arial, 'Helvetica Neue', 'Helvetica', 'Liberation Sans', FreeSans, sans-serif;  color: #514f48;  padding-left: 10px;">
+													<span style="color: #165d88; display: block; font-weight: bold; margin-bottom: 5px; text-decoration: none;  font-size: 12px;">{section1_title}</span><span style="color: #514f48; font-size: 11px; line-height: 17px; margin-top: 2px;">{section1_text}</span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="padding: 0; margin: 0; border-bottom: 1px solid #E8E8E0;">
+													&nbsp;
+												</td>
+											</tr>
+										{/section_1}
+									</table>
+									<!-- <p style="font-family: Arial, 'Helvetica Neue', 'Helvetica', 'Liberation Sans', FreeSans, sans-serif;  margin-top: 0; margin-left: 10px;"><a style="font-size: 10px; color: #514f48;    text-decoration: none;" href="http://bookstore.wscal.edu/collections/faculty">+ View More Faculty Books</a></p> -->
+								{/if}
+
+								{if section_2}
+									<h2 style="margin-top: 30px; text-transform: uppercase !important; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #cccccc; color: #524f4b; font-size: 14px; font-weight: bold; padding-bottom: 5px; text-transform: uppercase; margin-left: 10px;">{section2_title}</h2>
+									<table style=" margin-left: 10px;">
+										{section_2}
+											<tr>
+												<td style="vertical-align: top; padding-left: 10px;">
+													<a href="{section2_link}">{if section1_photo}<img src="{section2_photo}" alt="{section2_title}" />{/if}</a>
+												</td>
+												<td style="font-family: Arial, 'Helvetica Neue', 'Helvetica', 'Liberation Sans', FreeSans, sans-serif;  color: #514f48;  padding-left: 10px;">
+													<span style="color: #165d88; display: block; font-weight: bold; margin-bottom: 5px; text-decoration: none;  font-size: 12px;">{section2_title}</span><span style="color: #514f48; font-size: 11px; line-height: 17px; margin-top: 2px;">{section2_text}</span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" style="padding: 0; margin: 0; border-bottom: 1px solid #E8E8E0;">
+													&nbsp;
+												</td>
+											</tr>
+										{/section_2}
+									</table>
+									<!--<p   style=" font-family: Arial, 'Helvetica Neue', 'Helvetica', 'Liberation Sans', FreeSans, sans-serif;  margin: 0 0 0 10px;"><a style="font-size: 10px; color: #514f48;    text-decoration: none;" href="http://wscal.edu/news-and-events/">+ View More News &amp; Events</a></p> -->
+								{/if}
+							
+							{/exp:channel:entries}
+						</td>
+						<td width="11">
+							&nbsp;
+						</td>
+						<td width="174" valign="top" align="left" style="font-size: 11px; margin-left: 10px; font-family: Georgia, serif;">
+							
+                            <div style="background-color: #f8f7ee;width: 174px;margin-bottom: 20px;margin-top: 20px;">
+                                <div style="background-color: #edede0;border-bottom: 1px solid #d3d0c4;color: #444444;font-size: 11px;padding: 8px 0px 8px 15px;text-transform: uppercase;" class="serif">
+                                    TOOLS
+                                </div>
+                                {exp:channel:entries channel="newsletter" dynamic="off" limit="1"}
+                                <p style="margin-left: 10px;"><iframe src="https://www.facebook.com/plugins/like.php?href={title_permalink='/news-and-events/newsletter/'}&amp;layout=button_count&amp;show_faces=false&amp;width=80&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;margin:0px;padding:0px;vertical-align:middle;" allowTransparency="true"></iframe></p>
+                                {/exp:channel:entries}
+                                <div style="color: #444444;font-size: 11px;margin-top: 15px;padding: 3px 0px 3px 15px;" class="serif">
+                                    SHARE
+                                </div>
+                                <img src="https://wscal.edu/images/graphics/go-deeper-divider.gif" alt="" style="display:block; width: 174px" >
+                                {exp:channel:entries channel="newsletter" dynamic="no" limit="1"  show_future_entries="yes" status="open|closed|preview"}
+                                    <a style="color: #737271;display: block;font-size: 11px;padding: 5px 0px 5px 15px;text-decoration: none;" href="https://www.facebook.com/sharer.php?u=https://wscal.edu/news-and-events/monthly-enewsletter/" rel="external">
+                                        <img src="https://wscal.edu/images/graphics/share-icon-facebook.gif" alt="Facebook" style="vertical-align:middle;border:none;" />&nbsp;&nbsp;Facebook
+                                    </a> 
+                                    <a style="color: #737271;display: block;font-size: 11px;padding: 5px 0px 5px 15px;text-decoration: none;" href="https://twitter.com/?status=https://wscal.edu/news-and-events/monthly-enewsletter/" rel="external">
+                                        <img src="https://wscal.edu/images/graphics/share-icon-twitter.gif" alt="Twitter" style="vertical-align:middle;border:none;" />&nbsp;&nbsp;Twitter
+                                    </a>
+                                {/exp:channel:entries}
+                                <div style="color: #444444;font-size: 11px;margin-top: 15px;padding: 3px 0px 3px 15px;" class="serif">
+                                    SUBSCRIBE
+                                </div>
+                                <img src="https://wscal.edu/images/graphics/go-deeper-divider.gif" alt="" style="display:block; width: 174px" >
+                                <a style="color: #737271;display: block;font-size: 11px;padding: 5px 0px 5px 15px;text-decoration: none;" href="https://wscal.edu/subscriptions">
+                                    <img src="https://wscal.edu/images/graphics/icon-rss-white.jpg" alt="rss feed" style="vertical-align: middle;" />&nbsp;&nbsp;RSS</a> 
+                                <a style="color: #737271;display: block;font-size: 11px;padding: 5px 0px 5px 15px;text-decoration: none;" href="https://wscal.edu/subscriptions">
+                                    <img src="https://wscal.edu/images/graphics/icon-podcast-white.jpg" alt="podcast" style="vertical-align: middle;" >&nbsp;&nbsp;Podcast</a> 
+                                <a style="color: #737271;display: block;font-size: 11px;     padding: 5px 0px 5px 15px;     text-decoration: none;" href="https://wscal.edu/forms/subscribe">
+                                    <img src="https://wscal.edu/images/graphics/icon-email-white.jpg" alt="email" style="vertical-align: middle;" >&nbsp;&nbsp;Email</a>
+                            </div>
+                            
+							<div id="FeaturedResources" style="background-color: #f8f7ee;width: 174px;">
+								<div id="FeaturedResourcesTitle" class="serif" style="background-color: #edede0;border-bottom: 1px solid #d3d0c4;color: #444444;font-size: 11px;padding: 8px 0px 8px 15px;text-transform: uppercase;">
+									Featured Resources
+								</div>
+								{exp:channel:entries channel="newsletter_general" dynamic="on" limit="1"  show_future_entries="yes" status="open|closed|preview"}
+									{featured_resource_general}
+										<p style="font-size: 11px; padding-top: 0pt; padding-right: 10px; padding-bottom: 0pt; padding-left: 10px;font-family: Georgia,Palatino,Palatino Linotype,Times,Times New Roman,serif; color: #5D5A57;">
+											<span style="text-transform: uppercase; color: #165d88; font-size: 11px;">{title_general}</span>
+											<div style="margin-left: 10px; color: #5D5A57;">
+												{resource_text_general}
+											</div>
+										</p>
+										<div style="background-image: url('https://wscal.edu/images/graphics/dotted-line-background.gif');background-repeat: repeat-x;font-size: 1px;height: 1px;line-height: 1px;">
+											&nbsp;
+										</div>
+									{/featured_resource_general}
+								{/exp:channel:entries}
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-size: 1px; height: 10px; line-height: 1px;" height="10">
+							&nbsp;
+						</td>
+					</tr>
+				</table> <!-- body -->
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="599" style="font-family: Georgia, serif; line-height: 10px;" bgcolor="#464646" class="footer">
+					<tr>
+						<td>
+						<table cellpadding="0" cellspacing="0" border="0" align="center" width="720" style="font-family: Georgia, serif; background-color: #FAFAF0" height="100">
+							<tr>
+								<td style="padding: 11px 30px 15px; font-size: 12px; height: 15px; line-height: 12px; color: #000" height="15">
+									<div style="font-family: Arial,'Helvetica Neue','Helvetica','Liberation Sans',FreeSans,sans-serif; font-weight: bold; font-size: 12px; letter-spacing: 1px; line-height: 200%;">
+										Westminster Seminary California
+									</div>
+									<div style="font-family: Arial,'Helvetica Neue','Helvetica','Liberation Sans',FreeSans,sans-serif;display: inline;float: left; line-height: 120%; width: 220px;">
+										1725 Bear Valley Parkway<br />
+										Escondido, CA 92027
+									</div>
+									<div style="font-family: Arial,'Helvetica Neue','Helvetica','Liberation Sans',FreeSans,sans-serif;display: inline; float: left; line-height: 120%; width: 220px;">
+										PHONE&nbsp;&nbsp;&nbsp;888.480.8474 (Toll-Free)<br />
+										PHONE&nbsp;&nbsp;&nbsp;760.480.8474
+									</div>
+									<div style="font-family: Arial,'Helvetica Neue','Helvetica','Liberation Sans',FreeSans,sans-serif;display: inline; float: left; line-height: 120%;width: 220px;">
+										QUESTIONS?&nbsp;&nbsp;&nbsp;<a style="color: #0098E6" href="/forms/contact-wsc">Contact Us</a>
+									</div>
+									<br style="clear: both;" />
+									<div style="padding-top: 15px; font-family: Arial,'Helvetica Neue','Helvetica','Liberation Sans',FreeSans,sans-serif; font-size: 11px; letter-spacing: 1px; line-height: 200%;">
+										&copy; {current_time format="%Y"} Westminster Seminary California
+									</div>
+								</td>
+							</tr>
+						</table> <!-- header-->
+						</td>
+					</tr>
+				</table> <!-- footer-->
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <title>Westminster Seminary California</title>
+    </head>
+    <body class="monthly-enewsletter" style="margin: 0; padding: 0; background-color: #fff; font-size: 12px;">
+        {exp:channel:entries channel="newsletter" dynamic="no" status="Open|Preview" show_future_entries="yes" show_expired="yes" limit="1"}
+
+            <table border="0" width="0px" cellpadding="0" cellspacing="0" style="width:728px;border: 1px solid #dcdbcb;color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;">
+                <tr>
+                    <td colspan="2" style="height:142px;background-color: #015a89;background-image: url('https://wscal.edu/assets/graphics/enl_header_back.png');background-position: 15px bottom;background-repeat: no-repeat;vertical-align: top;">
+                        <p style="letter-spacing:1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Liberation Sans', FreeSans, sans-serif;color: #ffffff;background-image: url('https://wscal.edu/assets/graphics/enl_date_back.png');background-position: right;background-repeat: no-repeat;text-align: right;line-height: 39px;height: 39px;font-size: 18px;font-weight: 300;width: 100%;margin: 0;">{newsletter_date format="%M"}<strong>{newsletter_date format="%Y"}</strong>&nbsp;&nbsp;&nbsp;</p>
+                        <img src="https://wscal.edu/assets/graphics/newsletter-logo.png" title="WSCAL Monthly Newsletter" alt="WSCAL Monthly Newsletter" style="display: block;margin: 10px 0 0 80px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #f2efe5;padding: 15px 0 0 0;">
+                        <img src="https://wscal.edu/assets/graphics/enl_featured.png" title="Featured" alt="Featured" />
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;">
+                            <tr>
+                                {if newsletter_featured_copy && newsletter_featured_photo}
+                                    <td style="padding: 15px;vertical-align: top;">
+                                        <h2 style="color: #a63a22;margin: 10px 0 5px 0;font-size: 20px;font-weight: normal;line-height: 1.1;">{title}</h2>
+                                        {newsletter_featured_copy}
+                                        {if featured_link}<br><a href="{featured_link}">Read More</a>{/if}
+                                    </td>
+                                {/if}
+                                {if newsletter_featured_photo}
+                                <td style="padding: 15px;vertical-align: top;">
+                                    {if !newsletter_featured_copy}
+                                        {exp:imgsizer:size src="{newsletter_featured_photo}" class="featuredImage" alt="{title}" width="700"}<br />
+                                    {if:else}
+                                        {exp:imgsizer:size src="{newsletter_featured_photo}" class="featuredImage" alt="{title}" width="220"}<br />
+                                    {/if}
+                                    {if featured_photo_caption}
+                                        <p>{featured_photo_caption}</p>
+                                    {/if}
+                                </td>
+                                {/if}
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 30px 15px 0;">
+    
+                        <img src="https://wscal.edu/assets/graphics/enl_faculty_book.png" title="Faculty Book" alt="Faculty Book" />
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;">
+                            {faculty_books}
+                                <tr>
+                                    <td style="padding: 15px 15px 0 30px;vertical-align: top;">
+                                        <a href="https://wscal.edu/resources/wsc-bookstore/details/{faculty_books:url_title}" title="{faculty_books:product_book_title}">
+                                            {if '{faculty_books:product_book_image}' != ''}
+                                                {exp:imgsizer:size src="{faculty_books:product_book_image}" class="productBookImage" alt="{faculty_books:product_book_title}" width="115"}
+                                            {if:else}
+                                                {exp:imgsizer:size src="https://wscal.edu/assets/graphics/missing-cover.gif" class="productBookImage" alt="{faculty_books:product_book_title}" width="115"}
+                                            {/if}
+                                        </a>
+                                    </td>
+                                    <td style="padding: 15px;vertical-align: top;">
+                                        <h3 style="color: #937e46;font-style: italic;font-size: 17px;line-height: 1.1;font-weight: normal"><a href="https://wscal.edu/resources/wsc-bookstore/details/{faculty_books:url_title}" style="text-decoration:none;color:inherit;">{faculty_books:product_book_title}</a></h3>
+                                        <div style="font-size: 12px;">
+                                            {faculty_books:product_book_description}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {/faculty_books}
+                        </table>
+                        <p style="text-align: right;margin: 5px 0 5px 0;background-image: url('https://wscal.edu/assets/graphics/brownish-dots.png');background-position: 0 bottom;background-repeat: repeat-x;padding-bottom: 5px;">
+                            <a class="tinyText enewsletterViewMore" href="https://wscal.edu/resources/wsc-bookstore/faculty-books" style="text-decoration: none;font-style: italic;color: #937e46;font-size: 11px;">+ View More Faculty Books</a>
+                        </p>
+    
+                    </td>
+                    <td rowspan="3" style="vertical-align: top;padding: 15px 30px 15px 0;width: 168px;">
+    
+                        <a href="https://wscal.edu/admissions/apply/apply-online"><img src="https://wscal.edu/assets/graphics/enl_apply.png" title="Apply" alt="Apply" style="display: block;margin-bottom: 5px;" /></a>
+                        <a href="https://wscal.edu/donate/give-to-wsc"><img src="https://wscal.edu/assets/graphics/enl_give.png" title="Give" alt="Give" style="display: block;margin-bottom: 15px;" /></a>
+    
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;background-color: #F8F7EE;margin-bottom: 30px;">
+                            <tr>
+                                <td style="padding: 5px;font-size: 12px;background-color: #c4c0b0;text-align: center;color: #FFF;letter-spacing: 1px;vertical-align: top;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Liberation Sans', FreeSans, sans-serif;">
+                                    Featured<strong>Resources</strong>
+                                </td>
+                            </tr>
+                            {featured_resource}
+                            <tr>
+                                <td style="padding:10px;vertical-align: top;font-size: 11px;background-image: url('https://wscal.edu/assets/graphics/brownish-dots.png');background-position: 0 bottom;background-repeat: repeat-x;">
+    
+                                    <a href="{title_permalink='resource-center'}" style="text-decoration: none;color: #165D88;line-height: 1.3;display: block;font-style: italic;font-weight: bold;margin-bottom: 5px;">{title}</a>
+                                    {resource_summary}
+                                    {if resource_body_copy && resource_video == '' && resource_audio == ''}
+                                        <a href="{title_permalink='resource-center/resource'}" style="text-transform:uppercase;line-height: 1.3;display: block;text-decoration: none;color: #165D88;font-size: 12px;">More</a>
+                                    {/if}
+                                    {resource_video}
+                                        <a href="{title_permalink='resource-center'}" style="text-transform:uppercase;line-height: 1.3;display: block;text-decoration: none;color: #165D88;font-size: 12px;"><img src="https://wscal.edu/assets/graphics/watch-icon-color.png" title="Video Available" alt="watch" />&nbsp;&nbsp;Watch</a>
+                                    {/resource_video}
+                                    {resource_audio}
+                                        <a href="{title_permalink='resource-center'}" style="text-transform:uppercase;line-height: 1.3;display: block;text-decoration: none;color: #165D88;font-size: 12px;"><img src="https://wscal.edu/assets/graphics/listen-icon-color.png" title="Audio Available" alt="listen" />&nbsp;&nbsp;Listen</a>
+                                    {/resource_audio} 
+    
+                                </td>
+                            </tr>
+                            {/featured_resource}
+                        </table>
+    
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;background-color: #F8F7EE;">
+                            <tr>
+                                <td style="padding: 5px;font-size: 12px;background-color: #c4c0b0;text-align: center;color: #FFF;letter-spacing: 1px;vertical-align: top;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, 'Liberation Sans', FreeSans, sans-serif;">
+                                    <strong>Connect</strong>with<strong>WSC</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-style:italic;padding:10px 10px 5px 10px;vertical-align: top;font-size: 11px;background-image: url('https://wscal.edu/assets/graphics/brownish-dots.png');background-position: 0 bottom;background-repeat: repeat-x;">
+                                    Follow
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px;vertical-align: top;">
+                                    <a href="https://www.facebook.com/westminstercalifornia"><img src="https://wscal.edu/assets/graphics/icon-facebook.png" alt="" width="26" /></a>
+                                    <a href="https://twitter.com/wscal"><img src="https://wscal.edu/assets/graphics/icon-twitter.png" alt="" width="26" /></a>
+                                    <a href="https://www.linkedin.com/edu/school?id=35246&amp;trk"><img src="https://wscal.edu/assets/graphics/icon-linked-in.png" alt="" width="26" /></a>
+                                    <a href="https://vimeo.com/wscal"><img src="https://wscal.edu/assets/graphics/icon-vimeo.png" alt="" width="26" /></a>
+                                    <a href="https://instagram.com/westminsterseminaryca"><img src="https://wscal.edu/assets/graphics/icon-instagram.png" alt="" width="26" /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-style:italic;padding:10px 10px 5px 10px;vertical-align: top;font-size: 11px;background-image: url('https://wscal.edu/assets/graphics/brownish-dots.png');background-position: 0 bottom;background-repeat: repeat-x;">
+                                    Subscribe
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px;vertical-align: top;">
+                                    <a href="https://wscal.edu/subscriptions"><img src="https://wscal.edu/assets/graphics/icon-feed.png" alt="" width="26" /></a>
+                                    <a href="https://wscal.edu/subscriptions"><img src="https://wscal.edu/assets/graphics/icon-podcast.png" alt="" width="26" /></a>
+                                    <a href="https://wscal.edu/forms/subscribe"><img src="https://wscal.edu/assets/graphics/icon-email.png" alt="" width="26" /></a>
+                                </td>
+                            </tr>
+                        </table>
+    
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 30px 15px 0;">
+    
+                        <img src="https://wscal.edu/assets/graphics/enl_news_events.png" title="News" alt="News" />
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;">
+                            {newsletter_news}
+                                <tr>
+                                    <td style="padding: 15px 15px 0 30px;vertical-align: top;border-bottom: 1px solid #e8e8e0;">
+                                        {exp:imgsizer:size src="{news_photo}" alt="{news_title}" width="115"}
+                                    </td>
+                                    <td style="padding: 15px;vertical-align: top;border-bottom: 1px solid #e8e8e0;">
+                                        <h3 style="color: #005581;font-style: italic;font-size: 17px;line-height: 1.1;font-weight: normal">{if news_link}<a href="{news_link}" style="color: inherit;text-decoration:none;">{/if}{news_title}{if news_link}</a>{/if}</h3>
+                                        <div style="font-size: 12px;">
+                                            {news_text}
+                                        </div>
+                                        {if news_link}<a href="{news_link}">{if news_button_text}{news_button_text}{if:else}Read More{/if}</a>{/if}
+                                    </td>
+                                </tr>
+                            {/newsletter_news}
+                        </table>
+                        <p style="text-align: right;margin: 5px 0 5px 0;background-image: url('https://wscal.edu/assets/graphics/brownish-dots.png');background-position: 0 bottom;background-repeat: repeat-x;padding-bottom: 5px;">
+                            <a class="tinyText enewsletterViewMore" href="https://wscal.edu/news-and-events" style="text-decoration: none;font-style: italic;color: #005581;font-size: 11px;">+ View More News &amp; Events</a>
+                        </p>
+    
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 15px 30px 15px 0;">
+    
+                        <img src="https://wscal.edu/assets/graphics/enl_did_you_know.png" title="Did you know" alt="Did you know" />
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="color: #5d5a57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 14px;line-height: 1.5;">
+                            {did_you_know}
+                                <tr>
+                                    <td style="padding: 15px 15px 0 30px;vertical-align: top;border-bottom: 1px solid #e8e8e0;">
+                                        {exp:imgsizer:size src="{did_you_know_photo}" alt="{did_you_know_title}" width="115"}
+                                    </td>
+                                    <td style="padding: 15px;vertical-align: top;border-bottom: 1px solid #e8e8e0;">
+                                        <h3 style="color: #005581;font-style: italic;font-size: 17px;line-height: 1.1;font-weight: normal">{did_you_know_title}</h3>
+                                        <div style="font-size: 12px;">
+                                            {did_you_know_text}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {/did_you_know}
+                        </table>
+    
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background-color: #b9b5a5;padding: 0 15px 15px 15px;">
+                        <img src="https://wscal.edu/assets/graphics/enl_quoted.png" title="Quoted" alt="Quoted" />
+                        {quoted}
+                            <p style="color: #ffffff;font-style: italic;letter-spacing: 1px;margin: 5px 45px 5px 45px;">&#8220;{quote_text}&#8221;</p>
+                            {if quote_citation}
+                                <p style="font-size: 12px; margin: 0 45px 0 45px;">{if quote_link}<a href="{quote_link}">{/if}&mdash; {quote_citation}{if quote_link}</a>{/if}</p>
+                            {/if}
+                        {/quoted}
+                    </td>
+                </tr>
+            </table>
+        {/exp:channel:entries}
+    </body>
+</html>

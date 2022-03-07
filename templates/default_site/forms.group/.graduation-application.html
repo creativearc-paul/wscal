@@ -1,0 +1,415 @@
+<div>
+    <span class="requiredField">*</span>Required Fields
+</div>
+
+{exp:freeform:form form_id="16" return="/forms/submission-thank-you" form:id="graduation_application" required="" require_captcha="yes"}
+    
+    <fieldset id="diplomaInfo">
+        <legend>Diploma</legend>
+        
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> <label for="name_on_diploma">Legal Name (to be printed on degree, typically first, middle,<br/>and last name)</label>
+                </div>
+                <div>
+                    <input type="text" id="name_on_diploma" name="name_on_diploma" value="" size="100"/>
+                </div>
+            </div>
+        </div>
+        
+    </fieldset>
+    
+    <fieldset id="contactInfo">
+        <legend>Contact Information</legend>
+        
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> <label for="email">Email Address</label>
+                </div>
+                <div>
+                    <input type="email" id="email" name="email" value="" size="50"/>
+                </div>
+            </div>
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> <label for="home_phone">Home Phone</label>
+                </div>
+                <div>
+                    <input type="text" id="home_phone" name="home_phone" value="" size="50"/>
+                </div>
+            </div>
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="cell_phone">Cell Phone</label>
+                </div>
+                <div>
+                    <input type="text" id="cell_phone" name="cell_phone" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+        
+    </fieldset>
+    
+    <fieldset id="temporaryMailingInfo">
+        <legend>Temporary Mailing Address</legend>
+        
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="temp_mailing_address">Address (Temporary)</label>
+                </div>
+                <div>
+                    <input type="text" id="temp_mailing_address" name="temp_mailing_address" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="temp_mailing_city">City</label>
+                </div>
+                <div>
+                    <input type="text" id="temp_mailing_city" name="temp_mailing_city" value="" size="50"/>
+                </div>
+            </div>
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    US States
+                </div>
+                <div class="select-style">
+                    {embed="forms/.state-dropdown" name="temp_mailing_state"}
+                    <label for="temp_mailing_state" class="error" style="display:none;">Please choose one.</label>
+                </div>
+            </div>
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="temp_mailing_zip">Zip Code</label>
+                </div>
+                <div>
+                    <input type="text" name="temp_mailing_zip" id="temp_mailing_zip" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+        
+    </fieldset>
+    
+    <fieldset id="permanentMailingInfo">
+        <legend>Permanent Mailing Address</legend>
+    
+        <div class="formRow">
+            Please enter the address where you would like any correspondence sent (after graduation).
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> <label for="permanent_mailing_address">Address</label>
+                </div>
+                <div>
+                    <input type="text" id="permanent_mailing_address" name="permanent_mailing_address" value="" size="50"/><br>
+                    <input type="text" id="permanent_mailing_address_2" name="permanent_mailing_address_2" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> <label for="permanent_mailing_city">City</label>
+                </div>
+                <div>
+                    <input type="text" id="permanent_mailing_city" name="permanent_mailing_city" value="" size="50"/>
+                </div>
+            </div>
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> US States
+                </div>
+                <div class="select-style">
+                    {embed="forms/.state-dropdown" name="permanent_mailing_state"}
+                    <label for="permanent_mailing_state" class="error" style="display:none;">Please choose one.</label>
+                </div>
+            </div>
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> <label for="permanent_mailing_zip">Zip Code</label>
+                </div>
+                <div>
+                    <input type="text" name="permanent_mailing_zip" id="permanent_mailing_zip" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <span class="requiredField">*</span> Country
+                </div>
+                <div class="select-style">
+                    {embed="forms/.country-dropdown" name="permanent_mailing_country"}
+                    <label for="permanent_mailing_country" class="error" style="display:none;">Please choose one.</label>
+                </div>
+            </div>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="regaliaInfo">
+        <legend>Regalia</legend>
+    
+        <div class="formRow">
+            For hat size, measure around your forehead, approximately 1" above your ears.
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="height">Height</label>
+                </div>
+                <div>
+                    <input type="text" name="height" id="height" value="" size="50"/>
+                </div>
+            </div>
+    
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="hat">Hat Size</label>
+                </div>
+                <div>
+                    <input type="text" name="hat" id="hat" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="participationInfo">
+        <legend>Participation</legend>
+    
+        <div class="formRow">
+            Students who are unable to attend these events must petition the Academic Dean to graduate in absentia.
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    Will you be at Commencement Saturday morning, May 29, 2021?
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="attend_commencement" value="Yes" id="attend_commencement_yes" class="radio"/>&nbsp;<label for="attend_commencement_yes">Yes</label>&nbsp;&nbsp;
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="attend_commencement" value="No" id="attend_commencement_no" class="radio"/>&nbsp;<label for="attend_commencement_no">No</label>&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    Will you be at the reception Friday evening, May 28, 2021?
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="attend_reception" value="Yes" id="attend_reception_yes" class="radio"/>&nbsp;<label for="attend_reception_yes">Yes</label>&nbsp;&nbsp;
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="attend_reception" value="No" id="attend_reception_no" class="radio"/>&nbsp;<label for="attend_reception_no">No</label>&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="guests">How many family members, friends and/or guests do you expect to attend the graduation ceremony on Saturday?</label>
+                </div>
+                <div>
+                    <input type="text" name="guests" id="guests" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="commencementProgramInfo">
+        <legend>Commencement Program</legend>
+    
+        <div class="formRow">
+            Please fill out the following information for the Commencement Program.
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="bookhometown">Hometown (city, state, country)</label>
+                </div>
+                <div>
+                    <input type="text" name="bookhometown" id="bookhometown" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="bookspouse">Spouse</label>
+                </div>
+                <div>
+                    <input type="text" name="bookspouse" id="bookspouse" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    <label for="bookchildren">Children</label>
+                </div>
+                <div>
+                    <input type="text" name="bookchildren" id="bookchildren" value="" size="50"/>
+                </div>
+            </div>
+        </div>
+    
+        <div class="formField formComments">
+            <label for="bookprior">Prior Degree(s): Included in this order: Name of School, City, State</label>
+            <textarea id="bookprior" name="bookprior" cols="40" rows="5"></textarea>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="memoriesInfo">
+        <legend>Memories</legend>
+    
+        <div class="formRow">
+            Please provide in this field your memories of your time here at WSC. Include your friendships, time with
+            professors, things you learned about yourself, how the degree program has benefited you both spiritually and academically, or stories about
+            your time here. Have fun! (Limit your response to 100 words.)
+        </div>
+    
+        <div class="formField formComments">
+            <label for="memories">Favorite Memories from WSC:</label>
+            <textarea id="memories" name="memories" cols="40" rows="5"></textarea>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="futurePlansInfo">
+        <legend>Future Plans</legend>
+    
+        <div class="formRow">
+            Please provide in this field your future plans (education, ministry, travel, vocation, missions, etc.). Limit your response to 100 words.
+        </div>
+    
+        <div class="formField formComments">
+            <label for="future_plans">Future Plans:</label>
+            <textarea id="future_plans" name="future_plans" cols="40" rows="5"></textarea>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="photoInfo">
+        <legend>Photograph for Commencement Program</legend>
+    
+        <div class="formRow">
+            In order to process a photo for the commencement program, please provide a hi-resolution (preferably 300 dpi), jpeg, color
+            individual or family photo. The cropping of the photo will be done by the designer.
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    Photo Process
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="photo_process" value="Mailing photo" id="photo_process_mailed" class="radio"/>&nbsp;<label for="photo_process_mailed">I plan to email my commencement photo to Megan York at <a href="mailto:myork@wscal.edu">myork@wscal.edu</a> by February 26, 2021.</label>&nbsp;&nbsp;
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="photo_process" value="Have photo taken" id="photo_process_taken" class="radio"/>&nbsp;<label for="photo_process_taken">I plan to have my picture taken at the photo shoot for seniors which is scheduled for Monday, February 22, 2021 at 9:30 am in the chapel.</label>&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    
+    </fieldset>
+    
+    <fieldset id="alumniInfo">
+        <legend>Alumni Information</legend>
+    
+        <div class="formRow">
+            Please fill out the following information for Alumni Relations.
+        </div>
+    
+        <div class="formField formComments">
+            <label for="best_serve_you">How do you anticipate WSC can best continue to serve you, as you prepare to leave?</label>
+            <textarea id="best_serve_you" name="best_serve_you" cols="40" rows="5"></textarea>
+        </div>
+    
+        <div class="formField formComments">
+            <label for="current_church">What is your current church/denominational affiliation?</label>
+            <textarea id="current_church" name="current_church" cols="40" rows="5"></textarea>
+        </div>
+    
+        <div class="formRow">
+            <div class="formFieldInput">
+                <div class="formFieldTitle">
+                    Are you planning to pursue ordination?
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="ordination_plans" value="Yes" id="ordination_plans_yes" class="radio"/>&nbsp;<label for="ordination_plans_yes">Yes</label>&nbsp;&nbsp;
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="ordination_plans" value="No" id="ordination_plans_no" class="radio"/>&nbsp;<label for="ordination_plans_no">No</label>&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    
+        <div class="formField formComments">
+            <label for="ordination_plans_when">If so, in what denomination?</label>
+            <textarea id="ordination_plans_when" name="ordination_plans_when" cols="40" rows="5"></textarea>
+        </div>
+        
+        <div class="formField formComments">
+            <label for="in_what_presbytery_or_classis_will_your_examination_take_place">In what presbytery or classis will your examination take place?</label>
+            <textarea id="in_what_presbytery_or_classis_will_your_examination_take_place" name="in_what_presbytery_or_classis_will_your_examination_take_place" cols="40" rows="5"></textarea>
+        </div>
+        
+        <div class="formField formComments">
+            <label for="in_what_church_will_your_examination_take_place">In what church will your examination take place?</label>
+            <textarea id="in_what_church_will_your_examination_take_place" name="in_what_church_will_your_examination_take_place" cols="40" rows="5"></textarea>
+        </div>
+    
+        <div class="formField formComments">
+            <label for="post_education">Are you pursuing further education? If so, please describe the programs and schools you are considering.</label>
+            <textarea id="post_education" name="post_education" cols="40" rows="5"></textarea>
+        </div>
+    
+        <div class="formField formComments">
+            <label for="type_of_work">If you're not pursuing ordination or further studies, what type of work will you be doing?</label>
+            <textarea id="type_of_work" name="type_of_work" cols="40" rows="5"></textarea>
+        </div>
+    
+        {if freeform:captcha}
+            <div class="formRow">
+                <div class="formField formComments">
+                    <div class="formFieldTitle">
+                        <label for="captcha"><span class="requiredField">*</span> Please enter the security code.</label>
+                    </div>
+                    <div class="formFieldInput">
+                        <span style="margin-top: 5px;padding: 5px 5px;display: inline-block;">{freeform:captcha}</span><br>
+                        <input type="text" id="captcha" name="captcha" required="required" size="40">
+                    </div>
+                </div>
+            </div>
+        {/if}
+        
+        <div class="formRow">
+            <div>
+                <input type="submit" value="Submit" name="submit" id="submit" class="formButton"/>
+            </div>
+        </div>
+    
+    </fieldset>
+
+{/exp:freeform:form}

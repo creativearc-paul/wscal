@@ -1,0 +1,8 @@
+{exp:channel:entries channel="template_videos" dynamic="no" disable="member_data|pagination|categories|category_fields|relationships" entry_id="{embed:entry_id}" limit="1"}
+    <div class="clearFix">
+        <video controls title="{title}" style="width:100%;height:auto;" poster="{template_video_placeholder_image}" class="templateVideo">
+            <source type="video/mp4" src="{template_video_file}">
+            Your browser does not support the video element.
+        </video>
+    </div>
+{/exp:channel:entries}

@@ -1,0 +1,18 @@
+<div class="clearFix tilesWrapperThreeWide equalHeightChildren">
+    {exp:channel:entries channel="staff" dynamic="no" sort="asc"}
+        <div class="tile equalHeightChild staffTile">
+            <div class="tileInner">
+                <div class="tileImage staffListingPhoto">
+                    {exp:imgsizer:size src="{staff_photo}" width="500" height="500" alt="{staff_name}"}
+                </div>
+                <div class="tileTitle">
+                    <div>{staff_name}</div>
+                    <div>{staff_position}</div>
+                </div>
+                <div class="tileLink">
+                    <a href="mailto:{staff_email}">{staff_email}</a>
+                </div>
+            </div>
+        </div>
+    {/exp:channel:entries}
+</div>

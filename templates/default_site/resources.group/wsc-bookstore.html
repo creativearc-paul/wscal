@@ -1,0 +1,78 @@
+{!-- ### ASSUMES TEMPLATE ROUTE LIKE "/my-channel/category/archive/{section:alpha_dash}/{page:pagination}" ### --}
+{preload_replace:root_channel="main-content"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+{preload_replace:entry_channel="products_books"} {!-- ### CHANNEL FOR INDIVIDUAL POST ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{if !segment_3 || segment_3 == 'faculty-books'}
+
+    {!-- ### SEO FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+    {layout:set name="seo"}
+        {exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="73" dynamic="no"}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/exp:channel:entries}
+    {/layout:set}
+
+{if:else}
+
+    {!-- ### SEO FOR INDIVIDUAL POST ### --}
+    {exp:channel:entries channel="{entry_channel}" disable="member_data" limit="1" require_entry="yes" url_title="{segment_4}" dynamic="no"}
+        {if no_results}{redirect="404"}{/if}
+        {layout:set name="seo"}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/layout:set}
+    {/exp:channel:entries}
+
+{/if}
+
+{layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3} {if channel_short_name == 'landing'}sectionLandingPage{/if}{/layout:set}
+
+{layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent"><div class="pageHeaderBandTitle">The Bookstore</div></div>
+    </div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+
+            {if segment_3 != ''}
+
+                <section>
+                    {if segment_3 == 'faculty-books'}
+                        {embed="resources/.bookstore"}
+                    {if:else}
+                        {embed="resources/.book-details"}
+                    {/if}
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </section>
+
+            {if:else}
+
+                <article>
+                    {!-- ### LANDING ### --}
+                    {embed="resources/.bookstore"}
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </article>
+
+            {/if}
+
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                <div class="secondaryColumnHeader">Resources</div>
+                <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="5" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+                {!--embed="includes/.related-menu"--}
+                <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+            </aside>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,31 @@
+<h2>{lang:send_bulletin}</h2>
+{form:form_declaration:sending_bulletin}
+    {if message}
+        <div id="bulletinMessage">{include:message}</div>
+    {/if}
+    <table class="profileTable">
+        <tr>
+            <td>{lang:member_group}</td>
+            <td>
+                <select name="group_id">
+                    {group_id_options}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>{lang:bulletin_message}</td>
+            <td><textarea name='bulletin_message' rows='10' cols="90"></textarea></td>
+        </tr>
+        <tr>
+            <td>{lang:bulletin_date}</td>
+            <td><input type="text" name="bulletin_date" size="20" value="{input:bulletin_date}" maxlength="50" /></td>
+        </tr>
+        <tr>
+            <td>{lang:bulletin_expires}</td>
+            <td><input type="text" name="bulletin_expires" size="20" value="{input:bulletin_expires}" maxlength="50" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" class="profileCssButton" value='{lang:submit}' /></td>
+        </tr>
+    </table>
+</form>

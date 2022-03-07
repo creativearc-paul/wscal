@@ -1,0 +1,80 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+    {layout:set name="page_header_band"}
+        {if page_header_photo}
+            <div class="sectionPageHeaderBand">
+                <img src='{exp:imgsizer:size src="{page_header_photo}" width="1500" height="400" alt="{title}" justurl="true"}'  
+                        srcset='{exp:imgsizer:size src="{page_header_photo}" width="1500" height="400" justurl="true"} 1500w, 
+                                {exp:imgsizer:size src="{page_header_photo}" width="1000" height="267" justurl="true"} 1000w, 
+                                {exp:imgsizer:size src="{page_header_photo}" width="600" height="160" justurl="true"} 600w' 
+                        sizes="100vw" 
+                        alt="{title}" 
+                        style="display:block;" />
+                <div class="constrainedContent"><div class="sectionPageHeaderBandTitle">{title}</div></div>
+            </div>
+        {if:else}
+            <div class="pageHeaderBand">
+                <div class="constrainedContent"><div class="pageHeaderBandTitle">{title}</div></div>
+            </div>
+        {/if}
+    {/layout:set}
+
+    <div class="layoutFullWidth">
+        <div class="fullWidthColumn clearFix">
+            <section class="pageSectionBandWhite">
+                <div class="clearFix constrainedContent">
+    
+                    <div class="bodyCopyPrimary"{if main_body_aside_text == ''} style="width:100%;float:none;"{/if}>
+                    
+                        {body_copy}
+    
+                        {if entry_id == 25}
+                            {embed="includes/.faculty-listing"}
+                        {/if}
+    
+                        {if entry_id == 7926}
+                            {embed="includes/.staff-listing"}
+                        {/if}
+    
+                        {if entry_id == 17}
+                            {embed="includes/.photo-tour"}
+                        {/if}
+    
+                        {if entry_id == 43}
+                            {embed="includes/.student-listing"}
+                        {/if}
+    
+                        {if entry_id == 8044}
+                            {embed="includes/.past-student-listing"}
+                        {/if}
+    
+                    </div>
+    
+                    {if main_body_aside_text != ''}
+                        <aside class="bodyCopySecondary">
+                            {main_body_aside_text}
+                        </aside>
+                    {/if}
+
+                    {main_call_to_action}
+                        {embed="includes/.call-to-action-band" entry_id="{main_call_to_action:entry_id}"}
+                    {/main_call_to_action}
+                
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </div>
+            </section>
+        </div>
+    </div>
+            
+{/exp:channel:entries}

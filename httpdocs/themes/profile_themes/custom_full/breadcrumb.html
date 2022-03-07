@@ -1,0 +1,10 @@
+{if logged_in}
+    <div id="profileGlobalMenu">
+        <strong>{lang:logged_in_as}</strong> 
+        <span><a href="{path:your_profile}">{name}</a></span>&nbsp;|&nbsp;
+        <span><a href="{path:your_control_panel}">{lang:your_control_panel}</a></span>&nbsp;|&nbsp;
+        <span><a href="{path:memberlist}">{lang:memberlist}</a></span>&nbsp;|&nbsp;
+        <span><a href="{path="LOGOUT"}">{lang:logout}</a></span>
+    </div>
+{/if}
+<ul id="profileBreadCrumbs">{breadcrumb_links}</ul>

@@ -1,0 +1,16 @@
+{layout="layouts/.layout-primary-right"}
+
+{layout:set name="body_id"}{if segment_1 != ''}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage {/if}{if segment_2 != ''}{segment_2} {/if}{if segment_3 != ''}{segment_3} {/if}{/layout:set}
+
+{layout:set name="member_head_includes"}
+    {include:html_header}
+{/layout:set}
+
+{if show_headings}
+	{include:page_header}
+	{include:page_subheader}
+{/if}
+
+{include:member_manager}
+

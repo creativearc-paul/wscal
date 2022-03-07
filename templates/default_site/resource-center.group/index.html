@@ -1,0 +1,113 @@
+{!-- ### ASSUMES TEMPLATE ROUTE LIKE "/my-channel/category/archive/{section:alpha_dash}/{page:pagination}" ### --}
+{preload_replace:root_channel="main-content"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+{preload_replace:landing_entry_id="2290"} {!-- ### Entry ID for main structure page ### --}
+{preload_replace:entry_channel="resources"} {!-- ### CHANNEL FOR INDIVIDUAL POST ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{if !segment_2 || segment_2 == 'category' || segment_2 == 'archive' || segment_2 == 'tag' || segment_2 == 'videos' || segment_2 ~ "/^P\d+/" || segment_2 == 'year'}
+    
+    {!-- ### SEO FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+    {exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="{landing_entry_id}" dynamic="no"}
+        {layout:set name="seo"}
+            {if segment_2 == 'category'}
+                <title>{exp:channel:category_heading channel="{entry_channel}"}{category_name}{/exp:channel:category_heading} </title>
+                <meta name="description" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+                <meta name="keywords" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+            {if:else}
+                {exp:neoseo:meta_tags entry_id="{entry_id}"}
+            {/if}
+        {/layout:set}
+    {/exp:channel:entries}
+    
+{if:else}
+
+    {!-- ### SEO FOR INDIVIDUAL POST ### --}
+    {exp:channel:entries channel="{entry_channel}" disable="member_data" limit="1" require_entry="yes" url_title="{segment_3}"}
+        {if no_results}{redirect="404"}{/if}
+        {layout:set name="seo"}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/layout:set}
+    {/exp:channel:entries}
+    
+{/if}
+
+{layout:set name="body_id"}{if segment_1 != ''}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage {if:elseif segment_2 == 'category'}categoryPage {if:elseif segment_2 == 'tag'}tagPage {if:elseif segment_2 != ''}{segment_2} {/if}{if segment_3 != ''}{segment_3} {/if}{/layout:set}
+
+{layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent"><div class="pageHeaderBandTitle">Resource Center</div></div>
+    </div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+
+            {if segment_2 != ''}
+
+                {if segment_2 == 'category'}
+                    {!-- ### POSTS LISTING BY CATEGORY ### --}
+                    <section>
+                        {embed="resource-center/.resources-listing"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_2 == 'archive'}
+                    {!-- ### POSTS LISTING BY DATE ### --}
+                    <section>
+                        {embed="resource-center/.resources-listing" year="{segment_3}" month="{segment_4}"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+            
+                {if:elseif segment_2 == 'tag'}
+                    {!-- ### POSTS LISTING BY TAG ### --}
+                    <section>
+                        {embed="resource-center/.resources-tagged"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_2 == 'year' && segment_3 ~ "/^\d\d\d\d$/"}
+                    {!-- ### POSTS LISTING BY DATE ### --}
+                    <section>
+                        {embed="resource-center/.resources-listing" year="{segment_3}"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_2 ~ "/^P\d+/"}
+                    {!-- ### PAGINATED POSTS LISTING ### --}
+                    <section>
+                        {embed="resource-center/.resources-listing"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:else}
+                    {!-- ### INDIVIDUAL POST PAGE ### --}
+                    <article role="article" class="clearFix">
+                        {embed="resource-center/.resources-full-entry"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </article>
+                {/if}
+
+            {if:else}
+
+                {!-- ### RESOURCE LANDING ### --}
+                <section>
+                    {embed="resource-center/.resource-center-landing"}
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </section>
+
+            {/if}
+
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                {embed="resource-center/.aside-menu}
+            </aside>
+        </div>
+
+    </div>
+</div>

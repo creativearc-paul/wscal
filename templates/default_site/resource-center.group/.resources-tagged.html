@@ -1,0 +1,22 @@
+<h1>Resources tagged with &ldquo;{exp:tagger:entries_quick tag="{segment_3}"}{tagger:tag_name}{/exp:tagger:entries_quick}&rdquo;</h1>
+
+{exp:tagger:entries 
+    channel="resources" 
+    show_future_entries="no" 
+    tag="{segment_3}" 
+    dynamic="no" 
+    custom_fields="resource_summary|resource_body_copy|resource_video|resource_audio|resource_display_date|categories" 
+    limit="15" 
+    paginate_base="/{segment_1}/{segment_2}/{segment_3}" 
+    paginate="both" 
+    }
+    
+    {embed="resource-center/.resources-listing-item" entry_id="{tagger:entry_id}"}
+    
+    {tagger:paginate}
+        <div class="resourcePagination clearFix sansSerif dottedBottomLine">
+            Page {tagger:current_page} of {tagger:total_pages} &nbsp;&nbsp;&nbsp; {if tagger:previous_page}<a href="{tagger:auto_path}" class="allUpperCase"><span class="arrowDotLeft"></span> Back</a> {/if}&nbsp;&nbsp;|&nbsp;&nbsp;{if tagger:next_page} <a href="{tagger:auto_path}" class="allUpperCase">Next <span class="arrowDotRight"></span></a>{/if}
+        </div>
+    {/tagger:paginate}
+
+{/exp:tagger:entries}

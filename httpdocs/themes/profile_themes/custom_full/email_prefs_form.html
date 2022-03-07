@@ -1,0 +1,37 @@
+<h2>{lang:email_settings}</h2>
+{form_declaration}
+<span>*</span> {lang:required}
+    <table class="profileTable">
+        <tr>
+            <td>{lang:email}</td>
+            <td><input type="email" name='email' value='{email}' maxlength='72'/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type='checkbox' name='accept_admin_email' value='y' {state:accept_admin_email} /> {lang:accept_admin_email}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type='checkbox' name='accept_user_email' value='y' {state:accept_user_email} /> {lang:accept_user_email}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type='checkbox' name='notify_by_default' value='y' {state:notify_by_default} /> {lang:notify_by_default}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type='checkbox' name='notify_of_pm' value='y' {state:notify_of_pm} /> {lang:notify_of_pm}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type='checkbox' name='smart_notifications' value='y' {state:smart_notifications} /> {lang:enable_smart_notifications}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div><span>*</span>&nbsp; {lang:existing_password}</div>
+                <div><span>{lang:existing_password_email}</span></div>
+                <input type='password' name='password' value="" maxlength='40'/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="profileCssButton" value='{lang:update}' /><br /><br />
+            </td>
+        </tr>
+    </table>
+</form>

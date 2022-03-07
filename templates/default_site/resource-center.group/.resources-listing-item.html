@@ -1,0 +1,26 @@
+{exp:channel:entries channel="resources" limit="1" entry_id="{embed:entry_id}"}
+
+    <div class="clearFix resourceListing dottedBottomLine">
+
+        <h2 class="resourceListingTitle"><a href="{title_permalink='resource-center'}">{title}</a></h2>
+
+        <div class="resourceListingByline">
+            {categories show_group="6" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+            {categories show_group="6" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;{/categories}
+
+            {resource_display_date format="%F %j, "}<a href="{path='/resource-center/year'}/{resource_display_date format=" %Y"}">{resource_display_date format="%Y"}</a>
+            {categories show_group="2" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;{/categories}
+            {categories show_group="2" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+
+            {categories show_group="5" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;Type: {/categories}
+            {categories show_group="5" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+        </div>
+
+        <div class="resourceListingSummary">
+            {if resource_summary}{resource_summary}{if:else}{exp:word_limit:limit_words total="50"}{resource_body_copy}{/exp:word_limit:limit_words}{/if}
+            <a href="{title_permalink='resource-center'}" class="moreLink">Continue {if resource_video}{resource_video}<img src="/assets/graphics/watch-icon-gray.png" title="Video Available" alt="watch"/>{/resource_video}{/if}{if resource_audio}{resource_audio}<img src="/assets/graphics/listen-icon-gray.png" title="Audio Available" alt="listen"/>{/resource_audio}{/if}</a>
+        </div>
+
+    </div>
+
+{/exp:channel:entries}

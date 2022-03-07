@@ -1,0 +1,35 @@
+{preload_replace:master_channel_name="blog"}
+{exp:rss:feed channel="{master_channel_name}"}
+<?xml version="1.0" encoding="{encoding}"?>
+<rss version="2.0"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:admin="http://webns.net/mvcb/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:atom="http://www.w3.org/2005/Atom">
+
+	<channel>
+		<atom:link href="https://wscal.edu/blog/blog-feed" rel="self" type="application/rss+xml" />
+		<title>Valiant for Truth Blog</title>
+		<link>{channel_url}</link>
+		<description>{channel_description}</description>
+		<dc:language>{channel_language}</dc:language>
+		<dc:rights>Copyright {gmt_date format="%Y"}</dc:rights>
+		<dc:date>{gmt_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
+		<admin:generatorAgent rdf:resource="https://expressionengine.com/" />
+		
+		{exp:channel:entries channel="{master_channel_name}" limit="10" dynamic_start="yes" disable="member_data|pagination"}
+			<item>
+			  <title><![CDATA[{title}]]></title>
+			  <link>{title_permalink='blog/entry'}</link>
+			  <guid>{title_permalink='blog/entry'}</guid>
+			  <description><![CDATA[{blog_summary}]]></description>
+			  <dc:subject><![CDATA[{categories backspace="2"}{category_name}, {/categories}]]></dc:subject>
+			  <dc:date>{gmt_entry_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
+			</item>
+		{/exp:channel:entries}
+	
+	</channel>
+</rss>
+{/exp:rss:feed}

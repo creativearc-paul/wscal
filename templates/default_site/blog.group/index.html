@@ -1,0 +1,140 @@
+{!-- ### ASSUMES TEMPLATE ROUTE LIKE "/my-channel/category/archive/{section:alpha_dash}/{page:pagination}" ### --}
+{preload_replace:root_channel="main-content"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+{preload_replace:landing_entry_id="149"} {!-- ### Entry ID for main structure page ### --}
+{preload_replace:entry_channel="blog"} {!-- ### CHANNEL FOR INDIVIDUAL POST ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{if !segment_2 || segment_2 == 'category' || segment_2 == 'archive' || segment_2 == 'contributor' || segment_2 ~ "/^P\d+/"}
+    
+    {!-- ### SEO FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+    {exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="{landing_entry_id}" dynamic="no"}
+        {layout:set name="seo"}
+            {if segment_2 == 'category'}
+                <title>{exp:channel:category_heading channel="{entry_channel}"}{category_name}{/exp:channel:category_heading} </title>
+                <meta name="description" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+                <meta name="keywords" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+            {if:else}
+                {exp:neoseo:meta_tags entry_id="{entry_id}"}
+            {/if}
+        {/layout:set}
+    {/exp:channel:entries}
+    
+{if:else}
+
+    {!-- ### SEO FOR INDIVIDUAL POST ### --}
+    {exp:channel:entries channel="{entry_channel}" disable="member_data|pagination" limit="1" require_entry="yes"}
+        {if no_results}{redirect="404"}{/if}
+        {layout:set name="seo"}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/layout:set}
+    {/exp:channel:entries}
+    
+{/if}
+
+{layout:set name="body_id"}{if segment_1 != ''}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage {if:elseif segment_2 == 'category'}categoryPage {if:elseif segment_2 == 'contributor'}contributorPage {if:elseif segment_2 != ''}{segment_2} {/if}{if segment_3 != ''}{segment_3} {/if}{/layout:set}
+
+{layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent"><div class="pageHeaderBandTitle">Blog</div></div>
+    </div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn clearFix">
+
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+
+            {if segment_2 != ''}
+
+                {if segment_2 == 'category'}
+                    {!-- ### POSTS LISTING BY CATEGORY ### --}
+                    <section>
+                        {embed="blog/.blog-listing"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_2 == 'contributor'}
+                    {!-- ### POSTS LISTING BY CONTRIBUTOR ### --}
+                    <section>
+                        {embed="blog/.blog-listing" contributor="{segment_3}"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_2 == 'archive' && segment_3 ~ "/^\d\d\d\d$/"}
+                    {!-- ### POSTS LISTING BY DATE ### --}
+                    <section>
+                        {embed="blog/.blog-listing" year="{segment_3}"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_2 ~ "/^P\d+/"}
+                    {!-- ### PAGINATED POSTS LISTING ### --}
+                    <section>
+                        {embed="blog/.blog-listing"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:else}
+                    {!-- ### INDIVIDUAL POST PAGE ### --}
+                    <article role="article" class="clearFix">
+                        {embed="blog/.blog-full-entry"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </article>
+                {/if}
+
+            {if:else}
+
+                {!-- ### DEFAULT POSTS LISTING ### --}
+                <section>
+                    {embed="blog/.blog-listing"}
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </section>
+
+            {/if}
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                <div class="secondaryColumnHeader">Valiant for Truth</div>
+                <ul class="secondaryNav clearFix">
+                    <li {if segment_1 == 'blog'}class="here"{/if}><a href="/blog">Latest Posts</a></li>
+                    <li><a href="https://feeds.feedburner.com/VFTBlog" rel="external">RSS Feed</a></li>
+                </ul>
+
+                <div class="secondarySupporting">
+                    <div class="secondaryColumnHeader">Contributors</div>
+                    <ul class="secondaryNav">
+                        <li><a href="/{segment_1}">All<span class="arrowDotRight"></span></a></li>
+                        {exp:wscal:blog_contributors}
+                            <li {if segment_2 == 'contributor' && segment_3 == '{contributor_name}'}class="here"{/if}><a href="/{segment_1}/contributor/{contributor_link}">{contributor_name}<span class="arrowDotRight"></span></a></li>
+                        {/exp:wscal:blog_contributors}
+                    </ul>
+                </div>
+
+                <div class="secondarySupporting">
+                    <div class="secondaryColumnHeader">Most Popular Posts</div>
+                    <ul class="secondaryNav clearFix">
+                        {exp:channel:entries channel="blog" show_future_entries="no" dynamic="no" limit="5" orderby="view_count_one"}
+                            <li><a href="/{segment_1}/{url_title}">{title}</a></li>
+                        {/exp:channel:entries}
+                    </ul>
+                </div>
+
+                <div class="secondarySupporting">
+                    <div class="secondaryColumnHeader">Archive</div>
+                    <ul class="secondaryNav clearFix">
+                        {exp:wscal:blog_archive_years}
+                            <li {if segment_3 == '{year}'}class="here"{/if}><a href="/{segment_1}/archive/{year}">{year}<span class="arrowDotRight"></span></a></li>
+                        {/exp:wscal:blog_archive_years}
+                    </ul>
+                </div>
+
+                <a href="" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+            </aside>
+        </div>
+
+    </div>
+</div>

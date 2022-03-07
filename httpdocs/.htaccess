@@ -1,0 +1,489 @@
+####################################################################################################
+### BASIC SETTINGS
+### GHC EE Boilerplate htaccess
+####################################################################################################
+
+######################
+###  Secure .htaccess file
+######################
+<Files .htaccess>
+    order allow,deny
+    deny from all
+</Files>
+
+######################
+###  Don't show any directory without an index file
+######################
+Options -Indexes
+
+######################
+###  Don't list files in directories
+######################
+IndexIgnore *
+
+######################
+###  set PHP values limit
+######################
+# php_value post_max_size 40M
+# php_value upload_max_filesize 40M
+# php_value memory_limit 256M
+
+######################
+###  Prevent some browsers from MIME-sniffing the response.
+######################
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+######################
+###  Remove the `X-Powered-By` response header
+######################
+<IfModule mod_headers.c>
+    Header unset X-Powered-By
+</IfModule>
+
+######################
+###  Prevent Apache from adding a trailing footer line containing information about the server to the server-generated documents
+######################
+ServerSignature Off
+
+
+####################################################################################################
+### PERFORMANCE OPTIONS
+####################################################################################################
+
+######################
+###  Compression
+######################
+<IfModule mod_deflate.c>
+
+    # Force compression for mangled `Accept-Encoding` request headers
+    # https://developer.yahoo.com/blogs/ydn/pushing-beyond-gzipping-25601.html
+
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Compress all output labeled with one of the following media types.
+    #
+    # (!) For Apache versions below version 2.3.7 you don't need to
+    # enable `mod_filter` and can remove the `<IfModule mod_filter.c>`
+    # and `</IfModule>` lines as `AddOutputFilterByType` is still in
+    # the core directives.
+    #
+    # https://httpd.apache.org/docs/current/mod/mod_filter.html#addoutputfilterbytype
+
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE "application/atom+xml" \
+                                      "application/javascript" \
+                                      "application/json" \
+                                      "application/ld+json" \
+                                      "application/manifest+json" \
+                                      "application/rdf+xml" \
+                                      "application/rss+xml" \
+                                      "application/schema+json" \
+                                      "application/vnd.geo+json" \
+                                      "application/vnd.ms-fontobject" \
+                                      "application/x-font-ttf" \
+                                      "application/x-javascript" \
+                                      "application/x-web-app-manifest+json" \
+                                      "application/xhtml+xml" \
+                                      "application/xml" \
+                                      "font/collection" \
+                                      "font/eot" \
+                                      "font/opentype" \
+                                      "font/otf" \
+                                      "font/ttf" \
+                                      "image/bmp" \
+                                      "image/svg+xml" \
+                                      "image/vnd.microsoft.icon" \
+                                      "image/x-icon" \
+                                      "text/cache-manifest" \
+                                      "text/calendar" \
+                                      "text/css" \
+                                      "text/html" \
+                                      "text/javascript" \
+                                      "text/plain" \
+                                      "text/markdown" \
+                                      "text/vcard" \
+                                      "text/vnd.rim.location.xloc" \
+                                      "text/vtt" \
+                                      "text/x-component" \
+                                      "text/x-cross-domain-policy" \
+                                      "text/xml"
+
+    </IfModule>
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Map the following filename extensions to the specified
+    # encoding type in order to make Apache serve the file types
+    # with the appropriate `Content-Encoding` response header
+    # (do note that this will NOT make Apache compress them!).
+    #
+    # If these files types would be served without an appropriate
+    # `Content-Enable` response header, client applications (e.g.:
+    # browsers) wouldn't know that they first need to uncompress
+    # the response, and thus, wouldn't be able to understand the
+    # content.
+    #
+    # https://httpd.apache.org/docs/current/mod/mod_mime.html#addencoding
+
+    <IfModule mod_mime.c>
+        AddEncoding gzip              svgz
+    </IfModule>
+
+</IfModule>
+
+
+######################
+###  Expire headers 86400 = 1day
+######################
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+    
+    # CSS
+    ExpiresByType text/css                              "access plus 1 year"
+    
+    # Data interchange
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rdf+xml                   "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/ld+json                   "access plus 0 seconds"
+    ExpiresByType application/schema+json               "access plus 0 seconds"
+    ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/calendar                         "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+    
+    # Favicon (cannot be renamed!) and cursor images
+    ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
+    ExpiresByType image/x-icon                          "access plus 1 week"
+    
+    # HTML
+    ExpiresByType text/html                             "access plus 0 seconds"
+    
+    # JavaScript
+    ExpiresByType application/javascript                "access plus 3 months"
+    ExpiresByType application/x-javascript              "access plus 3 months"
+    ExpiresByType text/javascript                       "access plus 3 months"
+    
+    # Manifest files
+    ExpiresByType application/manifest+json             "access plus 1 week"
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+    
+    # Markdown
+    ExpiresByType text/markdown                         "access plus 0 seconds"
+    
+    # Media files
+    ExpiresByType audio/ogg                             "access plus 3 months"
+    ExpiresByType image/bmp                             "access plus 3 months"
+    ExpiresByType image/gif                             "access plus 3 months"
+    ExpiresByType image/jpeg                            "access plus 3 months"
+    ExpiresByType image/png                             "access plus 3 months"
+    ExpiresByType image/svg+xml                         "access plus 3 months"
+    ExpiresByType image/webp                            "access plus 3 months"
+    ExpiresByType video/mp4                             "access plus 3 months"
+    ExpiresByType video/ogg                             "access plus 3 months"
+    ExpiresByType video/webm                            "access plus 3 months"
+    
+    # Web fonts
+    # Collection
+    ExpiresByType font/collection                       "access plus 3 months"
+    
+    # Embedded OpenType (EOT)
+    ExpiresByType application/vnd.ms-fontobject         "access plus 3 months"
+    ExpiresByType font/eot                              "access plus 3 months"
+    
+    # OpenType
+    ExpiresByType font/opentype                         "access plus 3 months"
+    ExpiresByType font/otf                              "access plus 3 months"
+    
+    # TrueType
+    ExpiresByType application/x-font-ttf                "access plus 3 months"
+    ExpiresByType font/ttf                              "access plus 3 months"
+    
+    # Web Open Font Format (WOFF) 1.0
+    ExpiresByType application/font-woff                 "access plus 3 months"
+    ExpiresByType application/x-font-woff               "access plus 3 months"
+    ExpiresByType font/woff                             "access plus 3 months"
+    
+    # Web Open Font Format (WOFF) 2.0
+    ExpiresByType application/font-woff2                "access plus 3 months"
+    ExpiresByType font/woff2                            "access plus 3 months"
+    
+    # Other
+    ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+
+</IfModule>
+
+######################
+###  Turn ETags Off
+######################
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+FileETag None
+
+####################################################################################################
+### URL HANDLING
+####################################################################################################
+<IfModule pagespeed_module>
+    ModPagespeed off
+</IfModule>
+
+######################
+###  Start rewrite engine and set the default pages that Apache looks for in each directory
+######################
+RewriteEngine On
+RewriteBase /
+DirectoryIndex index.html index.php default.php
+
+######################
+### deny access to hidden files and directories except .well-known for letsencrypt cert
+######################
+RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule "(^|/)\." - [F]
+
+######################
+### deny access to the top-level git repository:
+######################
+RewriteRule \.git - [F,L]
+
+######################
+### no user agent? I don't think so
+######################
+RewriteCond %{HTTP_USER_AGENT} ^-?$
+RewriteRule .* - [F,NS,L]
+
+######################
+### force https
+######################
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L]
+
+######################
+### force no trailing slash
+######################
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+######################
+###  Standard Redirects
+######################
+RewriteRule ^admin/?$ /admin.php [L]
+RewriteRule ^home/?$ / [L,R=301]
+
+##########################
+###  301 Redirects go here - COMMENT WITH DATE ADDED
+##########################
+
+RewriteRule ^commencement-2017?$ /news-and-events/news/congratulations-class-of-2017 [L,R=301]
+RewriteRule ^convocation-2017?$ /resource-center/opening-convocation-fall-2017 [L,R=301]
+
+## 9-2015 redirects
+RewriteRule ^resources/resource-center/?$ /resource-center [R=301,L]
+RewriteRule ^resources/?$ /resource-center [R=301,L]
+RewriteRule ^wsc-gateway/donors-and-partners/?$ /support [L,R=301]
+RewriteRule ^wsc-gateway/alumni/?$ /alumni [L,R=301]
+RewriteRule ^wsc-gateway/prospective-students/?$ /admissions/prospective-students [L,R=301]
+RewriteRule ^wsc-gateway/current-students/?$ /academics/current-students [L,R=301]
+RewriteRule ^admissions/campus-life/?$ /community [L,R=301]
+
+# new paths
+RewriteRule ^resource-center/resource/(.*)$ /resource-center/$1 [L,R=301]
+RewriteRule ^news-and-events/details/(.*)$ /news-and-events/news/$1 [L,R=301]
+RewriteRule ^blog/entry/(.*)$ /blog/$1 [L,R=301]
+RewriteRule ^admissions/student-bio/(.*)$ /admissions/discover-wsc/meet-a-student-graduate/$1 [L,R=301]
+RewriteRule ^wsc-gateway/alumni/(.*)$ /alumni/$1 [L,R=301]
+RewriteRule ^wsc-gateway/prospective-students/(.*)$ /admissions/prospective-students/$1 [L,R=301]
+RewriteRule ^wsc-gateway/current-students/(.*)$ /academics/current-students/$1 [L,R=301]
+RewriteRule ^admissions/campus-life/(.*)$ /community/$1 [L,R=301]
+
+# new feed paths
+RewriteRule ^resource-center/resource-feed/?$ /feeds/resource-feed [L,R=301]
+RewriteRule ^resource-center/oh-feed/?$ /feeds/oh-feed [L,R=301]
+RewriteRule ^resource-center/morning-devotions-feed/?$ /feeds/morning-devotions-feed [L,R=301]
+RewriteRule ^resource-center/ftf-feed/?$ /feeds/ftf-feed [L,R=301]
+RewriteRule ^resource-center/wa-feed/?$ /feeds/wa-feed [L,R=301]
+RewriteRule ^news-and-events/news-feed/?$ /feeds/news-feed [L,R=301]
+RewriteRule ^news-and-events/newsletter-feed/?$ /feeds/newsletter-feed [L,R=301]
+
+# legacy redirects
+RewriteRule ^about/*$ /about-wsc [R=301,L]
+RewriteRule /academics/faculty-bio/?$ /academics/faculty [R=301,L]
+RewriteRule ^admissions/resources/visit/index.php$ /admissions/discover-wsc/visit-wsc [R=301,L]
+RewriteRule ^admissions/resources/visit/seminary_for_a_day.php$ /admissions/discover-wsc/visit-wsc/seminary-for-a-day [R=301,L]
+RewriteRule ^alwaysreformed/*$ /news-and-events/details/new-faculty-book-always-reformed [R=301,L]
+RewriteRule ^anewoldschool/*$ http://wscal.edu/news-and-events/details/new-book-westminster-seminary-california-a-new-old-school?utm_source=MRAd&utm_medium=PrintAd&utm_campaign=MRMayJune [R=301,L]
+RewriteRule ^anewoldschool/intro$ http://wscal.edu/news-and-events/details/new-book-westminster-seminary-california-a-new-old-school?utm_source=IntroBooklet&utm_medium=booklet&utm_campaign=ANOWIntroBooklet [R=301,L]
+RewriteRule ^baugh/*$ http://baugh.wscal.edu [R=301,L]
+RewriteRule ^bookstore.*$ /resources/wsc-bookstore [R=301,L]
+RewriteRule http://bookstore.wscal.edu*$ /resources/wsc-bookstore [R=301,L]
+RewriteRule ^clark/*$ http://clark.wscal.edu [R=301,L]
+RewriteRule ^conference/*$ /news-and-events/annual-conference [R=301,L]
+RewriteRule ^conference2011/*$ /news-and-events/annual-conference [R=301,L]
+RewriteRule ^conference2012$ http://wscal.edu/news-and-events/annual-conference [R=301,L]
+RewriteRule ^contact/contactform.php/*$ /about-wsc/people-and-contacts [R=301,L]
+RewriteRule ^currentstudents/*$ /wsc-gateway/current-students [R=301,L]
+RewriteRule ^ccef.*$ /academics/degrees-and-programs/christian-counseling-educational-foundation-ccef-partnership [R=301,L]
+RewriteRule ^discover.*$ /admissions/discover-wsc [R=301,L]
+RewriteRule ^facetoface/*$ /wsc-gateway/prospective-students [R=301,L]
+RewriteRule ^giving/*$ /wsc-gateway/donors-and-partners [R=301,L]
+RewriteRule /himweproclaim1 /news-and-events/details/resources-for-pastors?utm_source=flyer&utm_medium=print&utm_campaign=conference2013 [R=301,L]
+RewriteRule /himweproclaim2 http://wscal.edu/news-and-events/details/resources-for-pastors?utm_source=AdUpdateSpring2013&utm_medium=Print&utm_campaign=HimWeProclaim [R=301,L]
+RewriteRule ^library/*$ /resources/wsc-library [R=301,L]
+RewriteRule ^newsevents/*$ /news-and-events [R=301,L]
+RewriteRule ^news-and-events/calendar$ /news-and-events/events-calendar [R=301,L]
+RewriteRule ^news-and-events/calendar/$ /news-and-events/events-calendar [R=301,L]
+RewriteRule ^officehours/*$ /resource-center/office-hours [R=301,L]
+RewriteRule ^pulpitsupply/*$ /wsc-gateway/current-students/field-education-and-placement/pulpit-supply-program [R=301,L]
+RewriteRule ^resources/blog /blog [R=301,L]
+RewriteRule ^resources/audio/officehours/about.php /resource-center/office-hours [R=301,L]
+RewriteRule ^resources/resource-center/*$ /resource-center [R=301,L]
+RewriteRule ^rss/*$ /subscriptions  [R=301,L]
+RewriteRule ^strimple_systematic_theology_downloads http://bookstore.wscal.edu/collections/mp3-downloads?utm_source=update&utm_medium=print&utm_campaign=fall2012 [R=301,L]
+RewriteRule ^valiantfortruth/*$ /blog [R=301,L]
+#RewriteRule ^visit/*$ /admissions/visit-wsc/seminary-for-a-day  [R=301,L]
+RewriteRule ^wsc-gateway/donors-and-partners/financial-accountablity/*$ /wsc-gateway/donors-and-partners/financial-accountability [R=301,L]
+RewriteRule ^wsc-gateway/alumni/alumni-login/*$ https://wscal25889.thankyou4caring.org [R=301,L]
+RewriteRule ^wsc-gateway/donors-and-partners/friends-login/*$ https://wscal25889.thankyou4caring.org [R=301,L]
+RewriteRule ^wsc-gateway/donors-and-partners/help-support-a-student/?$ https://wscal25889.thankyou4caring.org/pages/recurring-gift-donation-form [R=301,L]
+RewriteRule ^wsc_conferences.*$ /resource-center/category/wsc_conferences [R=301,L]
+RewriteRule ^wwf/*$ /wsc-gateway/current-students/student-life/student-associations/wcs-womens-fellowship-wwf [R=301,L]
+RewriteRule ^ministerial-opportunities.*$ /wsc-gateway/alumni/alumni-opportunities/ministerial-opportunities [R=301,L]
+RewriteRule ^strimplelectures.*$ /news-and-events/details/strimple-systematic-theology-lectures-free-mp3-downloads [R=301,L]
+RewriteRule ^update/?$ /news-and-events/update-magazine [R=301,L]
+RewriteRule ^itunes-u/?$ /resources/itunes-u [R=301,L]
+RewriteRule ^dendulklectures.*$ /resource-center/category/den-dulk-lectures  [R=301,L]
+RewriteRule ^alumni-job-postings.*$ /wsc-gateway/alumni/alumni-job-postings [R=301,L]
+RewriteRule ^wsc-gateway/alumni/ministerial-opportunities.*$ /wsc-gateway/alumni/alumni-job-postings [R=301,L]
+RewriteRule ^wsc-gateway/donors-and-partners/welcome/?$ /wsc-gateway/donors-and-partners/why-give [R=301,L]
+RewriteRule ^academics/faculty-bio/(.*)$ /academics/faculty/$1 [L,R=301]
+
+# 5-2-2016
+RewriteRule ^women-at-wsc/?$ /admissions/discover-wsc/women-at-westminster [L,R=301]
+
+# 10-20-2015 - removed 9-24-2018
+#RewriteRule ^support/monthly-recurring-gifts/?$ https://wscal25889.thankyou4caring.org/pages/recurring-gift-donation-form [L,R=301]
+
+# 05-30-2016
+RewriteRule ^apply/?$ /admissions/apply/ [L,R=301]
+
+# 10-13-2016
+#RewriteRule ^awr/?$ /alumni/alumni-ongoing-education [L,R=301]
+
+# 10-15-2017
+RewriteRule ^awr/?$ /alumni/alumni-winter-refresher [L,R=301]
+
+# 10-19-2016
+RewriteRule ^resource-center/office-hours/?$ /resource-center/category/office-hours [L,R=301]
+
+# 11-29-2016
+RewriteRule ^campaign/?$ /community/campaign [L,R=301]
+RewriteRule ^campaign/campus/?$ /community/campaign/campus [L,R=301]
+RewriteRule ^campaign/community/?$ /community/campaign/community [L,R=301]
+RewriteRule ^campaign/future/?$ /community/campaign/future [L,R=301]
+RewriteRule ^campaign/details/?$ /community/campaign/details [L,R=301]
+RewriteRule ^campaign/progress/?$ /community/campaign/progress [L,R=301]
+
+# 12-12-2016 
+RewriteRule ^admissions/discover-wsc/why-westminster-california?$ /admissions/why-westminster-california [L,R=301]
+RewriteRule ^resource-center/resources-by-tag/(.*)$ /resource-center/tag/$1 [L,R=301]
+
+# 3-15-2017 
+RewriteRule ^support/student-housing-campaign/?$ /community/campaign [L,R=301]
+
+# 4-12-2017
+RewriteRule ^life-together/?$ /blog/category/life-together [L,R=301]
+RewriteRule ^godfrey-honorarium/?$ /news-and-events/news/dr-w-robert-godfrey-honorarium [L,R=301]
+RewriteRule ^conference-2017/?$ /resource-center/category/is-the-reformation-over/$1 [L,R=301]
+
+# 4-12-2017
+RewriteRule ^support/w-robert-godfrey-honorarium/?$ https://wscal25889.thankyou4caring.org/pages/wrg-honorarium-donation-form [L,R=301]
+
+# 7-5-2017
+RewriteRule ^wsc-in-oc/?$ /academics/degrees-and-programs/wsc-in-oc [L,R=301]
+
+# 3-13-2018
+RewriteRule ^admissions/financial-aid/application-procedure/?$ /admissions/financial-aid/timeline-procedure [L,R=301]
+
+# 3-16-2018
+RewriteRule ^den-dulk-2018/?$ /news-and-events/news/rev-dr-jon-payne-delivers-den-dulk-lectures [L,R=301]
+#RewriteRule ^free-ebook/?$ /forms/admissions/download-pdf [L,R=301] modified to below on 7-1-2019
+RewriteRule ^free-ebook/?$ /forms/admissions/giveaway [L,R=301]
+
+# 4-20-2018
+RewriteRule ^conference-2018/?$ /resource-center/category/the-bible-his-stories-your-life  [L,R=301]
+
+# 10-5-2018
+RewriteRule ^commencement-2018/?$ /news-and-events/news/congratulations-class-of-2018  [L,R=301]
+
+# 11-7-2018
+RewriteRule ^news-and-events/campus-events.*$ /news-and-events  [L,R=301]
+
+# 11-26-2018
+RewriteRule ^support$ /donate [L,R=301]
+RewriteRule ^support/(.*)$ /donate/$1 [L,R=301]
+
+# 12-18-2018
+RewriteRule ^donate/student-housing-campaign/?$ /community/campaign [L,R=301]
+
+# 3-21-2019
+RewriteRule ^den-dulk-lectures/?$ /resource-center/category/den-dulk-lectures [L,R=301]
+
+# 4-15-2019
+RewriteRule ^conference-2019/?$ /resource-center/category/remembering-the-canons-after-400-years [L,R=301]
+
+# 4-15-2019
+RewriteRule ^lectures-on-missions/?$ /news-and-events/lectures-on-missions [L,R=301]
+
+# 9-24-2019
+RewriteRule ^visit$ /admissions/visit-wsc [L,R=301]
+
+# 10-28-2019
+RewriteRule ^office-hours$ /resource-center/category/office-hours [L,R=301]
+
+# 3-16-2020
+RewriteRule ^COVID-19-and-WSC$ /about-wsc/COVID-19-and-WSC [L,R=301]
+
+# 5-1-2020
+RewriteRule ^commencement-2020$ /news-and-events/news/2020-virtual-commencement [L,R=301]
+
+# 10-13-2020
+RewriteRule ^japan$ /donate/japan-vision-trip-donation [L,R=301]
+
+# 4-22-2021
+RewriteRule ^commencement$ /news-and-events/commencement [L,R=301]
+
+# disable bookstore
+#RewriteRule ^resources/wsc-bookstore.*$ /resources  [L,R=302]
+
+# redirect video category to new path
+# RewriteRule ^resource-center/category/videos?$ /resource-center/videos [L,R=301]
+
+######################
+###  Expression Engine mod_rewrite to remove "index.php"
+######################
+# Removes index.php from ExpressionEngine URLs
+RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+RewriteCond %{REQUEST_URI} !/system/.* [NC]
+RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+# Directs all EE web requests through the site index file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?/$1 [L]

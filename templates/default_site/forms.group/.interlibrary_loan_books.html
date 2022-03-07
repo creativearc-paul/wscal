@@ -1,0 +1,150 @@
+<div>
+    <span class="requiredField">*</span>Required Fields
+</div>
+
+{exp:freeform:form form_id="3" return="/forms/submission-thank-you" form:id="ill_books" required="first_name|last_name|email|your_status|captcha" require_captcha="yes"}
+
+<fieldset id="borrowersInfo">
+    <legend>Borrower's Information</legend>
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="first_name">Borrower's First Name</label>
+            </div>
+            <div>
+                <input type="text" id="first_name" name="first_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="last_name">Borrower's Last Name</label>
+            </div>
+            <div>
+                <input type="text" id="last_name" name="last_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="email">Email</label>
+            </div>
+            <div>
+                <input type="text" id="email" name="email" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="phone_number">Phone Number</label>
+            </div>
+            <div>
+                <input id="phone_number" type="text" size="35" name="phone_number" value=""/>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Status
+                <div class="myRadio">
+                    <input type="radio" name="your_status" value="Faculty" id="Faculty" class="radio"/>&nbsp;<label for="Faculty">Faculty</label>&nbsp;&nbsp;
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="your_status" value="Staff" id="Staff" class="radio"/>&nbsp;<label for="Staff">Staff</label>&nbsp;&nbsp;
+                </div>
+                <div class="myRadio">
+                    <input type="radio" name="your_status" value="Student" id="Student" class="radio"/>&nbsp;&nbsp;<label for="Student">Student</label>
+                </div>
+                <label class="error" for="your_status" style="display:none;">Please select status.</label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset id="itemInformation">
+    <legend>Item Information</legend>
+    
+    
+    <div class="formField formComments">
+        <label for="title_of_book">Title of Book</label>
+        <textarea id="title_of_book" name="title_of_book" cols="40" rows="2"></textarea>
+    </div>
+    
+    
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="book_author">Author</label>
+            </div>
+            <div>
+                <input id="book_author" type="text" size="40" name="book_author" value=""/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="publisher">Publisher</label>
+            </div>
+            <div>
+                <input id="publisher" type="text" size="40" name="publisher" value=""/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="publication_date">Publication Date</label>
+            </div>
+            <div class="formFieldInput">
+                <input id="publication_date" type="text" size="40" name="publication_date" value=""/>
+            </div>
+        </div>
+    </div>
+    
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="isbn">ISBN</label>
+            </div>
+            <div>
+                <input id="isbn" type="text" size="40" name="isbn" value=""/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="oclc_number">OCLC#</label>
+            </div>
+            <div>
+                <input id="oclc_number" type="text" size="40" name="oclc_number" value=""/>
+            </div>
+        </div>
+    </div>
+
+    <div class="formField formComments">
+        <label for="special_instructions">Special Instructions</label>
+        <textarea id="special_instructions" name="special_instructions" cols="40" rows="5"></textarea>
+    </div>
+    
+    <div class="formRow">
+        <div class="formField formComments">
+            {exp:channel:entries channel="page-blocks" dynamic="off" entry_id="8042" disable="categories|member_data|pagination"}{page_block_content}{/exp:channel:entries}
+        </div>
+    </div>
+    
+        {if freeform:captcha}
+    <div class="formRow">
+        <div class="formField formComments">
+            <div class="formFieldTitle">
+                <label for="captcha">Please enter the security code.</label>
+            </div>
+            <div class="formFieldInput">
+                <span style="margin-top: 5px;padding: 5px 5px;display: inline-block;">{freeform:captcha}</span><br>
+                <input type="text" id="captcha" name="captcha" required="required" size="40">
+            </div>
+        </div>
+    </div>
+    {/if}
+    
+    <div class="formRow">
+        <div>
+            <input type="submit" value="Submit" name="submit" id="submit" class="formButton"/>
+        </div>
+    </div>
+
+</fieldset>
+{/exp:freeform:form}

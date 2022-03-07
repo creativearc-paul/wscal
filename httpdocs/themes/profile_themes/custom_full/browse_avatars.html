@@ -1,0 +1,23 @@
+<h2>{lang:browse_avatars}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <th>{lang:current_avatar_set}&nbsp; {avatar_set}</th>
+        </tr>
+        <tr>
+            <td>
+                <table class="profileTable">
+                    {avatar_table_rows}
+                </table>
+            </td>
+        </tr>
+        {paginate}
+            <tr>
+                <td>{pagination_links}</td>
+            </tr>
+        {/paginate}
+        <tr>
+            <td><input type="submit" class="profileCssButton" value='{lang:choose_selected}' /></td>
+        </tr>
+    </table>
+</form>

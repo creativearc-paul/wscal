@@ -1,0 +1,9 @@
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1"}
+{if entry_id == 8739}
+    <?php ee()->functions->redirect('https://wscal.worldcat.org/advancedsearch'); ?>
+{if:elseif entry_id == 8740}
+    {redirect='/forms/library/interlibrary-loan-books'}
+{if:elseif entry_id == 8741}
+    {redirect='/forms/library/interlibrary-loan-articles'}
+{/if}
+{/exp:channel:entries}

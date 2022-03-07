@@ -1,0 +1,56 @@
+{exp:channel:entries 
+                channel="news-and-events" 
+                dynamic="no" 
+                limit="10" 
+                {if segment_3 ~ "/^P\d+/"}paginate_base="/{segment_1}/{segment_2}" {/if}
+                category="1170" 
+                orderby="expiration_date" 
+                sort="desc" 
+                year="{embed:year}" 
+                show_expired="yes" 
+                }
+
+    <div class="clearFix newsListing {if sticky=='y'}newsListingSticky{/if}">
+
+        <div class="newsListingLeftColumn">
+            <div class="newsListingPhoto">
+                {if news_event_item_image != ''}
+                    {exp:imgsizer:size src="{news_event_item_image}" alt="{title}" width="400"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" alt="{title}" width="400"}
+                {/if}
+            </div>
+        </div>
+
+        <div class="newsListingRightColumn">
+            <div class="newsListingTitle">
+                <h3><a href="{title_permalink='news-and-events/{segment_2}'}" class="newsListingTitle">{title}</a></h3>
+                <div class="newsDate">
+                    {entry_date format="%F %j, %Y"}
+                </div>
+            </div>
+            <div class="newsListingSummary">
+                {if news_event_item_summary != ""}{news_event_item_summary}{if:else}{exp:word_limit:limit_words total="50"}{news_event_item_copy}{/exp:word_limit:limit_words}{/if}
+            </div>
+            <div><a href="{title_permalink='news-and-events/{segment_2}'}" class="moreLink">Read More</a></div>
+        </div>
+
+    </div>
+
+    {paginate}
+        <section class="paginationLinks clearFix">
+            {pagination_links}
+                {previous_page}
+                    <a href="{pagination_url}" class="page-previous">prev</a>
+                {/previous_page}
+                {page}
+                    <a href="{pagination_url}" class="page-{pagination_page_number} {if current_page}active{/if}" title="page number {pagination_page_number}">{pagination_page_number}</a>
+                {/page}
+                {next_page}
+                    <a href="{pagination_url}" class="page-next">next</a>
+                {/next_page}
+            {/pagination_links}
+        </section>
+    {/paginate}
+
+{/exp:channel:entries}

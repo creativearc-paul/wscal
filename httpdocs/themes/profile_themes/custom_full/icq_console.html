@@ -1,0 +1,22 @@
+<h2>{lang:icq_console}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <td>
+                <h3>{lang:recipient}&nbsp; {name}</h3>
+                <h3>{lang:icq_number}&nbsp; {icq}</h3>
+                <h3>{lang:subject}</h3>
+                <input type="text" name="subject" value="" maxlength="80" size="70" />
+                <h3>{lang:message}</h3>
+                <textarea name='body' rows='8' cols="90"></textarea>
+                <div>
+                    {lang:message_disclaimer}
+                    {lang:message_logged}
+                </div>
+                <input type='checkbox' name='self_copy' value='y' /> {lang:send_self_copy}
+                <input type="submit" class="profileCssButton" value="{lang:submit}" />
+                <div><a href="JavaScript:window.close();">{lang:close_window}</a></div>
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,52 @@
+<div class="secondaryColumnHeader">Resources</div>
+<ul class="secondaryNav sansSerif clearFix">
+    <li class="{if segment_1 == 'blog'} here{/if}"><a href="/blog">Blog</a></li>
+    <li class="{if segment_2 == 'office-hours'} here{/if}"><a href="/resource-center/category/office-hours">Office Hours Podcast</a></li>
+    <li class="{if segment_3 == 'morning-devotions'} here{/if}"><a href="/resource-center/category/morning-devotions">Morning Devotions</a></li>
+    <li class="{if segment_3 == 'lectures'} here{/if}"><a href="/resource-center/category/lectures">Lectures</a></li>
+    <li class="{if segment_3 == 'articles'} here{/if}"><a href="/resource-center/category/articles">Articles</a></li>
+    <li class="{if segment_2 == 'videos'} parent-here{/if}"><a href="/resource-center/videos">Videos</a>
+        <ul>
+            <li class="{if segment_3 == 'westminster-answers'} here{/if}"><a href="/resource-center/category/westminster-answers">Westminster Answers</a></li>
+            <li class="{if segment_3 == 'a-students-perspective'} here{/if}"><a href="/resource-center/category/a-students-perspective">A Student's Perspective</a></li>
+            <li class="{if segment_3 == 'meet-the-faculty'} here{/if}"><a href="/resource-center/category/meet-the-faculty">Meet the Faculty</a></li>
+            <li class="{if segment_3 == 'sola-gratia'} here{/if}"><a href="/resource-center/category/5-solas">5 Solas</a></li>
+        </ul>
+    </li>
+    <li class="{if segment_3 == 'wsc_conferences'} here{/if}"><a href="/resource-center/category/wsc_conferences">WSC Conferences</a></li>
+    <li class=""><a href="https://subsplash.com/wscal/app">WSC Mobile App</a></li>
+</ul>
+
+<div class="secondaryColumnHeader">Browse</div>
+<ul class="secondaryNav sansSerif clearFix">
+    <li class="{if segment_3 == 'topic'} here{/if}"><a href="/resource-center/indices/topic" class="allUpper">Topic</a></li>
+    <li class="{if segment_3 == 'name'} here{/if}"><a href="/resource-center/indices/name" class="allUpper">Name</a></li>
+    <li class="{if segment_3 == 'scripture'} here{/if}"><a href="/resource-center/indices/scripture" class="allUpper">Scripture</a></li>
+    <li class="{if segment_3 == 'date'} here{/if}"><a href="/resource-center/indices/date" class="allUpper" rel="external">Date</a></li>
+</ul>
+
+<div class="secondaryColumnHeader">Search Resources</div>
+<div class="resourcesSideSearch">
+    <form action="/search/results" method="post" class="clearFix">
+        <input type="hidden" name="csrf_token" value="{csrf_token}"/> <!-- Important! -->
+        <input type="hidden" name="channel" value="resources"/>
+        <input type="text" name="keywords" value="" title="Search" class="keywords sansSerif" placeholder="Search"/>
+
+        <div style="text-transform: uppercase;margin: 10px 0 0 0;">Resource Type:</div>
+        <select name='category[]' size="1">
+            <option value=''>All Resources</option>
+            {exp:channel:categories channel="resources" style="linear" category_group="5" parent_only="yes"}
+            <option value="{category_id}">{category_name}</option>
+            {/exp:channel:categories}
+        </select> <input type="submit" name="submit" value="Submit" class="flatBlueButton"/>
+    </form>
+</div>
+
+<div class="secondaryColumnHeader" style="border-bottom: 2px solid #D6D5C5;">Follow Us!</div>
+<div class="resourcesSideSocial">
+    <a href="https://www.facebook.com/westminstercalifornia" class="socialIcon" rel="external"><img src="/assets/graphics/icon-facebook.png" alt=""></a>
+    <a href="https://twitter.com/wscal" class="socialIcon" rel="external"><img src="/assets/graphics/icon-twitter.png" alt=""></a>
+    <a href="https://instagram.com/westminsterseminaryca" class="socialIcon" rel="external"><img src="/assets/graphics/icon-instagram.png" alt=""></a>
+    <a href="https://www.youtube.com/user/wscalontheweb" class="socialIcon" rel="external"><img src="/assets/graphics/icon-you-tube.png" alt=""></a>
+    <a href="/subscriptions" class="socialIcon"><img src="/assets/graphics/icon-feed.png" alt=""><span>RSS Feeds</span></a>
+</div>

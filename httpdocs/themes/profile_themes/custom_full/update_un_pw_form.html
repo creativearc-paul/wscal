@@ -1,0 +1,51 @@
+<h2>{lang:settings_update}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <td colspan="2">{lang:access_notice}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {if invalid_username}
+                    <div>{lang:username_length}</div>
+                {/if}
+                {if invalid_password}
+                    <div>{lang:password_length}</div>
+                {/if}
+            </td>
+        </tr>
+        {if invalid_username}
+            <tr>
+                <td><strong>{lang:choose_new_un}</strong></td>
+                <td><input type="text" name="new_username" size="20" value="" maxlength="50" /></td>
+            </tr>
+        {/if}
+        {if invalid_password}
+            <tr>
+                <td><strong>{lang:choose_new_pw}</strong></td>
+                <td><input type="password" name="new_password" size="20" value="" maxlength="40" autocomplete="off" /></td>
+            </tr>
+            <tr>
+                <td><strong>{lang:confirm_new_pw}</strong></td>
+                <td><input type="password" name="new_password_confirm" size="20" value="" maxlength="40" autocomplete="off" /></td>
+            </tr>
+        {/if}
+    </table>
+
+    <table class="profileTable">
+        <tr>
+            <td colspan="2">{lang:your_current_un_pw}</td>
+        </tr>
+        <tr>
+            <td><strong>{lang:existing_username}</strong></td>
+            <td><input type="text" name="username" size="20" value="" maxlength="50" /></td>
+        </tr>
+        <tr>
+            <td><strong>{lang:existing_password}</strong></td>
+            <td><input type="password" name="password" size="20" value="" maxlength="40" autocomplete="off" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" class="profileCssButton" value="{lang:submit}" /></td>
+        </tr>
+    </table>
+</form>

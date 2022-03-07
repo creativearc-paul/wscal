@@ -1,0 +1,121 @@
+<?php
+
+if (isset($_POST['submit'])) {
+
+    foreach($_POST as $key=>$value) { 
+        $fields_string .= $key.'='.$value.'&'; 
+    }
+    rtrim($fields_string,'&');
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,'https://wscal.edu/formtools/process.php');
+    curl_setopt($ch,CURLOPT_POST,count($_POST));
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+
+    if(curl_exec($ch)){
+        curl_close($ch);
+        header('Location: https://wscal.edu/forms/thank-you');
+        exit();
+    };
+
+}
+
+?>
+
+<h1>Bookstore Email List</h1>
+
+<p>Sign up to subscribe to the Bookstore Email List to receive information regarding the latest featured books, the newest arrivals and upcoming promotions. </p>
+
+<span class="requiredField">* Required fields<?php echo (isset($message)) ? '<br /><span style="color:#FF0000;">'.$message.'</span>' : ''; ?></span><br />
+
+<form action="/forms/subscribe" method="post" enctype="multipart/form-data" name="wsc_bookstore_email_form" id="wsc_bookstore_email_form">
+    <input type="hidden" name="form_tools_form_id" value="26" />
+    <input type="hidden" name="csrf_token" value="{csrf_token}">
+
+    <fieldset id="personalInfo">
+        <legend>Your Information</legend>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="formFieldTitle">
+                    <strong class="requiredField">*</strong> <label for="input-first_name">First Name</label>
+                </td>
+                <td class="formFieldInput">
+                    <input type="text" id="input-first_name" name="first_name" value="<?= (!empty($_POST['first_name'])) ? $_POST['first_name'] : '' ; ?>" size="35" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldTitle">
+                    <strong class="requiredField">*</strong> <label for="input-last_name">Last Name</label>
+                </td>
+                <td class="formFieldInput">
+                    <input type="text" id="input-last_name" name="last_name" value="<?= (!empty($_POST['last_name'])) ? $_POST['last_name'] : '' ; ?>" size="35" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldTitle">
+                    <strong class="requiredField">*</strong> <label for="input-email_address">Email</label>
+                </td>
+                <td class="formFieldInput">
+                    <input type="text" id="input-email_address" name="email_address" value="<?= (!empty($_POST['email_address'])) ? $_POST['email_address'] : '' ; ?>" size="35" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldTitle">
+                    <label for="input-city">City</label>
+                </td>
+                <td class="formFieldInput">
+                    <input type="text" id="input-city" name="city" value="<?= (!empty($_POST['city'])) ? $_POST['city'] : '' ; ?>" size="30" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldTitle">
+                    US States
+                </td>
+                <td class="formFieldInput">
+                    {embed="forms/.state-dropdown"}
+                    <label for="input-state" class="error" style="display:none;">Please choose one.</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="formFieldTitle">
+                    How did you hear about the Bookstore?</label>
+                </td>
+                <td class="formFieldInput">
+                    <select name="how_heard_about" id="how_heard_about">
+                        <option value=""> </option>
+                        <option value="Church/Denomination"> Church/Denomination </option>
+                        <option value="Individual/Friend"> Individual/Friend </option>
+                        <option value="Print Advertisement"> Print Advertisement </option>
+                        <option value="White Horse Media/Modern Reformation"> White Horse Media/Modern Reformation </option>
+                        <option value="WSC Alumni"> WSC Alumni </option>
+                        <option value="WSC Event conference etc."> WSC Event (conference etc.) </option>
+                        <option value="WSC Publication Evangelium Update"> WSC Publication (Evangelium Update) </option>
+                        <option value="WSC Staff/Faculty Referral"> WSC Staff/Faculty Referral </option>
+                        <option value="WSC Student Referral"> WSC Student Referral </option>
+                        <option value="WSC Website"> WSC Website </option>
+                        <option value="Other"> Other (specify below) </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldTitle">
+                    <label for="how_heard_about_other">How did you hear: Other</label>
+                </td>
+                <td class="formFieldInput">
+                    <input id="how_heard_about_other" type="text" size="40" name="how_heard_about_other" value="" />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="formFieldInput" colspan="2">
+                    You may unsubscribe from the email list at any time by using the "unsubscribe" link on the email or by contacting us at 760.735.BOOK (2665). 
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldInput" colspan="2">
+                    <input type="submit" name="submit" value="Subscribe" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</form>

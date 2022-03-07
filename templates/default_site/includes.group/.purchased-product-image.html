@@ -1,0 +1,7 @@
+{exp:channel:entries channel="products_books" disable="member_data|pagination" limit="1" dynamic="no" entry_id="{embed:entry_id}" show_future_entries="yes" show_expired="yes"}
+    {if product_book_image}
+        <div class="cartImage"><img src="{site_url}{exp:imgsizer:size src="{product_book_image}" alt="{title}" width="300" justurl="true"}"/></div>
+    {if:else}
+        <div class="cartImage"><img src="{site_url}{exp:imgsizer:size src="/images/graphics/missing-cover.gif" alt="{title}" width="300" justurl="true"}"/></div>
+    {/if}
+{/exp:channel:entries}

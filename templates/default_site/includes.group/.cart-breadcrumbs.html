@@ -1,0 +1,39 @@
+<ul class="cartBreadcrumbs" title="cart breadcrumbs">
+
+    {if segment_1 == 'your-cart'}
+        <li class="currentBreadcrumb arrowed"><span>Your Cart</span></li>
+    {if:else}
+        <li class="activeBreadcrumb arrowed"><span><a href="/your-cart">Your Cart</a></span></li>
+    {/if}
+
+    {if segment_1 == 'your-information'}
+        <li class="currentBreadcrumb arrowed"><span>1. Your Information</span></li>
+    {if:elseif segment_1 == 'review-and-payment' || segment_1 == 'order-complete' || segment_1 == 'shipping-options'}
+        <li class="activeBreadcrumb arrowed"><span>1. <a href="/your-information">Your Information</a></span></li>
+    {if:else}
+        <li class="arrowed"><span>1. Your Information</span></li>
+    {/if}
+
+    {!--if segment_1 == 'shipping-options'}
+        <li class="currentBreadcrumb arrowed"><span>2. Shipping Options</span></li>
+    {if:elseif segment_1 == 'review-and-payment' || segment_1 == 'order-complete'}
+        <li class="activeBreadcrumb arrowed"><span>2. <a href="/shipping-options">Shipping Options</a></span></li>
+    {if:else}
+        <li class="arrowed"><span>2. Shipping Options</span></li>
+    {/if--}
+
+    {if segment_1 == 'review-and-payment'}
+        <li class="currentBreadcrumb arrowed"><span>2. Review &amp; Payment</span></li>
+    {if:elseif segment_1 == 'order-complete'}
+        <li class="activeBreadcrumb arrowed"><span>2. <a href="/review-and-payment">Review &amp; Payment</a></span></li>
+    {if:else}
+        <li class="arrowed"><span>2. Review &amp; Payment</span></li>
+    {/if}
+
+    {if segment_1 == 'order-complete'}
+        <li class="completeBreadcrumb"><span>Order Complete</span></li>
+    {if:else}
+        <li><span>Order Complete</span></li>
+    {/if}
+
+</ul>

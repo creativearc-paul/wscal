@@ -1,0 +1,94 @@
+
+<div class="resourceLandingBlock clearFix">
+    
+    <h2>Office Hours <a href="/resource-center/category/office-hours" class="viewAllLink">All Office Hours</a></h2>
+
+    {exp:channel:entries channel="resources" category="1179" dynamic="no" limit="1"}
+        <div class="resourceLandingFeatured clearFix">
+            <div>
+                {exp:imgsizer:size src="{resource_image}" alt="{title}" width="300" height="180"}
+            </div>
+            <div>
+                <div>Featured</div>
+                <a href="{title_permalink='/resource-center'}" class="resourceLandingFeaturedTitle">{title}</a>
+                <div class="resourceLandingItemDate">{resource_display_date format="%F %j, %Y"}</div>
+                <div class="resourceLandingFeaturedTeaser">{resource_summary}</div>
+                <a href="{title_permalink='/resource-center'}" class="flatBlueButton">listen</a>
+            </div>
+        </div>
+    {/exp:channel:entries}
+
+    <div class="clearFix tilesWrapperThreeWide resourceLandingTiles">
+        {exp:channel:entries channel="resources" category="1179" dynamic="no" limit="3" offset="1"}
+            <div class="tile">
+                <div class="tileInner">
+                    <a href="{title_permalink='/resource-center'}" class="resourceLandingItemTitle">{title}</a>
+                    <div class="resourceLandingItemDate">{resource_display_date format="%F %j, %Y"}</div>
+                </div>
+            </div>
+        {/exp:channel:entries}
+    </div>
+
+</div>
+
+<div class="resourceLandingBlock clearFix">
+
+    <h2>Devotions &amp; Lectures <a href="/resource-center/category/morning-devotions" class="viewAllLink">All Morning Devotions</a></h2>
+
+    {exp:channel:entries channel="resources" category="855" dynamic="no" limit="1"}
+        <div class="resourceLandingFeatured clearFix">
+            <div>
+                {exp:imgsizer:size src="{resource_image}" alt="{title}" width="300" height="180"}
+            </div>
+            <div>
+                <div>Featured</div>
+                <a href="{title_permalink='/resource-center'}" class="resourceLandingFeaturedTitle">{title}</a>
+                <div class="resourceLandingItemDate">{resource_display_date format="%F %j, %Y"}&nbsp;&nbsp;|&nbsp;&nbsp;{categories show_group="6" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}</div>
+                <div class="resourceLandingFeaturedTeaser">{resource_summary}</div>
+                <a href="{title_permalink='/resource-center'}" class="flatBlueButton">listen</a>
+            </div>
+        </div>
+    {/exp:channel:entries}
+
+    <div class="clearFix tilesWrapperThreeWide resourceLandingTiles">
+        {exp:channel:entries channel="resources" category="855" dynamic="no" limit="3" offset="1"}
+            <div class="tile">
+                <div class="tileInner">
+                    <a href="{title_permalink='/resource-center'}" class="resourceLandingItemTitle">{title}</a>
+                    <div class="resourceLandingItemDate">{resource_display_date format="%F %j, %Y"}</div>
+                </div>
+            </div>
+        {/exp:channel:entries}
+    </div>
+
+</div>
+
+<div class="resourceLandingBlock clearFix">
+
+    <h2>Videos <a href="/resource-center/category/wsc-videos" class="viewAllLink">All Videos</a></h2>
+
+    {exp:channel:entries channel="resources" category="1178" dynamic="no" limit="1"}
+        <div class="resourceLandingFeatured clearFix">
+            <div>
+                {exp:imgsizer:size src="{resource_image}" alt="{title}" width="300" height="180"}
+            </div>
+            <div>
+                <div>Featured</div>
+                <a href="{title_permalink='/resource-center'}" class="resourceLandingFeaturedTitle">{title}</a>
+                <div class="resourceLandingFeaturedTeaser">{resource_summary}</div>
+                <a href="{title_permalink='/resource-center'}" class="flatBlueButton">Watch</a>
+            </div>
+        </div>
+    {/exp:channel:entries}
+
+    <div class="clearFix tilesWrapperThreeWide resourceLandingTiles">
+        {exp:channel:entries channel="resources" category="1178" dynamic="no" limit="3" offset="1"}
+            <div class="tile">
+                <div class="tileInner">
+                    <a href="{title_permalink='/resource-center'}" class="resourceLandingItemTitle">{title}</a>
+                </div>
+            </div>
+        {/exp:channel:entries}
+    </div>
+
+</div>

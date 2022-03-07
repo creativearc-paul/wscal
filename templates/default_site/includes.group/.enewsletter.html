@@ -1,0 +1,219 @@
+{exp:channel:entries 
+            channel="newsletter" 
+            limit="1" 
+            dynamic="no"}
+
+    <div class="equalHeightChildren">
+        <div class="primaryColumn clearFix equalHeightChild">
+            <div class="primaryColumnInner primaryColumnHasAside">
+                <article role="article" class="clearFix">
+                
+                    <div class="eNewsletterHeader">
+                        <div class="sansSerif eNewsletterHeaderDate allUpperCase">{newsletter_date format="%M"}<span>{newsletter_date format="%Y"}</span></div>
+                        <div class="eNewsletterHeaderTitle fontGaramond">WSC <span class="sansSerif">MONTHLY</span></div>
+                        <div class="eNewsletterHeaderTagline fontGaramond">an eNewsletter of Westminster Seminary California</div>
+                    </div>
+                
+                    <div class="eNewsletterFeatured">
+                        <img src="/assets/graphics/enl_featured.png" title="Featured" alt="Featured" />
+                        <div class="mbWideLeft clearFix">
+                            {if newsletter_featured_photo && newsletter_featured_copy}
+                                <div class="mbSecondaryColumn">
+                                    <div class="mbSecondaryColumnInner eNewsletterFeaturedImage">
+                                        {exp:imgsizer:size src="{newsletter_featured_photo}" class="featuredImage" alt="{title}" width="400"}
+                                        {if featured_photo_caption}
+                                            <div class="eNewsletterFeaturedImageCaption">{featured_photo_caption}</div>
+                                        {/if}
+                                    </div>
+                                </div>
+                                <div class="mbPrimaryColumn">
+                                    <div class="mbPrimaryColumnInner">
+                                        <h2>{title}</h2>
+                                        <div class="mbSummary">
+                                            {newsletter_featured_copy}
+                                        </div>
+                                    </div>
+                                </div>
+                            {if:elseif newsletter_featured_copy}
+                                <div class="mbPrimaryColumn">
+                                    <div class="mbPrimaryColumnInner" style="margin-right:0;">
+                                        <h2>{title}</h2>
+                                        <div class="mbSummary">
+                                            {newsletter_featured_copy}
+                                        </div>
+                                    </div>
+                                </div>
+                            {if:else}
+                                <div class="mbPrimaryColumn">
+                                    <div class="mbPrimaryColumnInner eNewsletterFeaturedImage" style="margin-right:0;">
+                                        {exp:imgsizer:size src="{newsletter_featured_photo}" class="featuredImage" alt="{title}" width="800"}
+                                        {if featured_photo_caption}
+                                            <div class="eNewsletterFeaturedImageCaption">{featured_photo_caption}</div>
+                                        {/if}
+                                    </div>
+                                </div>
+                            {/if}
+                        </div>
+                    </div>
+                
+                    <div class="bodyCopyPrimary">
+                        <div class="bodyCopyPrimaryInner">
+
+                            <div class="eNewsletterFacultyBook">
+                                <img src="/assets/graphics/enl_faculty_book.png" title="Faculty Book" alt="Faculty Book" />
+                                <div class="clearFix">
+                                    {faculty_books}
+                                        <div class="mbWideRight clearFix solidBottomLine">
+                                            <div class="mbSecondaryColumn">
+                                                <div class="mbSecondaryColumnInner eNewsletterFacultyBookImage">
+                                                    {if '{faculty_books:product_book_image}' != ''}
+                                                        {exp:imgsizer:size src="{faculty_books:product_book_image}" class="productBookImage" alt="{faculty_books:product_book_title}" width="400"}
+                                                    {if:else}
+                                                        {exp:imgsizer:size src="/assets/graphics/missing-cover.gif" class="productBookImage" alt="{faculty_books:product_book_title}" width="400"}
+                                                    {/if}
+                                                </div>
+                                            </div>
+                                            <div class="mbPrimaryColumn">
+                                                <div class="mbPrimaryColumnInner">
+                                                    <h3 class="fontGaramond"><a href="/resources/wsc-bookstore/details/{faculty_books:url_title}">{faculty_books:product_book_title}</a></h3>
+                                                    <div class="mbSummary">
+                                                        {faculty_books:product_book_description}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/faculty_books}
+                                    <a class="tinyText enewsletterViewMore" href="/resources/wsc-bookstore/faculty-books">+ View More Faculty Books</a>
+                                </div>
+                            </div>
+
+                            <div class="eNewsletterNews">
+                                <img src="/assets/graphics/enl_news_events.png" title="News" alt="News" />
+                                <div class="clearFix">
+                                    {newsletter_news}
+                                        <div class="mbWideRight clearFix solidBottomLine">
+                                            <div class="mbSecondaryColumn">
+                                                <div class="mbSecondaryColumnInner eNewsletterNewsImage">
+                                                    {exp:imgsizer:size src="{news_photo}" class="slideImage" alt="{news_title}" width="400"}
+                                                </div>
+                                            </div>
+                                            <div class="mbPrimaryColumn">
+                                                <div class="mbPrimaryColumnInner">
+                                                    <h3 class="fontGaramond">{if news_link}<a href="{news_link}">{/if}{news_title}{if news_link}</a>{/if}</h3>
+                                                    <div class="mbSummary">
+                                                        {news_text}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    {/newsletter_news}
+                                    <a class="tinyText enewsletterViewMore" href="/news-and-events">+ View More News &amp; Events</a>
+                                </div>
+                            </div>
+                            
+                            <div class="eNewsletterDidYouKnow">
+                                <img src="/assets/graphics/enl_did_you_know.png" title="Did you know" alt="Did you know" />
+                                <div>
+                                    {did_you_know}
+                                        <div class="mbWideRight clearFix solidBottomLine">
+                                            <div class="mbSecondaryColumn">
+                                                <div class="mbSecondaryColumnInner eNewsletterDidYouKnowImage">
+                                                    {exp:imgsizer:size src="{did_you_know_photo}" class="slideImage" alt="{did_you_know_title}" width="400"}
+                                                </div>
+                                            </div>
+                                            <div class="mbPrimaryColumn">
+                                                <div class="mbPrimaryColumnInner">
+                                                    <h3 class="fontGaramond">{did_you_know_title}</h3>
+                                                    <div class="mbSummary">
+                                                        {did_you_know_text}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    {/did_you_know}
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <aside class="bodyCopySecondary">
+                        
+                        <a href="/admissions/apply/apply-online"><img src="/assets/graphics/enl_apply.png" title="Apply" alt="Apply" /></a>
+                        <a href="/donate/give-to-wsc"><img src="/assets/graphics/enl_give.png" title="Give" alt="Give" /></a>
+
+                        <div class="eNewsletterAside">
+                            <div class="eNewsletterAsideHeading sansSerif allUpperCase">Featured<span>Resources</span></div>
+                            <div class="eNewsletterAsideItems">                          
+                                {featured_resource}
+                                    <div class="newsletterFeaturedResources">
+                                        <a href="{title_permalink='resource-center'}">{title}</a>
+                                        <div class="tinyText">{resource_summary}</div>
+                                        {if resource_body_copy && resource_video == '' && resource_audio == ''}
+                                            <a href="{title_permalink='resource-center/resource'}" class="allUpperCase">More</a>
+                                        {/if}
+                                        {resource_video}
+                                            <a href="{title_permalink='resource-center'}" class="allUpperCase"><img src="/assets/graphics/watch-icon-color.png" title="Video Available" alt="watch" />&nbsp;&nbsp;Watch</a>
+                                        {/resource_video}
+                                        {resource_audio}
+                                            <a href="{title_permalink='resource-center'}" class="allUpperCase"><img src="/assets/graphics/listen-icon-color.png" title="Audio Available"  alt="listen" />&nbsp;&nbsp;Listen</a>
+                                        {/resource_audio}
+                                    </div>
+                                {/featured_resource}
+                            </div>
+                        </div>
+                        
+                        <div class="eNewsletterAside">
+
+                            <div class="eNewsletterAsideHeading sansSerif allUpperCase"><span>Connect</span>with<span>WSC</span></div>
+                            
+                            <div class="eNewsletterAsideHeading">Follow</div>
+                            <div class="eNewsletterAsideItems clearFix">
+                                <a href="https://www.facebook.com/westminstercalifornia" class="socialIcon" rel="external"><img src="/assets/graphics/icon-facebook.png" alt="" width="26"></a>
+                                <a href="https://twitter.com/wscal" class="socialIcon" rel="external"><img src="/assets/graphics/icon-twitter.png" alt="" width="26"></a>
+                                <a href="https://www.linkedin.com/edu/school?id=35246&trk" class="socialIcon" rel="external"><img src="/assets/graphics/icon-linked-in.png" alt="" width="26"></a>
+                                <a href="https://vimeo.com/wscal" class="socialIcon" rel="external"><img src="/assets/graphics/icon-vimeo.png" alt="" width="26"></a>
+                                <a href="https://instagram.com/westminsterseminaryca" class="socialIcon" rel="external"><img src="/assets/graphics/icon-instagram.png" alt="" width="26"></a>
+                            </div>
+                            
+                            <div class="eNewsletterAsideHeading">Subscribe</div>
+                            <div class="eNewsletterAsideItems clearFix">
+                                <a href="/subscriptions" class="socialIcon"><img src="/assets/graphics/icon-feed.png" alt="" width="26"></a>
+                                <a href="/subscriptions" class="socialIcon"><img src="/assets/graphics/icon-podcast.png" alt="" width="26"></a>
+                                <a href="/forms/subscribe" class="socialIcon"><img src="/assets/graphics/icon-email.png" alt="" width="26"></a>
+                            </div>
+                               
+                        </div>
+
+                    </aside>
+                    
+                    <div class="newsletterQuoted">
+                        <img src="/assets/graphics/enl_quoted.png" title="Quoted" alt="Quoted" />
+                        {quoted}
+                            <div>
+                                <span>&#8220;{quote_text}&#8221;</span>
+                                {if quote_citation}
+                                    <div>{if quote_link}<a href="{quote_link}">{/if}&mdash; {quote_citation}{if quote_link}</a>{/if}</div>
+                                {/if}
+                            </div>
+                        {/quoted}
+                    </div>
+                    <img src="/assets/graphics/spacer.png" alt="">
+                </article>
+            </div>
+        </div>
+
+        <div class="secondaryColumn clearFix equalHeightChild">
+            <div class="secondaryColumnInner">
+                <aside class="clearFix">
+                    <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+                    <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="5" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+                    {!--embed="includes/.related-menu"--}
+                    <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+                </aside>
+            </div>
+            <div class="secondaryWatermark"></div>
+        </div>
+    </div>
+    
+{/exp:channel:entries}

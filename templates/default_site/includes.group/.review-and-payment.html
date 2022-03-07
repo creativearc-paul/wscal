@@ -1,0 +1,121 @@
+{if "{exp:cartthrob:total_items_count}" > 0}
+
+    {embed="includes/.cart-contents"}
+
+    {exp:cartthrob:checkout_form
+                return="/order-complete"
+                id="checkoutForm"
+                rules:card_type="required"
+                rules:credit_card_number="required"
+                rules:expiration_month="required"
+                rules:expiration_year="required"
+                }
+
+    <div class="cartFieldsetWrapper clearFix">
+        <fieldset class="cartFieldset">
+            <legend>Contact Information <a href="/your-information" class="faIcon iconEdit">Edit</a></legend>
+            {exp:cartthrob:customer_info}
+                <strong>Email:</strong> {customer_email_address}<br>
+                <strong>Phone:</strong> {customer_phone}
+            {/exp:cartthrob:customer_info}
+        </fieldset>
+    </div>
+
+    <div class="cartFieldsetWrapper clearFix billingInfoFieldset">
+        <fieldset class="cartFieldset">
+            <legend>Billing Information <a href="/your-information" class="faIcon iconEdit">Edit</a></legend>
+            {exp:cartthrob:customer_info}
+
+                {customer_first_name} {customer_last_name}<br>
+                {if customer_company}{customer_company}<br>{/if}
+                {customer_address}<br>
+                {customer_city}, {customer_state} {customer_zip}<br>
+                {exp:cartthrob:convert_country_code country_code="{country_code}"}
+
+                <input name="first_name" value="{customer_first_name}" type="hidden" />
+                <input name="last_name" value="{customer_last_name}" type="hidden" />
+                <input name="address" value="{customer_address}" type="hidden" />
+                <input name="city" value="{customer_city}" type="hidden" />
+                <input name="state" value="{customer_state}" type="hidden" />
+                <input name="zip" value="{customer_zip}" type="hidden" />
+                <input name="country_code" value="{country_code}" type="hidden" />
+                <input name="phone" value="{customer_phone}" type="hidden" />
+                <input name="email_address" value="{customer_email_address}" type="hidden" />
+            {/exp:cartthrob:customer_info}
+        </fieldset>
+    </div>
+
+    <div class="cartFieldsetWrapper clearFix shippingInfoFieldset">
+        <fieldset class="cartFieldset">
+            <legend>Shipping Information <a href="/your-information" class="faIcon iconEdit">Edit</a></legend>
+            {exp:cartthrob:customer_info}
+                {shipping_first_name} {shipping_last_name}<br>
+                {if shipping_company}{shipping_company}<br>{/if}
+                {shipping_address}<br>
+                {shipping_city}, {shipping_state} {shipping_zip}<br>
+                {exp:cartthrob:convert_country_code country_code="{shipping_country_code}"}
+            {/exp:cartthrob:customer_info}
+        </fieldset>
+    </div>
+
+    <div class="cartFieldsetWrapper clearFix">
+        <fieldset class="cartFieldset">
+            <legend>Additional Information</legend>
+            Feel free to include a note regarding your order. Please, <strong><em>do not</em></strong> include any sensitive information.<br>
+            <textarea name="order_note" cols="75" rows="4" style="margin-top:5px;"></textarea>
+        </fieldset>
+    </div>
+
+    {!-- PAYMENT OPTIONS --}
+    {if cart_total != '$0.00'}
+        <div class="cartFieldsetWrapper clearFix">
+            <fieldset class="cartFieldset">
+                <legend>Payment Options</legend>
+
+                {if {exp:cartthrob:view_setting allow_gateway_selection="yes"}}
+
+                    <div class="formWrapper">
+                        <div class="fieldHolder">
+                            <label for="gateway" class="required">Select a payment method</label>
+                            {exp:cartthrob:gateway_select id="gateway"}
+                        </div>
+                    </div>
+
+                    <div id="checkoutFormGatewayFields"></div>
+
+                {if:else}
+
+                    {embed="includes/.authorize-fields}
+
+                {/if}
+
+            </fieldset>
+        </div>
+    {/if}
+
+    <div class="cartFieldsetWrapper clearFix">
+        <fieldset class="cartFieldset">
+            <legend>&nbsp;</legend>
+            {if captcha}
+                <div class="fieldHolder">
+                    <label for="captcha" style="min-width:255px;"><strong>*</strong> Please enter the text in the image.</label>
+                    {captcha} <input id="captcha" type="text" name="captcha" value="" required="required">
+                </div>
+            {/if}
+        </fieldset>
+    </div>
+
+    <div class="cartPageButtons">
+        <input type="submit" value="Submit Order" id="submitOrder" class="flatBlueButton">
+    </div>
+
+    {/exp:cartthrob:checkout_form}
+
+{if:else}
+
+    <div class="cartPageButtons">
+        <div class="nothingInCart">Your cart is empty.</div>
+        
+    </div>
+
+{/if}

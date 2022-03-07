@@ -1,0 +1,10 @@
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" dynamic="no" url_title="{embed:url_title}"}
+    <div class="secondarySupporting">
+        <div class="secondaryColumnHeader">Related</div>
+        <ul class="secondaryNav clearFix">
+            {section_related_menu}
+                <li><a href="{section_related_menu:page_url}">{section_related_menu:title}<span class="arrowDotRight"></span></a></li>
+            {/section_related_menu}
+        </ul>
+    </div>
+{/exp:channel:entries}

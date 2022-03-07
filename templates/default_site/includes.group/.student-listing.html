@@ -1,0 +1,298 @@
+
+<!--FEATURED-->
+<div class="featuredStudent">
+    <h2 class="dottedHeader">Featured</h2>
+    <div class="clearFix">
+        {exp:channel:entries channel="students" dynamic="no" orderby="entry_date" sort="asc" search:featured_student="Yes" status="open|current|graduate"}
+            <div >
+                {exp:imgsizer:size src="{student_photo}" width="500" alt="{title}"}
+            </div>
+            <div >
+                <h2><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">Meet {student_first_name} {student_last_name} ({student_program})</a></h2>
+                <div class="mbSummary serif">
+                    {student_is_featured_text}
+                </div>
+                <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}" class="moreLink">Read More</a>
+            </div>
+        {/exp:channel:entries}
+    </div>
+</div>
+
+<!--STUDENTS-->
+<h2 class="dottedHeader">WSC Students</h2>
+<span class="tinyText"><em>(listed alphabetically)</em></span>
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=0|IS_EMPTY" search:student_program="Master of Divinity" status="open|current"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=0|IS_EMPTY" search:student_program="Master of Arts (Theological Studies)" status="open|current"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="= 0|IS_EMPTY" search:student_program="Master of Arts (Historical Theology)" status="open|current"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="= 0|IS_EMPTY" search:student_program="Master of Arts (Biblical Studies)" status="open|current"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=0|IS_EMPTY" search:student_program="Institute of Theological Studies" status="open|current"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=0|IS_EMPTY" search:student_program="Institute of Reformed Baptist Studies" status="open|current"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+    
+<!--GRADUATES-->
+<h2 class="dottedHeader">WSC Graduates</h2>
+<span class="tinyText"><em>(listed alphabetically)</em></span>
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=not 0|IS_EMPTY" search:student_program="Master of Divinity" status="open|graduate"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+        <div>M. Div {student_graduation_date format="&apos;%y"}</div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=not 0|IS_EMPTY" search:student_program="Master of Arts (Theological Studies)" status="open|graduate"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+        <div>M.A. {student_graduation_date format="&apos;%y"}</div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=not 0|IS_EMPTY" search:student_program="Master of Arts (Historical Theology)" status="open|graduate"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+        <div>M.A. {student_graduation_date format="&apos;%y"}</div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=not 0|IS_EMPTY" search:student_program="Master of Arts (Biblical Studies)" status="open|graduate"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+        <div>M.A. {student_graduation_date format="&apos;%y"}</div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=not 0|IS_EMPTY" search:student_program="Institute of Theological Studies" status="open|graduate"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+        <div>M.A. {student_graduation_date format="&apos;%y"}</div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}
+
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" search:student_graduation_date="=not 0|IS_EMPTY" search:student_program="Institute of Reformed Baptist Studies" status="open|graduate"}
+    {if count == 1}
+        <h3 class="studentListingProgram">{student_program}</h3>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/{segment_3}/'}">{student_first_name} {student_last_name}</a></div>
+        <div>M.A. {student_graduation_date format="&apos;%y"}</div>
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}

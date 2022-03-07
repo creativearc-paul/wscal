@@ -1,0 +1,65 @@
+{if segment_1 == 'academics' && segment_2 == 'faculty-bio'}
+				{exp:channel:entries channel="faculty" status="open" limit="1"}
+					<a href="/">Home</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/academics">Academics</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/academics/faculty">Faculty</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; {title}
+				{/exp:channel:entries}
+				
+			{if:elseif segment_1 == 'admissions' && segment_2 == 'student-bio'}
+				{exp:channel:entries channel="students" status="open" limit="1"}
+					<a href="/">Home</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/admissions">Admissions</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/admissions/discover-wsc">Discover WSC</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/admissions/meet-a-student-graduate">Meet a Student/Graduate</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; {title}
+				{/exp:channel:entries}
+				
+			{if:elseif segment_1 == 'blog' && segment_2 == 'entry'}
+				{exp:channel:entries channel="blog" status="open" limit="1"}
+					<a href="/">Home</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/blog">Valiant For Truth</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; {title}
+				{/exp:channel:entries}
+				
+			{if:elseif segment_1 == 'news-and-events' && segment_2 == 'details'}
+				{exp:channel:entries channel="news-and-events" status="open" limit="1"}
+					<a href="/">Home</a> &nbsp;&nbsp;/&nbsp;&nbsp; <a href="/news-and-events">News &amp; Events</a> &nbsp;&nbsp;/&nbsp;&nbsp; {title}
+				{/exp:channel:entries}
+
+			{if:elseif segment_1 == 'resource-center' && segment_2 == 'resource'}
+				{exp:channel:entries channel="resources" status="open" limit="1"}
+					<a href="/">Home</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/resources">Resources</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/resource-center">Resource Center</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; {title}
+				{/exp:channel:entries}
+				
+			{if:elseif segment_1 == 'academics' && segment_2 == 'personal'}
+					<a href="/">Home</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/academics/">Academics</a> 
+					&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/academics/faculty">Faculty</a>
+				{exp:channel:entries channel="personal-pages" status="open" limit="1"}
+					{reverse_related_entries sort="desc" orderby="title"}
+						&nbsp;&nbsp;/&nbsp;&nbsp; <a href="{title_permalink="/academics/faculty"}">{title}</a>
+					{/reverse_related_entries}   
+					&nbsp;&nbsp;/&nbsp;&nbsp; {title}
+				{/exp:channel:entries}
+				
+			{if:elseif segment_1 == 'resource-center'}
+				<a href="/">Home</a> 
+				&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/resources">Resources</a> 
+				&nbsp;&nbsp;/&nbsp;&nbsp; <a href="/resource-center">Resource Center</a>
+
+			{if:elseif segment_1 == 'search' && segment_2 == 'results'}
+				<a href="/">Home</a>
+				 &nbsp;&nbsp;/&nbsp;&nbsp; Search Results
+				 
+			{if:elseif segment_1 == 'search' && segment_2 == 'no-results'}
+				<a href="/">Home</a>
+				 &nbsp;&nbsp;/&nbsp;&nbsp; No Search Results
+				 
+			{if:else}
+				{exp:structure:breadcrumb here_as_title="yes" separator="&nbsp;&nbsp;/&nbsp;&nbsp;"}
+				
+			{/if}

@@ -1,0 +1,253 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="faculty" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3} {if channel_short_name == 'landing'}sectionLandingPage{/if}{/layout:set}
+
+    {layout:set name="page_header_band"}
+        <div class="pageHeaderBand">
+            <div class="constrainedContent"><div class="pageHeaderBandTitle">Faculty</div></div>
+        </div>
+    {/layout:set}
+
+    <div class="layoutWideLeftColumn clearFix">
+        <div class="constrainedContent clearFix">
+
+            <div class="leftColumn">
+                <article>
+
+                    <header class="facultyBioHeader">
+                        <h1 class="facultyName">{title}</h1>
+                        <div class="facultyPosition">{faculty_position}</div>
+                    </header>
+
+                    <div class="clearFix">
+                        <div class="bodyCopyPrimary">
+
+                            {if faculty_video}
+                                {faculty_video}
+                                    <div class="facultyVideo">
+                                        <h3>{faculty_video:video_title}</h3>
+                                        {faculty_video:video_embed_code}
+                                    </div>
+                                {/faculty_video}
+                            {if:elseif faculty_photo != ''}
+                                <div class="facultyPhoto">{exp:imgsizer:size src="{faculty_photo}" width="800" alt="{title}"}</div>
+                            {/if}
+
+                            <div class="facultyBioText">{faculty_bio}</div>
+
+                            {if interview_file}
+                                <h3>An interview with {title}</h3>
+                                <audio controls title="An interview with {title}" style="width: 100%;">
+                                    <source src="{interview_file}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            {/if}
+
+                        </div>
+
+                        <aside class="bodyCopySecondary">
+                            {if faculty_education != ''}
+                                <div class="allUpperCase facultyAsideHeader">Education</div>
+                                <div class="sansSerif facultyAsideTextBlock">{faculty_education}</div>
+                            {/if}
+                            {if faculty_contact_info != ''}
+                                <div class="allUpperCase facultyAsideHeader">Contact</div>
+                                <div class="sansSerif facultyAsideTextBlock">{faculty_contact_info}</div>
+                            {/if}
+                            {if faculty_other_affiliations != ''}
+                                <div class="allUpperCase facultyAsideHeader">Other Affiliations</div>
+                                <div class="sansSerif facultyAsideTextBlock">{faculty_other_affiliations}</div>
+                            {/if}
+                        </aside>
+                    </div>
+
+                    <footer>
+
+                        <div class="facultyTabs tabs clearFix">
+
+                            <ul class="clearFix sansSerif">
+                                {if faculty_resources}<li><a name="tab-resources"><span>RESOURCES BY</span></a></li>{/if}
+                                {if faculty_publications}<li><a name="tab-publications"><span>PUBLICATIONS</span></a></li>{/if}
+                                {if faculty_speaking_events != ''}<li><a name="tab-calendar"><span>SPEAKING CALENDAR</span></a></li>{/if}
+                                {if faculty_courses}<li><a name="tab-courses"><span>COURSES</span></a></li>{/if}
+                                {if faculty_downloads}<li><a name="tab-downloads"><span>DOWNLOADS</span></a></li>{/if}
+                                {!--parents channel="personal-pages"}
+                                    {if parents:count == 1}
+                                        <li><a name="tab-personal"><span>PERSONAL PAGES</span></a></li>
+                                    {/if}
+                                {/parents--}
+                                
+                                <li><a name="tab-bookstore"><span>BOOKSTORE</span></a></li>
+                            </ul>
+
+                            <div class="clearFix">
+
+                                {if faculty_resources}
+                                    <div id="tab-resources" class="tabContent">
+                                        <div class="clearFix tilesWrapperFourWide equalHeightChildren">
+
+                                            {faculty_resources}
+                                                {resource category="855" limit="5"}
+                                                    {if {count}=="1"}
+                                                        <div class="tile equalHeightChild">
+                                                            <strong>Morning Devotions</strong><br />
+                                                    {/if}
+                                                        <a href="{title_permalink="/resource-center/resource"}">{title}</a>
+                                                    {if {count}=={total_results}}
+                                                            <div class="facultyTabsViewAll"><a href="/resource-center/category/morning-devotions" class="moreLink">View All</a></div>
+                                                        </div>
+                                                    {/if}
+                                                {/resource}
+                                            {/faculty_resources}
+
+                                            {faculty_resources}
+                                                {resource category="856" limit="5"}
+                                                    {if {count}=="1"}
+                                                        <div class="tile equalHeightChild">
+                                                            <strong>Articles</strong><br />
+                                                    {/if}
+                                                        <a href="{title_permalink="/resource-center/resource"}">{title}</a>
+                                                    {if {count}=={total_results}}
+                                                            <div class="facultyTabsViewAll"><a href="/resource-center/category/articles" class="moreLink">View All</a></div>
+                                                        </div>
+                                                    {/if}
+                                                {/resource}
+                                            {/faculty_resources}
+
+                                            {faculty_resources}
+                                                {resource category="857" limit="5"}
+                                                    {if {count}=="1"}
+                                                        <div class="tile equalHeightChild">
+                                                            <strong>Interviews</strong><br />
+                                                    {/if}
+                                                        <a href="{title_permalink="/resource-center/resource"}">{title}</a>
+                                                    {if {count}=={total_results}}
+                                                            <div class="facultyTabsViewAll"><a href="/resource-center/category/interviews" class="moreLink">View All</a></div>
+                                                        </div>
+                                                    {/if}
+                                                {/resource}
+                                            {/faculty_resources}
+
+                                            {faculty_resources}
+                                                {resource category="858" limit="5"}
+                                                    {if {count}=="1"}
+                                                        <div class="tile equalHeightChild">
+                                                            <strong>Lectures</strong><br />
+                                                    {/if}
+                                                        <a href="{title_permalink="/resource-center/resource"}">{title}</a>
+                                                    {if {count}=={total_results}}
+                                                            <div class="facultyTabsViewAll"><a href="/resource-center/category/lectures" class="moreLink">View All</a></div>
+                                                        </div>
+                                                    {/if}
+                                                {/resource}
+                                            {/faculty_resources}
+
+                                        </div>
+                                    </div>
+                                {/if}
+
+                                {if faculty_publications}
+                                    <div id="tab-publications" class="tabContent clearFix">
+
+                                        {faculty_publications orderby="faculty_publication_title" search:faculty_publication_type="=Book"}
+                                            {if row_count == 1}
+                                                <div>
+                                            {/if}
+                                                <em>{faculty_publication_title}</em><br />
+                                            {if row_count == total_results}
+                                                </div>
+                                            {/if}
+                                        {/faculty_publications}
+
+                                        {faculty_publications orderby="faculty_publication_title" search:faculty_publication_type="=Essay|Article"}
+                                            {if row_count == 1}
+                                                <div>
+                                                    <div><strong>He has written essays and articles in various publications, including:</strong></div>
+                                            {/if}
+                                                <em>{faculty_publication_title}</em><br />
+                                            {if row_count == total_results}
+                                                </div>
+                                            {/if}
+                                        {/faculty_publications}
+
+                                    </div>
+                                {/if}
+
+                                {if faculty_speaking_events}
+                                    <div id="tab-calendar" class="tabContent clearFix">
+                                        {faculty_speaking_events}
+                                            {if news_event_start_date}<span class="eventDate serif">{news_event_start_date format="%F %j, %Y"}</span> - {/if}<a href="{title_permalink="/news-and-events/details"}">{title}</a><br />
+                                        {/faculty_speaking_events}
+                                    </div>
+                                {/if}
+
+                                {if faculty_courses}
+                                        <div id="tab-courses" class="tabContent clearFix">
+                                        {faculty_courses}
+                                            {faculty_course_name}<br />
+                                        {/faculty_courses}
+                                        <a href="/academics/wsc-catalogue/" style="width: 680px;margin: 10px 0 10px 0;">Course descriptions are available in the WSC Catalogue.</a>
+                                    </div>
+                                {/if}
+
+                                {if faculty_downloads}
+                                    <div id="tab-downloads" class="tabContent clearFix">
+                                        {faculty_downloads}
+                                            <a href="{faculty_download_file}" rel="external" style="width: 680px;">{faculty_download_title}</a><br />
+                                        {/faculty_downloads}
+                                    </div>
+                                {/if}
+
+                                {parents channel="personal-pages"}
+                                    {if parents:count == 1}
+                                        <div id="tab-personal" class="tabContent clearFix">
+                                    {/if}
+                                            <a href="{path='/personal-pages'}/{parents:url_title}">{parents:title}</a><br />
+                                    {if parents:count == parents:total_results}
+                                        </div>
+                                    {/if}
+                                {/parents}
+
+                                {!--<div id="tab-personal" class="tabContent clearFix">
+                                    -{embed="{segment_1}/.personal-pages-tab-content" parent_id="{entry_id}"}
+                                </div>--}
+
+                                <div id="tab-bookstore" class="tabContent clearFix">
+                                    ..{embed="includes/.faculty-member-book-list" cat_url_title="{url_title}"}
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </footer>
+
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </article>
+            </div>
+
+            <div class="rightColumn clearFix">
+                <aside class="clearFix">
+                    <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+                    <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="2" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+                    {!--embed="includes/.related-menu"--}
+                    <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                    <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+                </aside>
+            </div>
+
+        </div>
+    </div>
+
+{/exp:channel:entries}
+

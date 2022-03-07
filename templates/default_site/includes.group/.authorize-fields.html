@@ -1,0 +1,46 @@
+<div class="formWrapper">
+    <div class="formFieldWrapper">
+        <label for="card_type" class="required">Card Type</label>
+        <div>
+            <select name="card_type" id="card_type" required="required">
+                <option value="visa">Visa</option>
+                <option value="mc">Mastercard</option>
+                <option value="discover">Discover</option>
+            </select>
+            <label for="card_type" class="error">Please select one.</label>{if error:card_type}<span class="error">Required</span>{/if}
+        </div>
+    </div>
+    <div class="formFieldWrapper">
+        <label for="credit_card_number" class="required">Credit Card Number</label>
+        <div>
+            <input type="text" name="credit_card_number" value="" id="credit_card_number" class="fancyInput" required="required">{if error:credit_card_number}<span class="error">Required</span>{/if}
+        </div>
+    </div>
+    <div class="formFieldWrapper">
+        <label for="expiration_month" class="required">Expiration Month</label>
+        <div>
+            <select name="expiration_month" id="expiration_month" required="required">
+                <option value="01" {if "{expiration_month}" == "01"}selected="selected"{/if}>01 - January</option>
+                <option value="02" {if "{expiration_month}" == "02"}selected="selected"{/if}>02 - February</option>
+                <option value="03" {if "{expiration_month}" == "03"}selected="selected"{/if}>03 - March</option>
+                <option value="04" {if "{expiration_month}" == "04"}selected="selected"{/if}>04 - April</option>
+                <option value="05" {if "{expiration_month}" == "05"}selected="selected"{/if}>05 - May</option>
+                <option value="06" {if "{expiration_month}" == "06"}selected="selected"{/if}>06 - June</option>
+                <option value="07" {if "{expiration_month}" == "07"}selected="selected"{/if}>07 - July</option>
+                <option value="08" {if "{expiration_month}" == "08"}selected="selected"{/if}>08 - August</option>
+                <option value="09" {if "{expiration_month}" == "09"}selected="selected"{/if}>09 - September</option>
+                <option value="10" {if "{expiration_month}" == "10"}selected="selected"{/if}>10 - October</option>
+                <option value="11" {if "{expiration_month}" == "11"}selected="selected"{/if}>11 - November</option>
+                <option value="12" {if "{expiration_month}" == "12"}selected="selected"{/if}>12 - December</option>
+            </select>
+            <label for="expiration_month" class="error">Please select one.</label>{if error:expiration_month}<span class="error">Required</span>{/if}
+        </div>
+    </div>
+    <div class="formFieldWrapper">
+        <label for="expiration_year" class="required" class="fancyInput">Expiration Year</label>
+        <div>
+            {exp:cartthrob:year_select years="10" required="required"}
+            <label for="expiration_year" class="error">Please select one.</label>{if error:expiration_year}<span class="error">Required</span>{/if}
+        </div>
+    </div>
+</div>

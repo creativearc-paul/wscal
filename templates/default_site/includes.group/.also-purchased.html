@@ -1,0 +1,31 @@
+{exp:cartthrob:also_purchased entry_id="{embed:entry_id}" limit="1"}
+<div class="relatedBooksWidget">
+    <div class="dottedHeader">
+        RELATED BOOKS
+    </div>
+    <h3>Customers who bought this also bought:</h3>
+    <div class="bookTiles clearFix">
+{/exp:cartthrob:also_purchased}
+
+    {exp:cartthrob:also_purchased entry_id="{embed:entry_id}" limit="4"}
+        <div class="bookTile clearFix">
+            <span class="bookTileImage">
+                <a href="/resources/wsc-bookstore/details/{url_title}" title="{product_book_title}">
+                    {if '{product_book_image}' != ''}
+                        {exp:imgsizer:size src="{product_book_image}" class="productBookImage" alt="{title}" height="160"}
+                    {if:else}
+                        {exp:imgsizer:size src="/assets/graphics/missing-cover.gif" class="productBookImage" alt="{title}" height="160"}
+                    {/if}
+                </a>
+            </span>
+            <div class="bookTileDescription">
+                <a href="/resources/wsc-bookstore/details/{url_title}" class="sansSerif">{product_book_title}</a><br>
+                <em>{categories backspace="2"}{category_name}, {/categories}</em>
+            </div>
+        </div>
+    {/exp:cartthrob:also_purchased}
+        
+{exp:cartthrob:also_purchased entry_id="{embed:entry_id}" limit="1"}
+    </div>
+</div>
+{/exp:cartthrob:also_purchased}

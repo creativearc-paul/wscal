@@ -1,0 +1,79 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" dynamic="no" entry_id="8023"}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+    {layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent"><div class="pageHeaderBandTitle">{title}</div></div>
+    </div>
+{/layout:set}
+
+{/exp:channel:entries}
+
+<div class="layoutFullWidth">
+    <div class="fullWidthColumn clearFix">
+        <section class="pageSectionBandWhite">
+            <div class="clearFix constrainedContent">
+
+                <h2>Showing results containing: {super_search_keywords}</h2>
+    
+                {exp:super_search:results}
+                    {if channel_short_name == 'main-content' || channel_short_name == 'products_books' ||  channel_short_name == 'faculty' || channel_short_name == 'landing'}
+                        <a href="{page_uri}">{title}</a><br />
+                    {if:elseif channel_short_name == 'students'}
+                        <a href="{auto_path}">{title}</a><br />
+                    {/if}
+                {/exp:super_search:results}
+    
+                <h3 style="border-bottom: 1px solid #DCDBCB;margin-top: 30px;">Resources</h3>
+                <table id="searchResultsTable" class="tablesorter sansSerif" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {exp:super_search:results highlight_keywords="em" relevance="title=5+body=2"}
+                            {if channel_short_name != 'main-content' && channel_short_name != 'students'}
+                                <tr>
+                                    <td>
+                                        {if channel_short_name == 'blog'}
+                                            <a href="{title_permalink=blog}">{title}</a>
+                                        {if:elseif channel_short_name == 'resources'}
+                                            <a href="{title_permalink=resource-center}">{title}</a>
+                                        {/if}
+                                    </td>
+                                    <td>
+                                        {if channel_short_name == 'blog'}
+                                            {if blog_attributed_author != '' && blog_attributed_author != '-'}{blog_attributed_author}{/if}
+                                        {if:else}
+                                            {categories show_group="6" backspace="7"}<a href="/resource-center/category/{category_url_title}" style="white-space: nowrap;">{category_name}</a>, <br/>{/categories}
+                                        {/if}
+                                    </td>
+                                    <td>
+                                        {if channel_short_name == 'blog'}
+                                            <a href="/blog">Blog</a>
+                                        {if:else}
+                                            {categories show_group="5" backspace="7"}<a href="/resource-center/category/{category_url_title}" style="white-space: nowrap;">{category_name}</a>, <br/>{/categories}
+                                        {/if}
+                                    </td>
+                                </tr>
+                            {/if}
+                        {/exp:super_search:results}
+                    </tbody>
+                </table>
+
+                <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,257 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" entry_id="2246" require_entry="yes" dynamic="no" limit="1"}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+{/exp:channel:entries}
+
+<div class="layoutFullWidth clearFix">
+    <div class="fullWidthColumn clearFix">
+
+        <div class="indexVideo">
+
+            <video playsinline autoplay muted loop>
+                <source src="/assets/graphics/websitedark_1.mp4" type="video/mp4">
+            </video>
+            
+            <div class="videoTextWrapper">
+                <div class="clearFix constrainedContent">
+                    <div class="videoTextArea">
+                        <div class="videoTextTitle">For Christ, His Gospel, &amp; His Church</div>
+                        <a href="https://wscal.edu/admissions" class="flatBlueButton indexSlideButton">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="indexWelcome pageSectionBandWhite">
+            <div class="constrainedContent clearFix">
+                {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="8568"}{page_block_content}{/exp:channel:entries}
+            </div>
+        </section>
+
+        <section class="indexSFAD">
+            <div class="constrainedContent clearFix">
+
+                <div class="indexSfadText">
+                    <h2><span class="larger">S</span>eminary <span class="forA">for a</span> <span class="larger">D</span>ay</h2>
+
+                    {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="8567"}{page_block_content}{/exp:channel:entries}
+
+                </div>
+
+                <div class="indexSfadIcons">
+                    <div class="indexSfadTiles clearFix tilesWrapperFourWide">
+                        <div class="tile">
+                            {exp:imgsizer:size src="/assets/graphics/home_sfad_visit_pin.png" alt="Visit" width="104"}
+                            <div>Visit</div>
+                        </div>
+                        <div class="tile">
+                            {exp:imgsizer:size src="/assets/graphics/home_sfad_meet_hands.png" alt="Meet" width="104"}
+                            <div>Meet</div>
+                        </div>
+                        <div class="tile">
+                            {exp:imgsizer:size src="/assets/graphics/home_sfad_learn_book.png" alt="Learn" width="104"}
+                            <div>Learn</div>
+                        </div>
+                        <div class="tile">
+                            {exp:imgsizer:size src="/assets/graphics/home_sfad_explore_compass.png" alt="Explore" width="104"}
+                            <div>Explore</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="pageSectionBandTan indexStudents">
+            <div class="constrainedContent clearFix indexStudentWrapper">
+
+                {!--exp:channel:entries channel="students" dynamic="no" orderby="entry_date" sort="desc" search:featured_student="Yes" status="open|current|graduate" limit="1"}
+                    <div class="studentColumnLeft">
+                        {if student_video}
+                            <div class="clearFix">
+                                <video controls title="{title}" style="width:100%;height:auto;" poster="{student_photo}" class="studentVideo">
+                                    <source type="video/mp4" src="{student_video}">
+                                    Your browser does not support the video element.
+                                </video>
+                            </div>
+                        {if:else}
+                            <div class="studentPhoto">{exp:imgsizer:size src="{student_photo}" width="800" alt="{title}"}</div>
+                        {/if}
+                    </div>
+                    <div class="studentColumnRight">
+                        <div class="dottedBottomLine">
+                            <h2><a href="{title_permalink='/admissions/meet-a-student-graduate'}">A Student's Perspective</a></h2>
+                            <h3><a href="{title_permalink='/admissions/meet-a-student-graduate'}">{student_first_name} {student_last_name}, {student_program}</a></h3>
+                            <div class="studentColumnFeaturedText">{student_is_featured_text}</div>
+                        </div>
+                        <a href="/admissions/meet-a-student-graduate" class="viewAllLink">All Students</a>
+                    </div>
+                {/exp:channel:entries--}
+                
+                <div class="studentColumnLeft">
+                    {!--embed="includes/.template-video" entry_id="8600"--}
+                    {exp:channel:entries channel="template_images" dynamic="no" disable="member_data|pagination|categories|category_fields|relationships" entry_id="10380" limit="1"}
+                        {exp:imgsizer:size src="{template_image_file}" width="70000" alt="{embed:alt}"}
+                    {/exp:channel:entries}
+                </div>
+                <div class="studentColumnRight">
+                    {!--embed="includes/.template-block" entry_id="8601"--}
+                    {embed="includes/.template-block" entry_id="10379"}
+                </div>
+
+            </div>
+        </section>
+
+        <section class="pageSectionBandWhite">
+            <div class="constrainedContent clearFix equalHeightChildren">
+
+                {!-- <div class="equalHeightChild indexBlogPosts">
+                    <h2>Blog <span>Valiant for Truth</span></h2>
+                    {exp:channel:entries channel="blog" dynamic="off" limit="2"}
+                        <div class="indexListingPost dottedBottomLine">
+                            <div class="indexPostTitleWrapper">
+                                <div class="indexPostTitle"><a href="{title_permalink='blog'}">{title}</a></div>
+                                <div class="indexPostDate">{entry_date format="%F %j, %Y"}</div>
+                            </div>
+                            <div>
+                                {exp:arc_text_tools:limit_words words="50"}{blog_summary}{/exp:arc_text_tools:limit_words}
+                                <a href="{title_permalink='blog'}" class="moreLink">Continue</a>
+                            </div>
+                        </div>
+                    {/exp:channel:entries}
+                    <a href="/blog" class="viewAllLink">All Blog Posts</a>
+                </div>
+
+                <div class="equalHeightChild indexNewsPosts">
+                    <h2>News &amp; Events</h2>
+
+                    <div>
+                        {exp:channel:entries channel="news-and-events" category="1170" dynamic="off" limit="2" show_future_entries="no" show_expired="no" orderby="news_event_start_date" sort="asc"}
+                            <div class="clearFix indexListingPost dottedBottomLine">
+                                <div class="indexNewsListingLeftColumn">
+                                    {exp:imgsizer:size src="{news_event_item_image}" class="slideImage" alt="{title}" width="150"}
+                                </div>
+                                <div class="indexNewsListingRightColumn">
+                                    <div class="indexPostTitleWrapper">
+                                        <div class="indexPostTitle"><a href="{title_permalink='news-and-events/news'}">{title}</a></div>
+                                        <div class="indexPostDate">{news_event_start_date format="%F %j, %Y"}</div>
+                                    </div>
+                                    <div class="mbSummary">
+                                        {exp:arc_text_tools:limit_words words="25"}{news_event_item_summary}{/exp:arc_text_tools:limit_words}
+                                        <a href="{title_permalink='news-and-events/news'}" class="moreLink">More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {/exp:channel:entries}
+                        <a href="/news-and-events/news" class="viewAllLink">All News &amp; Events</a>
+                    </div>
+
+                </div> --}
+                
+                <div class="indexNewsPosts">
+                    <h2><a href="/news-and-events/news" class="viewAllLink">All News &amp; Events</a>News &amp; Events</h2>
+                    <div class="clearFix tilesWrapperThreeWide equalHeightChildren sectionTiles indexNewsEventTiles">
+                        {exp:channel:entries channel="news-and-events" category="1170" dynamic="off" limit="3" show_future_entries="no" show_expired="no" orderby="news_event_start_date" sort="asc"}
+                            <div class="tile equalHeightChild">
+                                <div>
+                                    {if news_event_item_image != ""}
+                                        <div class="tileImage">
+                                            {exp:imgsizer:size src="{news_event_item_image}" class="slideImage" alt="{title}" width="350"}
+                                        </div>
+                                    {/if}
+                                    <div class="tileTitle"><a href="{title_permalink='news-and-events/news'}">{title}</a></div>
+                                    <div class="tileText">
+                                        {exp:arc_text_tools:limit_words words="25"}{news_event_item_summary}{/exp:arc_text_tools:limit_words}
+                                    </div>
+                                    <a href="{title_permalink='news-and-events/news'}" class="flatBlueButton">Learn More</a>
+                                </div>
+                            </div>
+                        {/exp:channel:entries}
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        {embed="includes/.call-to-action-band" entry_id="8573"}
+
+        <section class="pageSectionBandTan">
+            <div class="constrainedContent clearFix">
+
+                <h2 class="dottedHeader">
+                    <a href="/resource-center" class="viewAllLink">All Resources</a>Featured Resources
+                </h2>
+
+                <div class="clearFix tilesWrapperThreeWide">
+
+                    {!--exp:channel:entries channel="students" dynamic="no" orderby="entry_date" sort="asc" search:featured_student="Yes" status="open|current|graduate"}
+                        <div class="tile indexFeaturedResourceTile">
+                            <a href="{title_permalink='/admissions/meet-a-student-graduate'}"><img src="/assets/graphics/studenticon.png" alt="">
+                            <div class="FRCat">Student Highlights</div>
+                            <div class="FRTitle">
+                                A Student's Perspective:{title}
+                            </div>
+                            <div class="FRSummary">{student_is_featured_text}</div>
+                                <span class="flatBlueButton">Learn More</span>
+                            </a>
+                        </div>
+                    {/exp:channel:entries--}
+                    
+                    {exp:channel:entries channel="resources" dynamic="no" order_by="entry_date" limit="1" category="855" search:resource_featured="=Yes"}
+                        <div class="tile indexFeaturedResourceTile">
+                            <a href="{title_permalink='/resource-center'}"><img src="/images/graphics/resourceHighlights-MorningDevotions.png" alt="" style="width:74px;">
+                            <div class="FRCat">{categories limit="1" show_group="5" show="855"}{category_name}{/categories}</div>
+                            <div class="FRTitle">
+                               {title}
+                            </div>
+                            <div class="FRSummary">{resource_summary}</div>
+                                <span class="flatBlueButton">Learn More</span>
+                            </a>
+                        </div>
+                    {/exp:channel:entries}
+
+                    {!--exp:channel:entries channel="resources" dynamic="no" order_by="entry_date" limit="1" category="1333" search:resource_featured="=Yes"--}
+                    {exp:channel:entries channel="resources" dynamic="no" order_by="entry_date" limit="1" category="1178" search:resource_featured="=Yes"}
+                        <div class="tile indexFeaturedResourceTile">
+                            <a href="{title_permalink='/resource-center'}"><img src="/images/graphics/resourceHighlights-videos.png" alt="" style="width:74px;">
+                            <div class="FRCat">{categories limit="1" show_group="5" show="1178"}{category_name}{/categories}</div>
+                            <div class="FRTitle">
+                               {title}
+                            </div>
+                            <div class="FRSummary">{resource_summary}</div>
+                                <span class="flatBlueButton">Learn More</span>
+                            </a>
+                        </div>
+                    {/exp:channel:entries}
+
+                    {!--exp:channel:entries channel="resources" dynamic="no" order_by="entry_date" limit="1" category="1179" search:resource_featured="=Yes"--}
+                    {exp:channel:entries channel="resources" dynamic="no" order_by="entry_date" limit="1" category="1179" search:resource_featured="=Yes"}
+                        <div class="tile indexFeaturedResourceTile">
+                            <a href="{title_permalink='/resource-center'}"><img src="/images/graphics/resourceHighlights-OfficeHours.png" alt="" style="width:74px;">
+                            <div class="FRCat">{categories limit="1" show_group="5" show="1179"}{category_name}{/categories}</div>
+                            <div class="FRTitle">
+                                {title}
+                            </div>
+                            <div class="FRSummary">{resource_summary}</div>
+                                <span class="flatBlueButton">Learn More</span>
+                            </a>
+                        </div>
+                    {/exp:channel:entries}
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</div>
+
+

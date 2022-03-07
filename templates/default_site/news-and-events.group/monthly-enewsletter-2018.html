@@ -1,0 +1,138 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="newsletter" disable="member_data|pagination" limit="1" require_entry="yes" dynamic="no"}
+
+{if no_results}{redirect="404"}{/if}
+
+{layout:set name="seo"}
+    {exp:neoseo:meta_tags entry_id="{entry_id}"}
+{/layout:set}
+
+{layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3} {if channel_short_name == 'landing'}sectionLandingPage{/if}{/layout:set}
+
+{layout:set name="page_header_band"}
+    <div class="eNewsletterHeader">
+        <div class="constrainedContent">
+            <div class="sansSerif eNewsletterHeaderDate allUpperCase">{newsletter_date format="%M"}<span>{newsletter_date format="%Y"}</span></div>
+            <div class="eNewsletterHeaderTitle fontGaramond">WSC <span class="sansSerif">MONTHLY</span></div>
+            <div class="eNewsletterHeaderTagline fontGaramond">an eNewsletter of Westminster Seminary California</div>
+        </div>
+    </div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+            <article>
+                
+                <div>
+                    <img src="{exp:imgsizer:size src="{newsletter_featured_photo}" width="765" height="357" justurl="true"}" alt="Westminster Seminary California" style="display: block;margin:auto;">
+                </div>
+                
+                <div class="enlFeatured">
+                    <h2>{title}</h2>
+                    <div>
+                        <div class="enlFeaturedCopy">{newsletter_featured_copy}</div>
+                        {if featured_link}<a href="{featured_link}">Read More</a>{/if}
+                    </div>
+                </div>
+                
+                <div class="enlNews">
+                    <div class="cardsWrapper">
+                        {newsletter_news}
+    
+                            <div class="card">
+                                <div class="cardImage">
+                                    <figure>
+                                        {if news_photo}
+                                            <img src="{exp:imgsizer:size src='{news_photo}' width='245' height='180' justurl='yes'}"
+                                                srcset="{exp:imgsizer:size src='{news_photo}' width='490' height='360' justurl='yes'} 490w, 
+                                                        {exp:imgsizer:size src='{news_photo}' width='245' height='180' justurl='yes'} 245w"
+                                                sizes="100vw" 
+                                                alt="{news_title}" />
+                                        {if:else}
+                                            <object type="image/svg+xml" data="/assets/graphics/svg/missing-image.svg" class="missingImage" width="200" height="200">missing image</object>
+                                        {/if}
+                                    </figure>
+                                </div>
+                                <div class="cardCopy">
+                                    <h3>{news_title}</h3>
+                                    <div style="text-align: center;">{news_text}</div>
+                                    {if news_link}<a href="{news_link}" class="enlNewsMore">{if news_button_text}{news_button_text}{if:else}Read More{/if}</a>{/if}
+                                </div>
+                            </div>
+    
+                        {/newsletter_news}
+                    </div>    
+                </div>
+                
+                <div class="enlResourceHighlights">
+                    <h2>Resource Highlights</h2>
+                    
+                    <div class="cardsWrapper" data-eq-pts="large:450">
+                        {featured_resource limit="3"}
+                            <div class="card">
+                                <div class="cardCopy">
+                                    <a href="{title_permalink='resource-center'}">
+                                        {resource_video}
+                                            <img src="/assets/graphics/enl-play.png" title="Video Available" alt="watch"/>
+                                        {/resource_video}
+                                        {resource_audio}
+                                            <img src="/assets/graphics/enl-mic.png" title="Audio Available" alt="listen"/>
+                                        {/resource_audio}
+                                        <h4>{title}</h4>
+                                    </a>    
+                                    <p>
+                                        {embed="{segment_1}/.enl-resource-author" entry_id="{entry_id}"}
+                                    </p>
+                                </div>
+                            </div>
+                        {/featured_resource}
+                    </div>
+                    
+                </div>
+                
+                <div>
+                    <div style="padding:25px 40px 25px 40px;text-align: center;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;">
+                        <p style="margin-top: 0;text-transform: uppercase;font-size: 13px;font-weight: bold">
+                            <a href="/admissions/apply/apply-online" style="text-decoration: none;color: #C5C5C5;">Apply to WSC</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/donate/give-to-wsc" style="text-decoration: none;color: #C5C5C5;">Give to WSC</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/about-wsc/contact-us" style="text-decoration: none;color: #C5C5C5;">Contact WSC</a>
+                        </p>
+                        <p style="padding:10px;vertical-align: top;">
+                            <a href="https://www.facebook.com/westminstercalifornia"><img src="/assets/graphics/enl-social-icon-fb.png" alt="" width="36"/></a>
+                            <a href="https://twitter.com/wscal"><img src="/assets/graphics/enl-social-icon-twitter.png" alt="" width="36"/></a>
+                            <a href="https://instagram.com/westminsterseminaryca"><img src="/assets/graphics/enl-social-icon-instagram.png" alt="" width="36"/></a>
+                            <a href="https://vimeo.com/wscal"><img src="/assets/graphics/enl-social-icon-vimeo.png" alt="" width="36"/></a>
+                            <a href="/feeds/newsletter-feed"><img src="/assets/graphics/enl-social-icon-feed.png" alt="" width="36"/></a>
+                        </p>
+                        <p style="font-size: 10px;">
+                            <strong style="text-transform: uppercase;color: #908d89;padding-bottom: 3px;display:block;">Westminster Seminary California</strong>
+                            <span style="color: #bdbdbd;">
+                                1725 Bear Valley Parkway, Escondido, CA 92027<br>
+                                Phone: 760.480.8474 | Fax: 760.480.0252 | Email: <a href="mailto:development@wscal.edu" style="color: inherit;text-decoration: none;">development@wscal.edu</a><br>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+            </article>
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+                <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="1" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+
+                <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+            </aside>
+        </div>
+
+    </div>
+</div>
+
+{/exp:channel:entries}

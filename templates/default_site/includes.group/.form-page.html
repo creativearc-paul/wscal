@@ -1,0 +1,95 @@
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {embed="includes/.page-section-titlebar"}
+
+    <div class="equalHeightChildren">
+        <div class="primaryColumn clearfix equalHeightChild">
+            <div class="primaryColumnInner{if main_body_aside_text} primaryColumnHasAside{/if}">
+                <article role="article" class="clearfix">
+                    <header><h1 class="sansSerif">{title}</h1></header>
+                    <div class="bodyCopyPrimary">
+                        <div class="bodyCopyPrimaryInner">
+                            {if page_header_photo}<div class="pageHeaderPhoto">{exp:imgsizer:size src="{page_header_photo}" alt="{title}" style="display:block;" width="750"}</div>{/if}
+                        
+                            {body_copy}
+                            
+                            {if entry_id == 8030}
+                                {embed="forms/.contact-wsc"}
+                            {/if}
+                            
+                            {if entry_id == 8031}
+                                {embed="forms/.subscribe"}
+                            {/if}
+                            
+                            {if entry_id == 8032}
+                                {embed="forms/.admin-info-request"}
+                            {/if}
+                            
+                            {if entry_id == 8033}
+                                {embed="forms/.payment"}
+                            {/if}
+                            
+                            {if entry_id == 8034}
+                                {embed="forms/.seminary-for-a-day"}
+                            {/if}
+                            
+                            {if entry_id == 8035}
+                                {embed="forms/.alumni-updates"}
+                            {/if}
+                            
+                            {if entry_id == 8036}
+                                {embed="forms/.alumni-questionnaire"}
+                            {/if}
+                            
+                            {if entry_id == 8037}
+                                {embed="forms/.student-pulpit-supply"}
+                            {/if}
+                            
+                            {if entry_id == 8038}
+                                {embed="forms/.student-contact"}
+                            {/if}
+                            
+                            {if entry_id == 8039}
+                                {embed="forms/.il-loans-books"}
+                            {/if}
+                            
+                            {if entry_id == 8040}
+                                {embed="forms/.il-loans-articles"}
+                            {/if}
+                            
+                            {if entry_id == 8056}
+                                {embed="forms/.request-a-visit"}
+                            {/if}
+                            
+                            {if entry_id == 8190}
+                                {embed="forms/.graduation-application"}
+                            {/if}
+                            
+                        </div>
+                    </div>
+                    {if main_body_aside_text}
+                        <aside class="bodyCopySecondary">
+                            <div>
+                                {main_body_aside_text}
+                            </div>    
+                        </aside>
+                    {/if}
+                    <img src="/templates/graphics/spacer.png" alt="">
+                </article>
+            </div>
+        </div>
+
+        <div class="secondaryColumn clearfix equalHeightChild">
+            <div class="secondaryColumnInner">
+                <aside class="clearfix">
+                    <div class="secondaryColumnMenuHeader">Forms</div>
+                    <ul class="secondaryNav sansSerif clearfix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="5" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+                    <a href="/academics/wsc-catalogue" class="catalogButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                    <a href="/admissions/apply/apply-online" class="applyButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+                </aside>
+            </div>
+            <div class="secondaryWatermark"></div>
+        </div>
+    </div>
+    
+{/exp:channel:entries}

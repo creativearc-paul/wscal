@@ -1,0 +1,119 @@
+{!-- ### ASSUMES TEMPLATE ROUTE LIKE "/my-channel/category/archive/{section:alpha_dash}/{page:pagination}" ### --}
+{preload_replace:root_channel="landing"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+{preload_replace:landing_entry_id="8434"} {!-- ### Entry ID for main structure page ### --}
+{preload_replace:entry_channel="resources"} {!-- ### CHANNEL FOR INDIVIDUAL POST ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{!-- ### SEO FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+{exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="{landing_entry_id}" dynamic="no"}
+    {layout:set name="seo"}
+        {if segment_2 == 'category'}
+            <title>{exp:channel:category_heading channel="{entry_channel}"}{category_name}{/exp:channel:category_heading} </title>
+            <meta name="description" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+            <meta name="keywords" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+        {if:else}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/if}
+    {/layout:set}
+{/exp:channel:entries}
+
+{layout:set name="body_id"}{if segment_1 != ''}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}sectionLandingPage {if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+{exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="{landing_entry_id}" dynamic="no"}
+
+    {layout:set name="page_header_band"}
+        <div class="sectionPageHeaderBand">
+            <img src="{exp:imgsizer:size src="{landing_banner_image}" width="1500" alt="{title}" justurl="true"}" 
+                    srcset="{exp:imgsizer:size src="{landing_banner_image}" width="1500" height="400" justurl="true"} 1500w, 
+                            {exp:imgsizer:size src="{landing_banner_image}" width="1000" height="267" justurl="true"} 1000w, 
+                            {exp:imgsizer:size src="{landing_banner_image}" width="600" height="160" justurl="true"} 600w" 
+                    sizes="100vw" 
+                    alt="{title}" 
+                    style="display:block;" />
+            <div class="constrainedContent"><div class="sectionPageHeaderBandTitle">{title}</div></div>
+        </div>
+    {/layout:set}
+
+    {if landing_banner_text != ''}
+        <div class="blueBanner clearFix">
+            <div class="constrainedContent">{landing_banner_text}</div>
+        </div>
+    {/if}
+
+{/exp:channel:entries}
+
+<div class="layoutWideLeftColumn clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+
+            {!-- ### LANDING ### --}
+            <section>
+                <div class="clearFix">
+
+                    <h2>Recent Videos <a href="/resource-center/category/wsc-videos" class="viewAllLink">All Videos</a></h2>
+
+                    {exp:channel:entries channel="resources" category="1178" dynamic="no" limit="3"}
+
+                        <div class="clearFix videosListing">
+
+                            <div class="videosListingLeftColumn">
+                                <div class="videosListingPhoto">
+                                    {if resource_image != ''}
+                                        {exp:imgsizer:size src="{resource_image}" alt="{title}" width="400"}
+                                    {if:else}
+                                        {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" alt="{title}" width="400"}
+                                    {/if}
+                                </div>
+                            </div>
+
+                            <div class="videosListingRightColumn">
+                                <div class="videosListingFeatured">Featured</div>
+                                <div class="videosListingTitle">
+                                    <h3><a href="{title_permalink='/resource-center'}" class="videosListingTitle">{title}</a></h3>
+                                </div>
+                                <div class="resourceDate">
+                                    {resource_display_date format="%F %j, %Y"}
+                                </div>
+                                <div class="videosListingSummary">
+                                    {resource_summary}
+                                </div>
+                                <div><a href="{title_permalink='/resource-center'}" class="flatBlueButton">Watch</a></div>
+                            </div>
+
+                        </div>
+
+                    {/exp:channel:entries}
+
+                </div>
+                <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+            </section>
+
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                {embed="resource-center/.aside-menu}
+            </aside>
+        </div>
+
+    </div>
+
+    <section class="videosLandingPastVideos clearFix">
+        <div class="dottedBottomLine"><h2 class="constrainedContent"><a href="/resource-center/category/wsc-videos">More Videos</a>Past Videos</h2></div>
+        <div class="constrainedContent clearFix">
+            <div class="clearFix tilesWrapperFourWide">
+                {exp:channel:entries channel="resources" category="1178" dynamic="no" limit="12"}
+                <div class="tile">
+                    <div class="sansSerif pastEpisodeBlock">
+                        <a href="{title_permalink='/resource-center'}" class="indexNewsPostTitle sansSerif">{title}</a><br />
+                        <em>{resource_display_date format="%F %j"}</em>
+                    </div>
+                </div>
+                {/exp:channel:entries}
+            </div>
+        </div>
+    </section>
+</div>

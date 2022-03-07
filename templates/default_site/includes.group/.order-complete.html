@@ -1,0 +1,23 @@
+{exp:cartthrob:submitted_order_info}
+	<div class="store_block">
+		{if authorized}
+			Your transaction is complete! An email has been sent to you.<br />
+			Transaction ID: {transaction_id}<br />
+			Your total: {cart_total}<br />
+			Your order ID: {order_id}
+		{if:elseif processing}
+			Your Order is Currently being processed:<br>
+            {error_message}<br />
+			Transaction ID: {transaction_id}<br />
+			<br />Order processing is generally completed within 48 hours depending on your payment method. 
+		{if:elseif declined}
+			Your credit card was declined:<br>
+            {error_message}<br>
+			<a href="{path=cart/checkout}">Try checking out again &raquo;</a>
+		{if:elseif failed}
+			Your payment failed:<br>
+            {error_message}<br>
+			<a href="{path=cart/checkout}">Try checking out again &raquo;</a>
+		{/if}
+	</div>
+{/exp:cartthrob:submitted_order_info}

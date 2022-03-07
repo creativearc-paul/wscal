@@ -1,0 +1,41 @@
+{preload_replace:master_channel_name="resources"}
+{exp:rss:feed channel="{master_channel_name}"}
+<?xml version="1.0" encoding="{encoding}"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:admin="http://webns.net/mvcb/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+
+    <channel>
+        <atom:link href="https://wscal.edu/feeds/oh-feed" rel="self" type="application/rss+xml" />
+        <title>WSCAL - Office Hours</title>
+        <link>{channel_url}</link>
+        <description>{channel_description}</description>
+        <dc:language>{channel_language}</dc:language>
+        <dc:rights>Copyright {gmt_date format="%Y"}</dc:rights>
+        <dc:date>{gmt_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
+        <admin:generatorAgent rdf:resource="https://expressionengine.com/" />
+        
+        {exp:channel:entries channel="{master_channel_name}" category="1179" limit="1000" dynamic_start="yes" disable="member_data|pagination"}
+        <item>
+            <title>{exp:xml_encode}{title}{/exp:xml_encode}</title>
+            <link>{title_permalink='resource-center'}</link>
+            <guid>{title_permalink='resource-center'}</guid>
+            <pubDate>{resource_display_date format="%r"}</pubDate>
+            <description>{exp:xml_encode}{resource_summary}{/exp:xml_encode}</description>
+            <dc:subject>{exp:xml_encode}{categories backspace="2"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>
+            <dc:date>{resource_display_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
+            <itunes:subtitle>{exp:xml_encode}{title}{/exp:xml_encode}</itunes:subtitle>
+            <itunes:author>WSCAL</itunes:author>
+            <itunes:summary>{exp:xml_encode}{resource_summary}{/exp:xml_encode}</itunes:summary>
+            <enclosure url="{resource_audio}{resource_audio_file}{/resource_audio}" length="" type="audio/mpeg" />
+        </item>
+        {/exp:channel:entries}
+    
+    </channel>
+</rss>
+{/exp:rss:feed}

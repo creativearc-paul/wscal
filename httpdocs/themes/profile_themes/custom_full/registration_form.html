@@ -1,0 +1,80 @@
+<h2>{lang:member_registration}</h2>
+<span>*</span> {lang:required}
+<table class="profileTable">
+    <tr>
+        <td>
+            <div><span>*</span> {lang:username}</div>
+            <div>{lang:username_length}</div>
+        </td>
+        <td><input type="text" name="username" value="" maxlength="50" size="25" required="required" /></td>
+    </tr>
+    <tr>
+        <td>
+            <div><span>*</span> {lang:password}</div>
+            <div>{lang:password_length}</div>
+        </td>
+        <td><input type="password" name="password" value="" maxlength="40" size="25" autocomplete="off" required="required" /></td>
+    </tr>
+    <tr>
+        <td><span>*</span> {lang:password_confirm}</td>
+        <td><input type="password" name="password_confirm" value="" maxlength="40" size="25" autocomplete="off" required="required" /></td>
+    </tr>
+    <tr>
+        <td>
+            <div><span>*</span> {lang:screen_name}</div>
+            <div>{lang:screen_name_explanation}</div>
+        </td>
+        <td><input type="text" name="screen_name" value="" maxlength="50" size="25" required="required" /></td>
+    </tr>
+    <tr>
+        <td><span>*</span> {lang:email}</td>
+        <td>
+            <input type="email" name="email" value="" maxlength="72" size="40" required="required" />
+        </td>
+    </tr>
+    <tr>
+        <td><span>*</span> {lang:email_confirm}</td>
+        <td><input type="text" name="email_confirm" value="" maxlength="72" size="40" required="required" /></td>
+    </tr>
+    <tr>
+        <td>{lang:url}</td>
+        <td><input type="text" name="url" value="" maxlength="150" size="25" /></td>
+    </tr>
+    {custom_fields}
+        <tr>
+            <td>
+                <div>
+                    {required}
+                        <span>*</span>&nbsp;
+                    {/required}
+                    {field_name}
+                </div>
+                {if field_description}
+                    <div>{field_description}</div>
+                {/if}
+            </td>
+            <td>{field}</td>
+        </tr>
+    {/custom_fields}
+    <tr>
+        <td colspan="2">
+            <div>{lang:terms_of_service}</div>
+            <textarea name="rules" rows="8" cols="90" readonly>
+                All messages posted at this site express the views of the author, and do not necessarily reflect the views of the owners and administrators of this site.
+                By registering at this site you agree not to post any messages that are obscene, vulgar, slanderous, hateful, threatening, or that violate any laws. We will permanently ban all users who do so. 
+                We reserve the right to remove, edit, or move any messages for any reason.
+            </textarea>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            {if captcha}
+                <span>*</span> {lang:captcha}
+                {captcha}<br />
+                <input type="text" name="captcha" value="" size="20" maxlength="20" required="required" />
+            {/if}
+            <input type="checkbox" name="accept_terms" value="y" /> <span>{lang:terms_accepted}</span>
+            <input type="submit" class="profileCssButton" value="{lang:submit}" />
+        </td>
+    </tr>
+</table>

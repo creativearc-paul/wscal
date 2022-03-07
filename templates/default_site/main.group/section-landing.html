@@ -1,0 +1,62 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}sectionLandingPage {if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+    {layout:set name="page_header_band"}
+        <div class="sectionPageHeaderBand">
+            <img src='{exp:imgsizer:size src="{landing_banner_image}" width="1500" alt="{title}" justurl="true"}' 
+                    srcset='{exp:imgsizer:size src="{landing_banner_image}" width="1500" height="400" justurl="true"} 1500w, 
+                            {exp:imgsizer:size src="{landing_banner_image}" width="1000" height="267" justurl="true"} 1000w, 
+                            {exp:imgsizer:size src="{landing_banner_image}" width="600" height="160" justurl="true"} 600w' 
+                    sizes="100vw" 
+                    alt="{title}" 
+                    style="display:block;" />
+            <div class="constrainedContent"><div class="sectionPageHeaderBandTitle">{title}</div></div>
+        </div>
+    {/layout:set}
+
+    {if landing_banner_text != ''}
+        <div class="blueBanner clearFix">
+            <div class="constrainedContent">{landing_banner_text}</div>
+        </div>
+    {/if}
+
+    <div class="layoutFullWidth">
+        <div class="fullWidthColumn clearFix">
+
+            {if segment_2 == 'degrees-and-programs'}
+                {embed="includes/.section-landing-{segment_2}" entry_id="{entry_id}"}
+            
+            {if:elseif last_segment == 'seminary-for-a-day'}
+                {embed="includes/.section-landing-sfad" entry_id="{entry_id}"}
+            
+            {if:elseif last_segment == 'current-students'}
+                {embed="includes/.section-landing-current-students" entry_id="{entry_id}"}
+  
+              {if:elseif last_segment == 'den-dulk-lectures'}
+                {embed="includes/.section-landing-den-dulk-lectures" entry_id="{entry_id}"}
+            
+            
+            {if:else}
+                {embed="includes/.section-landing-{segment_1}" entry_id="{entry_id}"}
+            
+            {/if}
+
+            {landing_call_to_action}
+                {embed="includes/.call-to-action-band" entry_id="{landing_call_to_action:entry_id}"}
+            {/landing_call_to_action}
+            
+            <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+        </div>
+    </div>
+
+{/exp:channel:entries}

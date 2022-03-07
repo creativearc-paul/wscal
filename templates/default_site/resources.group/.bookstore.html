@@ -1,0 +1,33 @@
+{!-- ############## LANDING PAGE ############## --}
+{if segment_3 == ''}
+    {exp:channel:entries channel="products_books" dynamic="no" disable="member_data|pagination" search:product_book_is_featured="=main" limit="1"}
+        <div class="featuredWrapper clearFix">
+            <div class="shadowBox clearFix">
+                <a href="/resources/wsc-bookstore/details/{url_title}" title="{product_book_title}">
+                    {if '{product_book_image}' != ''}
+                        {exp:imgsizer:size src="{product_book_image}" class="productBookImage" alt="{title}" height="270"}
+                    {if:else}
+                        {exp:imgsizer:size src="/assets/graphics/missing-cover.gif" class="productBookImage" alt="{title}" height="270"}
+                    {/if}
+                </a>
+            </div>
+            <div class="featuredDetails clearFix">
+                <div class="sansSerif tinyText"><strong>Featured</strong></div>
+                <h2>{product_book_title}</h2>
+                <div class="productAuthor sansSerif tinyText">{categories backspace="2"}{category_name}, {/categories}</div>
+                {exp:arc_text_tools:limit_words words="50"}{product_book_description}{/exp:arc_text_tools:limit_words}
+                <a class="readMore" href="/resources/wsc-bookstore/details/{url_title}">Read More</a>
+            </div>
+        </div>
+    {/exp:channel:entries}
+    
+    {embed="includes/.widget-your-cart"}
+    
+    {embed="includes/.widget-faculty-books"}
+
+{/if}
+
+{!-- ############## AUTHORS PAGE ############## --}
+{if segment_3 == 'faculty-books'}
+    {embed="includes/.faculty-books-listing"}
+{/if}

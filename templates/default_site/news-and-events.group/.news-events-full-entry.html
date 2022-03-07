@@ -1,0 +1,53 @@
+{!-- show individual post --}
+{exp:channel:entries channel="news-and-events" disable="member_data" limit="1" track_views="one" show_expired="yes" url_title="{segment_3}" dynamic="no" category="{embed:cat}"}
+
+    <header>
+        <h1>{title}</h1>
+        {if news_event_start_date != ""}
+            <h3 class="eventDate">
+                {news_event_start_date format="%F %j, %Y"}{if news_event_end_date != ""} &ndash; {news_event_end_date format="%F %j, %Y"}{/if}
+            </h3>
+        {/if}
+    </header>
+
+    {if news_event_item_copy != ''}{news_event_item_copy}{if:else}{news_event_item_summary}{/if}
+
+    {if news_event_item_gallery}
+        <div class="cycleSlideshow">
+            <div class="cycle-slideshow" 
+                id="cycle-1" 
+                data-cycle-slides="> div" 
+                data-cycle-timeout="7000" 
+                data-cycle-prev=".cycle-prev" 
+                data-cycle-next=".cycle-next" 
+                >
+                {news_event_item_gallery}
+                    <div><div class="cycleSlideCaption sansSerif">{gallery_caption}</div>{exp:imgsizer:size src="{gallery_image}" width="800" alt="{gallery_caption}" title="{gallery_title}"}</div>
+                {/news_event_item_gallery}
+            </div>
+        </div>
+        <div class="cycleSlideshowThumbs">
+            <div class="cycle-slideshow" 
+                id="cycle-2" 
+                data-cycle-slides="> div" 
+                data-cycle-timeout="7000" 
+                data-cycle-prev=".cycle-prev" 
+                data-cycle-next=".cycle-next" 
+                data-cycle-fx="carousel" 
+                data-cycle-carousel-visible="5" 
+                data-cycle-carousel-fluid=true 
+                >
+                {news_event_item_gallery}
+                    <div>{exp:imgsizer:size src="{gallery_image}" height="80" alt="{gallery_caption}" title="{gallery_title}"}</div>
+                {/news_event_item_gallery}
+            </div>
+            <div class="clearFix cycleNav sansSerif">
+                <a href="#" class="cycle-prev floatLeft">&laquo; Previous</a>
+                <a href="#" class="cycle-next floatRight">Next &raquo;</a>
+            </div>
+        </div>
+    {/if}
+
+    <a href="/<?php echo (isset(ee()->session->tracker[1])) ? ee()->session->tracker[1] : 'news-and-events/{segment_2}'; ?>" class="prevArrow smallBlueLink">BACK</a>
+
+{/exp:channel:entries}

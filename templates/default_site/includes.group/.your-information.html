@@ -1,0 +1,127 @@
+{if "{exp:cartthrob:total_items_count}" > 0}
+
+    {exp:cartthrob:save_customer_info_form 
+                return="/review-and-payment"
+                id="customerInfoForm"
+                required="first_name|last_name|address|city|zip|country_code|phone|email_address"
+                error_handling="inline"
+                group_id="5"
+                }
+
+        <strong>* Required Fields</strong>
+
+        <div class="cartFieldsetWrapper clearFix">
+            <fieldset id="contactInfo" class="cartFieldset">
+                <legend>Contact Information</legend>
+                <div class="formWrapper">
+                    <div class="formFieldWrapper">
+                        <label for="email_address"><strong>*</strong> Email</label>
+                        <div><input id="email_address" type="email" name="email_address" value="{email_address}" >{if error:email_address}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="phone"><strong>*</strong> Phone</label>
+                        <div><input id="phone" type="tel" name="phone" value="{phone}" required="required" >{if error:phone}<span class="error">Required</span>{/if}</div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="cartFieldsetWrapper clearFix billingInfoFieldset">
+            <fieldset id="billingInfo" class="cartFieldset">
+                <legend>Billing Information</legend>
+                <div class="formWrapper">
+                    <div class="formFieldWrapper">
+                        <label for="first_name"><strong>*</strong> First Name</label>
+                        <div><input id="first_name" type="text" name="first_name" value="{first_name}" required="required" >{if error:first_name}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="last_name"><strong>*</strong> Last Name</label>
+                        <div><input id="last_name" type="text" name="last_name" value="{last_name}" required="required" >{if error:last_name}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="company">Company</label>
+                        <div><input id="company" type="text" name="company" value="{company}">{if error:company}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="address"><strong>*</strong> Address</label>
+                        <div><input id="address" type="text" name="address" value="{address}" required="required" >{if error:address}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="city"><strong>*</strong> City</label>
+                        <div><input id="city" type="text" name="city" value="{city}" required="required" >{if error:city}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="state">State</label>
+                        <div>{exp:cartthrob:state_select name="state" selected="{state}" id="state" add_blank="yes"}
+                        <label for="state" class="error">Please select one.</label>{if error:state}<div class="error">Required</div>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="zip"><strong>*</strong> Zip</label>
+                        <div><input id="zip" type="text" name="zip" value="{zip}" required="required" >{if error:zip}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="city"><strong>*</strong> Country</label>
+                        <div>{exp:cartthrob:country_select name="country_code" id="country_code" selected="{country_code}"}
+                        <label for="country_code" class="error">Please select one.</label>
+                        {if error:country_code}<div class="error">Required</div>{/if}</div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="cartFieldsetWrapper clearFix shippingInfoFieldset">
+            <fieldset id="shippingInfo" class="cartFieldset">
+                <legend>Shipping Information <a href="#" id="copyBillingInfo" title="copy billing info" class="iconCopyBilling faIcon">Use Billing Information</a></legend>
+                <div class="formWrapper">
+                    <div class="formFieldWrapper">
+                        <label for="shipping_first_name"><strong>*</strong> First Name</label>
+                        <div><input id="shipping_first_name" type="text" name="shipping_first_name" value="{shipping_first_name}" required="required" >{if error:shipping_first_name}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="shipping_last_name"><strong>*</strong> Last Name</label>
+                        <div><input id="shipping_last_name" type="text" name="shipping_last_name" value="{shipping_last_name}" required="required" >{if error:shipping_last_name}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="shipping_company">Company</label>
+                        <div><input id="shipping_company" type="text" name="shipping_company" value="{shipping_company}">{if error:shipping_company}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="shipping_address"><strong>*</strong> Address</label>
+                        <div><input id="shipping_address" type="text" name="shipping_address" value="{shipping_address}" required="required" >{if error:shipping_address}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="shipping_city"><strong>*</strong> City</label>
+                        <div><input id="shipping_city" type="text" name="shipping_city" value="{shipping_city}" required="required" >{if error:shipping_city}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="shipping_state">State</label>
+                        <div>{exp:cartthrob:state_select name="shipping_state" selected="{shipping_state}" id="shipping_state" add_blank="yes"}
+                        <label for="shipping_state" class="error">Please select one.</label>{if error:shipping_state}<div class="error">Required</div>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="shipping_zip"><strong>*</strong> Zip</label>
+                        <div><input id="shipping_zip" type="text" name="shipping_zip" value="{shipping_zip}" required="required" >{if error:shipping_zip}<span class="error">Required</span>{/if}</div>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <label for="city"><strong>*</strong> Country</label>
+                        <div>{exp:cartthrob:country_select name="shipping_country_code" id="shipping_country_code" selected="{shipping_country_code}" }
+                        <label for="shipping_country_code" class="error">Please select one.</label>
+                        {if error:shipping_country_code}<div class="error">Required</div>{/if}</div>
+                    </div>
+                </div>
+            </fieldset>
+        </div><br><br>
+
+        <div class="cartPageButtons">
+            <input type="submit" value="Review &amp; Payment &gt;&gt;" class="flatBlueButton">
+        </div>
+        
+    {/exp:cartthrob:save_customer_info_form}
+
+{if:else}
+
+    <div class="cartPageButtons">
+        <div class="nothingInCart">Your cart is empty.</div>
+    </div>
+
+{/if}

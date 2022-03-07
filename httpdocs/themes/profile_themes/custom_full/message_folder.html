@@ -1,0 +1,65 @@
+{include:hidden_js}
+{include:toggle_js}
+<h2>{lang:folder_name}</h2>
+<table class="profileTable">
+    <tr>
+        <td>
+            <table class="profileTable">
+                <tr>
+                    <td colspan="3">{lang:storage_percentage}</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><div style="width:{image:messages_graph:width}px; height:{image:messages_graph:height}px; background-color: #666699; border:1px solid #000;"></div></td>
+                </tr>
+                <tr>
+                    <td>0%</td>
+                    <td>50%</td>
+                    <td>100%</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <div>
+                <a href='{path:compose_message}' onmouseover="window.status='{lang:compose_messages}';" onmouseout="window.status='';">{lang:compose_message}</a>
+            </div>
+            <div>
+                <a href='{path:erase_messages}' onclick='if( ! confirm("{lang:erase_popup}")) return false;'>{lang:erase_messages}</a>
+            </div>
+            <div>
+                {lang:switch_folder} {include:folder_pulldown:change}
+            </div>
+        </td>
+    </tr>
+</table>
+{form:form_declaration:modify_messages}
+    {paginate}
+        <table class="profileTable">
+            <tr>
+                <td>{pagination_links}</td>
+            </tr>
+        </table>
+    {/paginate}
+    <table class="profileTable">
+        <tr>
+            <th>&nbsp;</th>
+            <th>{lang:message_subject}</th>
+            <th>{lang:message_sender}</th>
+            <th>{lang:message_date}</th>
+            <th><input type="checkbox" name="toggleflag" value="" onclick="toggle(this);" /></th>
+        </tr>
+        {include:folder_rows}
+    </table>
+    {paginate}
+        <table class="profileTable">
+            <tr>
+                <td>{pagination_links}</td>
+            </tr>
+        </table>
+    {/paginate}
+    {include:folder_pulldown:move}
+    {include:folder_pulldown:copy}
+    <div>
+        {form:copy_button}{form:move_button}{form:delete_button}
+    </div>
+</form>
+<div>{lang:storage_status}</div>

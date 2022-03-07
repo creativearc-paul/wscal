@@ -1,0 +1,24 @@
+{if message}
+    <div>{include:message}</div>
+{/if}
+
+<h2>{lang:bulletin_board}</h2>
+
+{if can_post_bulletin}
+    <div>&#187; <a href='{path:send_bulletin}'>{lang:send_bulletin}</a></div>
+{/if}
+{if no_bulletins}
+    <div>{lang:message_no_bulletins}</div>
+{/if}
+{if bulletins}
+    {include:bulletins}
+{/if}
+{paginate}
+    <table class="profileTable">
+        <tr>
+            <td>
+                {pagination_links}
+            </td>
+        </tr>
+    </table>
+{/paginate}

@@ -1,0 +1,85 @@
+<script type="text/javascript">
+    function textcounter(){
+        var max		= {maxchars};
+        var base	= document.forms.submit_post;
+        var cur		= base.body.value.length;
+        if (cur> max){
+            base.body.value = base.body.value.substring(0, max);
+        }else{
+            base.charsleft.value = max - cur
+        }
+    }
+</script>
+<h2>{lang:edit_signature}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <td>
+                {lang:guided}&nbsp;<input type="radio" name="mode" value="guided" onclick='setmode(this.value)' />&nbsp;
+                {lang:normal}&nbsp;<input type="radio" name="mode" value="normal" onclick='setmode(this.value)' checked="checked" />
+            </td>
+            <td>{include:html_formatting_buttons}</td>
+        </tr>
+        <tr>
+            <td>{lang:font_formatting}</td>
+            <td>
+                <select name="size" onchange="selectinsert(this, 'size')">
+                    <option value="0">{lang:size}</option>
+                    <option value="1">{lang:small}</option>
+                    <option value="3">{lang:medium}</option>
+                    <option value="4">{lang:large}</option>
+                    <option value="5">{lang:very_large}</option>
+                    <option value="6">{lang:largest}</option>
+                </select>
+                <select name="color" onchange="selectinsert(this, 'color')">
+                    <option value="0">{lang:color}</option>
+                    <option value="blue">{lang:blue}</option>
+                    <option value="green">{lang:green}</option>
+                    <option value="red">{lang:red}</option>
+                    <option value="purple">{lang:purple}</option>
+                    <option value="orange">{lang:orange}</option>
+                    <option value="yellow">{lang:yellow}</option>
+                    <option value="brown">{lang:brown}</option>
+                    <option value="pink">{lang:pink}</option>
+                    <option value="gray">{lang:grey}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div><strong>{lang:signature}</strong></div>
+                <div><a href="#" onclick="window.open('{path:smileys}', '_blank', 'width=700,height=220,scrollbars=yes,status=yes,screenx=40,screeny=120,resizable=yes');">{lang:smileys}</a></div>
+            </td>
+            <td><textarea name="body" rows="8" cols="90" onkeydown="textcounter();" onkeyup="textcounter();">{signature}</textarea></td>
+        </tr>
+        <tr>
+            <td><strong>{lang:max_characters}</strong></td>
+            <td><input type="text" name="charsleft" size="5" maxlength="4" value="{maxchars}" readonly="readonly"/></td>
+        </tr>
+        {if image}
+            <tr>
+                <td>{lang:signature_image}</td>
+                <td><img src="{path:signature_image}" width="{signature_image_width}" height="{signature_image_height}" title="{lang:signature_image}" /></td>
+            </tr>
+        {/if}
+        <tr>
+            <td><strong>{lang:upload_image}</strong></td>
+            <td>
+                {if upload_allowed}
+                    <div><input type="file" name="userfile" size="20" /></div>
+                    <div>{lang:max_image_size}</div>
+                    <div>{lang:allowed_image_types}</div>
+                {/if}
+                {if upload_not_allowed}
+                    <div>{lang:uploads_not_allowed}</div>
+                {/if}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="profileCssButton" value='{lang:update_signature}' name="submit" /> 
+                {if image} <input type="submit" class="profileCssButton" value='{lang:remove_image}' name="remove" />{/if}
+            </td>
+        </tr>
+    </table>
+</form>

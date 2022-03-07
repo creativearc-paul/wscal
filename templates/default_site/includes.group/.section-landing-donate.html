@@ -1,0 +1,118 @@
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" dynamic="no" entry_id="{embed:entry_id}"}
+
+    {if landing_body_copy != ""}
+        <section class="pageSectionBandWhite">
+            <div class="clearFix constrainedContent">
+
+                {landing_body_copy}
+
+            </div>
+        </section>
+    {/if}
+
+    <section class="pageSectionBandWhite">
+        <div class="constrainedContent clearFix">
+
+            {if landing_tiles_section_title != ""}
+                <h2 class="pageSectionTitleDouble"><span>{landing_tiles_section_title}</span></h2>
+            {/if}
+
+            {if landing_tiles_section_copy != ""}
+                <div class="landingTilesSectionCopy">{landing_tiles_section_copy}</div>
+            {/if}
+
+            <div class="clearFix tilesWrapperThreeWide equalHeightChildren supportTiles sectionTiles">
+                {landing_tiles}
+                    <div class="tile equalHeightChild">
+                        <div>
+                            {if landing_tiles:image != ""}
+                                <div class="tileImage">
+                                    {exp:imgsizer:size src="{landing_tiles:image}" alt="{landing_tiles:title}" height="130"}
+                                </div>
+                            {/if}
+                            {if landing_tiles:title != ""}
+                                <div class="tileTitle">{landing_tiles:title}</div>
+                            {/if}
+                            {if landing_tiles:tile_text != ""}
+                                <div class="tileText">{landing_tiles:tile_text}</div>
+                            {/if}
+                            {if landing_tiles:button_url != ""}
+                                <a href="{landing_tiles:button_url}" class="flatBlueButton">{landing_tiles:button_text}</a>
+                            {/if}
+                        </div>
+                    </div>
+                {/landing_tiles}
+            </div>
+
+        </div>
+    </section>
+
+{/exp:channel:entries}
+
+{embed="includes/.call-to-action-band" entry_id="8571"}
+
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" dynamic="no" entry_id="{embed:entry_id}"}
+
+
+    <section class="pageSectionBandWhite">
+        <div class="constrainedContent clearFix supportLandingTeam">
+
+            <h2>Meet the Development Team</h2>
+
+            <div class="clearFix tilesWrapperThreeWide equalHeightChildren meetTheTeamTiles sectionTiles">
+                {landing_related_staff}
+                    <div class="tile equalHeightChild meetTheTeamTile">
+                        <div>
+                            <div class="tileImage">
+                                {exp:imgsizer:size src="{landing_related_staff:staff_photo}" width="400" height="400" alt="{landing_related_staff:staff_name}" class="roundImage"}
+                            </div>
+                            <div class="meetTheTeamTileName">{landing_related_staff:staff_name}</div>
+                            <div class="meetTheTeamTilePosition">{landing_related_staff:staff_position}</div>
+                            <div class="meetTheTeamTilePhone">{landing_related_staff:staff_phone_number}</div>
+                        </div>
+                    </div>
+                {/landing_related_staff}
+            </div>
+
+        </div>
+    </section>
+
+{/exp:channel:entries}
+
+{embed="includes/.call-to-action-band" entry_id="8572"}
+
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" dynamic="no" entry_id="{embed:entry_id}"}
+
+    {landing_meet_a_student}
+
+        {if {landing_meet_a_student:count} == "1"}
+            <section class="pageSectionBandTan">
+                <div class="dottedBottomLine">
+                    <h2 class="constrainedContent">Meet a Student<a href="/admissions/meet-a-student-graduate" class="viewAllLink">Read All Stories</a></h2>
+                </div>
+                <div class="constrainedContent clearFix">
+        {/if}
+                    <div class="relatedStudent clearFix">
+                        <div class="relatedStudentLeft">
+                            <a href="/admissions/meet-a-student-graduate/{landing_meet_a_student:url_title}">{exp:imgsizer:size src="{landing_meet_a_student:student_photo}" width="400" height="400" alt="{landing_meet_a_student:student_first_name} {landing_meet_a_student:student_last_name}" class="roundImage"}</a>
+                        </div>
+                        <div class="relatedStudentRight clearFix">
+                            <div>
+                                <h3><a href="/admissions/meet-a-student-graduate/{landing_meet_a_student:url_title}">{landing_meet_a_student:student_first_name} {landing_meet_a_student:student_last_name}</a></h3>
+                                {exp:word_limit:limit_words total="50"}{landing_meet_a_student:student_interview}{/exp:word_limit:limit_words}
+                            </div>
+                            <div class="clearFix">
+                                <a href="/admissions/meet-a-student-graduate/{landing_meet_a_student:url_title}" class="flatBlueButton">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+        {if {landing_meet_a_student:count} == {landing_meet_a_student:total_results}}
+                </div>
+            </section>
+        {/if}
+
+    {/landing_meet_a_student}
+
+{/exp:channel:entries}
+
+

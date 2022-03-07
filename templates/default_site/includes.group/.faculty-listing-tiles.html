@@ -1,0 +1,102 @@
+<br><h3>RESIDENT FACULTY</h3>
+<div class="flexTilesWrapper facultyTiles" data-eq-pts="small:400, medium:600, large:800">
+
+    {exp:channel:entries channel="faculty" status="open" dynamic="no" orderby="faculty_last_name" sort="asc" search:faculty_type="RESIDENT FACULTY"}
+    <div class="flexTile facultyTile">
+        <div class="flexTileFigure">
+            <figure>
+                <div>
+                    
+                    <a href="{title_permalink='/{segment_1}/{segment_2}/'}">
+                        <div>
+                            <div class="facultyTileText">
+                                <div class="facultyTileTextTitle">{title}</div>
+                                <div class="facultyTileTextPosition">
+                                    {faculty_position}<br>
+                                    <span class="facultyTileTextMore">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    {if faculty_landing_image}
+                        <img src="{exp:imgsizer:size src='{faculty_landing_image}' width='500' height='500' justurl='true'}"
+                                alt="{title}"
+                                srcset="{exp:imgsizer:size src='{faculty_landing_image}' width='500' height='500' justurl='true'} 500w, 
+                                        {exp:imgsizer:size src='{faculty_landing_image}' width='350' height='350' justurl='true'} 350w"
+                                sizes="(min-width: 1100px) 350px, 
+                                            (min-width: 600px) 500px, 
+                                            calc(100vw - 30px)">
+                    {if:else}
+                        <img src="{exp:imgsizer:size src='/assets/graphics/missing-image.jpg' width='800' height='800' justurl='true'}"
+                                alt="{title}"
+                                srcset="{exp:imgsizer:size src='/assets/graphics/missing-image.jpg' width='800' height='800' justurl='true'} 800w, 
+                                        {exp:imgsizer:size src='/assets/graphics/missing-image.jpg' width='600' height='600' justurl='true'} 600w,
+                                        {exp:imgsizer:size src='/assets/graphics/missing-image.jpg' width='400' height='400' justurl='true'} 400w"
+                                sizes="(min-width: 1200px) 800px, 
+                                    (min-width: 900px) 600px, 
+                                    (min-width: 600px) 400px,
+                                    calc(100vw - 30px)">
+                    {/if}
+                
+                </div>
+            </figure>
+        </div>
+    </div>
+    {/exp:channel:entries}
+
+    <div class="flexTile facultyTile facultyAdditionalTile">
+        <div class="flexTileFigure">
+            <figure>
+                <div>
+                    
+                    <a href="/news-and-events/faculty-speaking-calendar">
+                        <div>
+                            <div class="facultyTileText">
+                                <div class="facultyTileTextTitle">                                    
+                                    View Faculty Speaking &amp; Preaching Calendar<br>
+                                    <span class="facultyTileTextMore">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <img src="{exp:imgsizer:size src='/assets/graphics/faculty-extra.png' width='800' height='800' justurl='true'}"
+                        alt="View Faculty Speaking &amp; Preaching Calendar"
+                        srcset="{exp:imgsizer:size src='/assets/graphics/faculty-extra.png' width='800' height='800' justurl='true'} 800w, 
+                                {exp:imgsizer:size src='/assets/graphics/faculty-extra.png' width='600' height='600' justurl='true'} 600w,
+                                {exp:imgsizer:size src='/assets/graphics/faculty-extra.png' width='400' height='400' justurl='true'} 400w"
+                        sizes="(min-width: 1200px) 800px, 
+                            (min-width: 900px) 600px, 
+                            (min-width: 600px) 400px,
+                            calc(100vw - 30px)">
+                    
+                </div>
+            </figure>
+        </div>
+    </div>
+</div>
+
+<h3>PROFESSORS EMERITI</h3>
+<ul>
+    {exp:channel:entries channel="faculty" status="open" dynamic="no" orderby="faculty_last_name" sort="asc" search:faculty_type="PROFESSORS EMERITI"}
+    <li><a href="{title_permalink='/{segment_1}/{segment_2}/'}">{title}</a>, {faculty_position}</li>
+    {/exp:channel:entries}
+</ul>
+
+{!--exp:channel:entries channel="faculty" status="open" dynamic="no" orderby="faculty_last_name" sort="asc" search:faculty_type="ADJUNCT/VISITING PROFESSORS"}
+    {if count == 1}
+        <h3>ADJUNCT/VISITING PROFESSORS</h3>
+        <ul>
+    {/if}
+            
+    <li><a href="{title_permalink='/{segment_1}/{segment_2}/'}">{title}</a>, {faculty_position}</li>
+            
+    {if count == total_results}
+        </ul>
+    {/if}
+{/exp:channel:entries--}
+
+<h3>ADJUNCT/VISITING PROFESSORS</h3>
+{exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="9629"}{page_block_content}{/exp:channel:entries}
+

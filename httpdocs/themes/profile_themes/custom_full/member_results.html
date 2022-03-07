@@ -1,0 +1,25 @@
+<script type="text/javascript"> 
+    //<![CDATA[
+    function insert_name(name){
+        if (opener.document.getElementById('submit_message').{which_field}.value != ''){
+            opener.document.getElementById('submit_message').{which_field}.value += ', ';
+        }
+        opener.document.getElementById('submit_message').{which_field}.value += name;
+    }
+    //]]>
+</script>
+<h2>{lang:search_results}</h2>
+<table class="profileTable">
+    <tr>
+        <td>
+            {include:search_results}
+            <div>{lang:insert_member_instructions}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div><a href="{path:new_search_url}"><strong>{lang:new_search}</strong></a></div>
+            <div><a href="JavaScript:window.close();opener.document.getElementById('submit_message').{which_field}.focus();"><strong>{lang:close_window}</strong></a></div>
+        </td>
+    </tr>
+</table>

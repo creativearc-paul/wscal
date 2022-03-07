@@ -1,0 +1,81 @@
+<div>
+    <span class="requiredField">*</span>Required Fields
+</div>
+
+{exp:freeform:form form_id="19" return="/forms/submission-thank-you-download" form:id="download_pdf_form " required="first_name|last_name|email|prospective_student|captcha" require_captcha="yes"}
+
+<fieldset id="contactInfoFieldset">
+    <legend>Contact Information</legend>
+    <div class="formRow">
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="first_name">First Name</label>
+            </div>
+            <div>
+                <input type="text" id="first_name" name="first_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="last_name">Last Name</label>
+            </div>
+            <div>
+                <input type="text" id="last_name" name="last_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="email">Email</label>
+            </div>
+            <div>
+                <input type="text" id="email" name="email" value="" size="35"/>
+            </div>
+        </div>
+
+
+	</div>
+
+
+
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Are you a prospective student?
+                <div class="myRadio">
+                    <input type="radio" name="prospective_student" value="Yes" id="prospective_student-yes" class="radio"/>Yes
+                    <input type="radio" name="prospective_student" value="No" id="prospective_student-no" class="radio"/>No
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     {if freeform:captcha}
+    <div class="formRow">
+        <div class="formField formComments">
+            <div class="formFieldTitle">
+                <label for="captcha">Please enter the security code.</label>
+            </div>
+            <div class="formFieldInput">
+                <span style="margin-top: 5px;padding: 5px 5px;display: inline-block;">{freeform:captcha}</span><br>
+                <input type="text" id="captcha" name="captcha" required="required" size="40">
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <div class="formRow">
+        <div class="formField formComments">
+            {exp:channel:entries channel="page-blocks" dynamic="off" entry_id="8057" disable="categories|member_data|pagination"}{page_block_content}{/exp:channel:entries}
+        </div>
+    </div>
+
+    <div class="formRow">
+        <div>
+            <input type="submit" value="Submit" name="submit" id="submit" class="formButton"/>
+        </div>
+    </div>
+
+</fieldset>
+{/exp:freeform:form}
+

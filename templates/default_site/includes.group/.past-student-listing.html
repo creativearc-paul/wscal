@@ -1,0 +1,22 @@
+{exp:channel:entries channel="students" dynamic="no" orderby="student_last_name" sort="asc" status="archived"}
+    {if count == 1}
+        <div class="tinyText"><em>(listed alphabetically)</em><br><br></div>
+        <div class="studentListingTiles clearFix tilesWrapperThreeWide">
+    {/if}
+    <div class="tile studentListingTile pastStudent">
+        <div class="tileImage">
+            <a href="{title_permalink='/{segment_1}/{segment_2}/'}">
+                {if student_photo != ''}
+                    {exp:imgsizer:size src="{student_photo}" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {if:else}
+                    {exp:imgsizer:size src="/assets/graphics/missing-image.jpg" width="400" height="285" alt="{student_first_name} {student_last_name}"}
+                {/if}
+            </a>
+        </div>
+        <div class="tileTitle"><a href="{title_permalink='/{segment_1}/{segment_2}/'}">{student_first_name} {student_last_name}</a></div>
+        {if student_program}<div>{student_program} {student_graduation_date format="&apos;%y"}</div>{/if}
+    </div>
+    {if count == total_results}
+        </div>
+    {/if}
+{/exp:channel:entries}

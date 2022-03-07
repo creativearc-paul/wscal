@@ -1,0 +1,4 @@
+{!-- show individual item --}
+{exp:channel:entries channel="{embed:entry_channel}" disable="member_data|pagination" limit="1"}
+    {if pp_body_copy}<div class="ppBodyCopy">{pp_body_copy}</div>{/if}
+{/exp:channel:entries}

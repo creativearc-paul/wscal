@@ -1,0 +1,26 @@
+<h2>{lang:member_search}</h2>
+{form:form_declaration:do_member_search}
+    <table class="profileTable">
+        <tr>
+            <td>
+                {if message}
+                    <div>{include:message}</div>
+                {/if}
+                
+                <h3>{lang:screen_name}</h3>
+                <input type="text" name="screen_name" id="screen_name" value="" size="35" maxlength="100" />
+                
+                <h3>{lang:email}</h3>
+                <input type="email" name="email" id="email" value="" size="35" maxlength="100" />
+                
+                <h3>{lang:member_group}</h3>
+                <select name="group_id">
+                    <option value='any'>{lang:any}</option>
+                    {include:member_group_options}
+                </select>
+                <input type="submit" class="profileCssButton" value="{lang:submit}" />
+                <div><a href="JavaScript:window.close();">{lang:close_window}</a></div>
+            </td>
+        </tr>
+    </table>
+</form>

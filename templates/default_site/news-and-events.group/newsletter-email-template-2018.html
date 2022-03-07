@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>Westminster Seminary California</title>
+</head>
+<body class="monthly-enewsletter" style="margin: 0; padding: 0; background-color: #FFFFFF; font-size: 12px;">
+    
+    {exp:channel:entries channel="newsletter" dynamic="no" status="Open|Preview" show_future_entries="yes" show_expired="yes" limit="1"}
+        <table border="0" cellpadding="0" cellspacing="0" style="width:600px;border: 1px solid #DCDBCB;color: #5D5A57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 13px;line-height: 1.5;">
+            <tr>
+                <td>
+                    <img src="{exp:imgsizer:size src="{newsletter_featured_photo}" width="600" height="280" justurl="true"}" alt="Westminster Seminary California" style="display: block;margin: 10px auto 0 auto;">
+                 </td>
+            </tr>
+            <tr>
+                <td style="padding:25px 40px 25px 40px;">
+                    <table border="0" cellpadding="0" cellspacing="0" style="text-align:center;width:100%;border: none;color: #5D5A57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 13px;line-height: 1.5;">
+                        <tr>
+                            <td colspan="2" style="border-bottom: 1px solid #d0d0d0;padding-bottom: 20px;">
+                                <h2 style="text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;color: #00517B;margin: 0;font-size: 18px;line-height: 1.1;">{title}</h2>
+                                <span style="display:inline-block;">
+                                    {newsletter_featured_copy}
+                                    {if featured_link}<a href="{featured_link}" style="display: inline-block;text-decoration: none;color: #ffffff;letter-spacing: 1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;font-size: 11px;background-color: #00517B;padding: 7px 15px 7px 15px;margin-top: 10px;">Read More</a>{/if}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 45px;width: 50%;padding-right: 8px;vertical-align: top;">
+                                {newsletter_news limit="1" offset="0"}
+                                    {exp:imgsizer:size src="{news_photo}" alt="{news_title}" width="245" height="180"}
+                                    <h3 style="color: #c0ad7c;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;margin: 10px 0 0 0;font-size: 16px;line-height: 1.1;">{if news_link}<a href="{news_link}" style="color: inherit;text-decoration:none;">{/if}{news_title}{if news_link}</a>{/if}</h3>
+                                    <span style="margin:0 8px 0 10px;display: block;">{news_text}</span>
+                                    {if news_link}<a href="{news_link}" style="display: inline-block;text-decoration: none;color: #ffffff;letter-spacing: 1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;font-size: 11px;background-color: #c0ad7c;padding: 7px 15px 7px 15px;margin-top: 10px;">{if news_button_text}{news_button_text}{if:else}Read More{/if}</a>{/if}
+                                {/newsletter_news}
+                            </td>
+                            <td style="padding-top: 45px;width: 50%;padding-left: 8px;vertical-align: top;">
+                                {newsletter_news limit="1" offset="1"}
+                                    {exp:imgsizer:size src="{news_photo}" alt="{news_title}" width="245" height="180"}
+                                    <h3 style="color: #c0ad7c;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;margin: 10px 0 0 0;font-size: 16px;line-height: 1.1;">{if news_link}<a href="{news_link}" style="color: inherit;text-decoration:none;">{/if}{news_title}{if news_link}</a>{/if}</h3>
+                                    <span style="margin:0 10px 0 8px;display: block;">{news_text}</span>
+                                    {if news_link}<a href="{news_link}" style="display: inline-block;text-decoration: none;color: #ffffff;letter-spacing: 1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;font-size: 11px;background-color: #c0ad7c;padding: 7px 15px 7px 15px;margin-top: 10px;">{if news_button_text}{news_button_text}{if:else}Read More{/if}</a>{/if}
+                                {/newsletter_news}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-top: 25px;width: 50%;padding-right: 8px;vertical-align: top;">
+                                {newsletter_news limit="1" offset="2"}
+                                    {exp:imgsizer:size src="{news_photo}" alt="{news_title}" width="245" height="180"}
+                                    <h3 style="color: #c0ad7c;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;margin: 10px 0 0 0;font-size: 16px;line-height: 1.1;">{if news_link}<a href="{news_link}" style="color: inherit;text-decoration:none;">{/if}{news_title}{if news_link}</a>{/if}</h3>
+                                    <span style="margin:0 8px 0 10px;display: block;">{news_text}</span>
+                                    {if news_link}<a href="{news_link}" style="display: inline-block;text-decoration: none;color: #ffffff;letter-spacing: 1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;font-size: 11px;background-color: #c0ad7c;padding: 7px 15px 7px 15px;margin-top: 10px;">{if news_button_text}{news_button_text}{if:else}Read More{/if}</a>{/if}
+                                 {/newsletter_news}
+                            </td>
+                            <td style="padding-top: 25px;width: 50%;padding-left: 8px;vertical-align: top;">
+                                {newsletter_news limit="1" offset="3"}
+                                    {exp:imgsizer:size src="{news_photo}" alt="{news_title}" width="245" height="180"}
+                                    <h3 style="color: #c0ad7c;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;margin: 10px 0 0 0;font-size: 16px;line-height: 1.1;">{if news_link}<a href="{news_link}" style="color: inherit;text-decoration:none;">{/if}{news_title}{if news_link}</a>{/if}</h3>
+                                    <span style="margin:0 10px 0 8px;display: block;">{news_text}</span>
+                                    {if news_link}<a href="{news_link}" style="display: inline-block;text-decoration: none;color: #ffffff;letter-spacing: 1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;font-size: 11px;background-color: #c0ad7c;padding: 7px 15px 7px 15px;margin-top: 10px;">{if news_button_text}{news_button_text}{if:else}Read More{/if}</a>{/if}
+                                {/newsletter_news}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: #004163;padding:25px 40px 25px 40px;text-align: center;">
+                    <h2 style="letter-spacing:1px;text-transform: uppercase;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;color: #ffffff;margin: 0;font-size: 16px;line-height: 1.1;">Resource Highlights</h2>
+                    <table border="0" cellpadding="0" cellspacing="0" style="width:100%;border:none;color: #5D5A57;font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;font-size: 13px;line-height: 1.5;">
+                        <tr>
+                            <td style="padding: 20px;vertical-align: top;width: 33.33%;">
+                                {featured_resource limit="1" offset="0"}
+                                    <a href="{title_permalink='resource-center'}" style="text-decoration: none;color: #a79d84;">
+                                        {resource_video}
+                                            <img src="https://wscal.edu/assets/graphics/enl-play.png" title="Video Available" alt="watch"/>
+                                        {/resource_video}
+                                        {resource_audio}
+                                            <img src="https://wscal.edu/assets/graphics/enl-mic.png" title="Audio Available" alt="listen"/>
+                                        {/resource_audio}
+                                        <h4 style="font-size:14px;color: #a79d84;font-weight: normal;font-variant: small-caps;line-height: 1.2;margin: 2px 0 5px 0;">{title}</h4>
+                                    </a>    
+                                    <p style="margin: 0;">
+                                        {embed="{segment_1}/.enl-resource-author" entry_id="{entry_id}"}
+                                    </p>
+                                {/featured_resource}
+                            </td>
+                            <td style="padding: 20px;vertical-align: top;width: 33.33%;">
+                                {featured_resource limit="1" offset="1"}
+                                    <a href="{title_permalink='resource-center'}" style="text-decoration: none;color: #a79d84;">
+                                        {resource_video}
+                                            <img src="https://wscal.edu/assets/graphics/enl-play.png" title="Video Available" alt="watch"/>
+                                        {/resource_video}
+                                        {resource_audio}
+                                            <img src="https://wscal.edu/assets/graphics/enl-mic.png" title="Audio Available" alt="listen"/>
+                                        {/resource_audio}
+                                        <h4 style="font-size:14px;color: #a79d84;font-weight: normal;font-variant: small-caps;line-height: 1.2;margin: 2px 0 5px 0;">{title}</h4>
+                                    </a>    
+                                    <p style="margin: 0;">
+                                        {embed="{segment_1}/.enl-resource-author" entry_id="{entry_id}"}
+                                    </p>
+                                {/featured_resource}
+                            </td>
+                            <td style="padding: 20px;vertical-align: top;width: 33.33%;">
+                                {featured_resource limit="1" offset="2"}
+                                    <a href="{title_permalink='resource-center'}" style="text-decoration: none;color: #a79d84;">
+                                        {resource_video}
+                                            <img src="https://wscal.edu/assets/graphics/enl-play.png" title="Video Available" alt="watch"/>
+                                        {/resource_video}
+                                        {resource_audio}
+                                            <img src="https://wscal.edu/assets/graphics/enl-mic.png" title="Audio Available" alt="listen"/>
+                                        {/resource_audio}
+                                        <h4 style="font-size:14px;color: #a79d84;font-weight: normal;font-variant: small-caps;line-height: 1.2;margin: 2px 0 5px 0;">{title}</h4>
+                                    </a>    
+                                    <p style="margin: 0;">
+                                        {embed="{segment_1}/.enl-resource-author" entry_id="{entry_id}"}
+                                    </p>
+                                {/featured_resource}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:25px 40px 25px 40px;text-align: center;font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;">
+                    <p style="margin-top: 0;text-transform: uppercase;font-size: 13px;font-weight: bold">
+                        <a href="https://wscal.edu/admissions/apply/apply-online" style="text-decoration: none;color: #C5C5C5;">Apply to WSC</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://wscal.edu/donate/give-to-wsc" style="text-decoration: none;color: #C5C5C5;">Give to WSC</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://wscal.edu/about-wsc/contact-us" style="text-decoration: none;color: #C5C5C5;">Contact WSC</a>
+                    </p>
+                    <p style="padding:10px;vertical-align: top;">
+                        <a href="https://www.facebook.com/westminstercalifornia"><img src="https://wscal.edu/assets/graphics/enl-social-icon-fb.png" alt="" width="36"/></a>
+                        <a href="https://twitter.com/wscal"><img src="https://wscal.edu/assets/graphics/enl-social-icon-twitter.png" alt="" width="36"/></a>
+                        <a href="https://instagram.com/westminsterseminaryca"><img src="https://wscal.edu/assets/graphics/enl-social-icon-instagram.png" alt="" width="36"/></a>
+                        <a href="https://vimeo.com/wscal"><img src="https://wscal.edu/assets/graphics/enl-social-icon-vimeo.png" alt="" width="36"/></a>
+                        <a href="https://wscal.edu/feeds/newsletter-feed"><img src="https://wscal.edu/assets/graphics/enl-social-icon-feed.png" alt="" width="36"/></a>
+                    </p>
+                    <p style="font-size: 10px;">
+                        <strong style="text-transform: uppercase;color: #908d89;padding-bottom: 3px;display:block;">Westminster Seminary California</strong>
+                        <span style="color: #bdbdbd;">
+                            1725 Bear Valley Parkway, Escondido, CA 92027<br>
+                            Phone: 760.480.8474 | Fax: 760.480.0252 | Email: <a href="mailto:development@wscal.edu" style="color: inherit;text-decoration: none;">development@wscal.edu</a><br>
+                        </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    {/exp:channel:entries}
+
+</body>
+</html>

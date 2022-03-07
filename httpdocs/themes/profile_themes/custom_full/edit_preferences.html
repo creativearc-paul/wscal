@@ -1,0 +1,37 @@
+<h2>{lang:edit_preferences}</h2>
+
+{form_declaration}
+
+    <div class="required">{lang:required}</div>
+
+    <div class="profileForm clearfix">
+    
+        <div class="formFieldWrapper">
+            <div style="width: 100%;">
+                <input type='checkbox' name='accept_messages' value='y' {state:accept_messages} /> {lang:accept_messages}
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <div style="width: 100%;">
+                <input type='checkbox' name='display_avatars' value='y' {state:display_avatars} /> {lang:display_avatars}
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <div style="width: 100%;">
+                <input type='checkbox' name='display_signatures' value='y' {state:display_signatures} /> {lang:display_signatures}
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <div style="width: 100%;">
+                <input type='checkbox' name='parse_smileys' value='y' {state:parse_smileys} /> {lang:parse_smileys}
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <div>
+                <input type="submit" class="profileCssButton" value='{lang:update}' />
+            </div>
+        </div>
+
+    </div>
+    
+</form>

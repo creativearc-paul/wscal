@@ -1,0 +1,13 @@
+{include:success_message}
+<h2>{lang:edit_folders}</h2>
+{form:form_declaration:edit_folders}
+    <table class="profileTable">
+        <tr>
+            <td>{lang:folder_name}</td>
+        </tr>
+        {include:current_folders}
+        {include:new_folder}
+    </table>
+    <div>{lang:folder_directions}</div>
+    <div><input type="submit" class="profileCssButton" value='{lang:submit}' /></div>
+</form>

@@ -1,0 +1,75 @@
+{exp:freeform:form form_id="2" return="/thank-you-admissions" form:id="simpleForm" form:class="simpleForm" required="name|email|phone_number|captcha"}
+
+    <fieldset>
+        <div class="dottedHeader">
+            <div class="simpleFormInner">
+                <legend>We'd love to hear from you!</legend>
+            </div>
+        </div>
+        <div class="simpleFormInner">
+            
+            <div class="flexFormRow">
+                <div>
+                    <div class="flexFormRowLabel"><label for="inputName">Name:</label></div>
+                    <div class="flexFormRowField"><input type="text" id="inputName" name="name" value="" size="35"/></div>
+                </div>
+                <div>
+                    <div class="flexFormRowLabel"><label for="inputEmail">Email:</label></div>
+                    <div class="flexFormRowField"><input type="email" id="inputEmail" name="email" value="" size="35"/></div>
+                </div>
+            </div>
+            
+            <div class="flexFormRow">
+                <div>
+                    <div class="flexFormRowLabel"><label for="inputPhoneNumber">Phone Number:</label></div>
+                    <div class="flexFormRowField"><input type="text" id="inputPhoneNumber" name="phone_number" value="" size="35"/></div>
+                </div>
+                <div>
+                    <div class="flexFormRowLabel"><label for="inputProgramInterest">Degree Program of Interest:</label></div>
+                    <div class="flexFormRowField flexFormRowFieldFancySelectWrapper">
+                        <select name="degree_program_of_interest" id="inputProgramInterest" class="flexFormRowFieldFancySelect">
+                            <option selected></option>
+                            <option value="Master of Divinity">Master of Divinity</option>
+                            <option value="M.A. Biblical Studies">M.A. Biblical Studies</option>
+                            <option value="M.A. Theological Studies">M.A. Theological Studies</option>
+                            <option value="M.A. Historical Theology">M.A. Historical Theology</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flexFormRow flexFormRowCountOne">
+                <div>
+                    <div class="flexFormRowLabel"><label for="inputAnticipatedStartingTerm">Anticipated Starting term for Classes:</label></div>
+                    <div class="flexFormRowField flexFormRowFieldFancySelectWrapper">
+                        <select name="anticipated_starting_term" id="inputAnticipatedStartingTerm" class="flexFormRowFieldFancySelect">
+                            <option value=""></option>
+                            <option value="Summer/Fall 2021">Summer/Fall 2021</option>
+                            <option value="Winter/Spring 2022">Winter/Spring 2022</option>
+                            <option value="Summer/Fall 2022">Summer/Fall 2022</option>
+                            <option value="Winter/Spring 2023">Winter/Spring 2023</option>
+                            <option value="Summer/Fall 2023">Summer/Fall 2023</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            {if freeform:captcha}
+                <div class="flexFormRow flexFormRowCountOne">
+                    <div>
+                        <div class="flexFormRowLabel"><label for="captcha" class="required">Please enter the security code.</label></div>
+                        <div class="flexFormRowField">
+                            {freeform:captcha} <input type="text" id="captcha" name="captcha" required="required" style="max-width: calc(100% - 150px);">
+                        </div>
+                    </div>
+                </div>
+            {/if}
+
+            <div class="flexFormRow flexFormRowCountOne">
+                <div>
+                    <input type="submit" value="Submit" name="submit" id="submit" class="simpleFormSubmit formButton"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+{/exp:freeform:form}

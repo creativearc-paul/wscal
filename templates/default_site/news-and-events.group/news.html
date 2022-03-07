@@ -1,0 +1,115 @@
+{preload_replace:root_channel="main-content"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+{preload_replace:landing_entry_id="144"} {!-- ### Entry ID for main structure page ### --}
+{preload_replace:entry_channel="news-and-events"} {!-- ### CHANNEL FOR INDIVIDUAL POST ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{if !segment_3 || segment_3 == 'category' || segment_3 == 'archive' || segment_3 ~ "/^P\d+/"}
+
+    {!-- ### SEO FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+    {exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="{landing_entry_id}" dynamic="no"}
+        {layout:set name="seo"}
+            {if segment_2 == 'category'}
+                <title>{exp:channel:category_heading channel="{entry_channel}"}{category_name}{/exp:channel:category_heading} </title>
+                <meta name="description" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+                <meta name="keywords" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+            {if:else}
+                {exp:neoseo:meta_tags entry_id="{entry_id}"}
+            {/if}
+        {/layout:set}
+    {/exp:channel:entries}
+
+{if:else}
+
+    {!-- ### SEO FOR INDIVIDUAL POST ### --}
+    {exp:channel:entries channel="{entry_channel}" disable="member_data|pagination" limit="1" require_entry="yes" show_expired="yes"}
+        {if no_results}{redirect="404"}{/if}
+        {layout:set name="seo"}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/layout:set}
+    {/exp:channel:entries}
+
+{/if}
+
+{layout:set name="body_id"}{if segment_1 != ''}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage {if:elseif segment_2 == 'category'}categoryPage {if:elseif segment_2 == 'contributor'}contributorPage {if:elseif segment_2 != ''}{segment_2} {/if}{if segment_3 != ''}{segment_3} {/if}{/layout:set}
+
+{layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent"><div class="pageHeaderBandTitle">News</div></div>
+    </div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+
+            {if segment_3 != ''}
+
+                {if segment_3 == 'category'}
+                    {!-- ### POSTS LISTING BY CATEGORY ### --}
+                    <section>
+                        {embed="{segment_1}/.news-listing"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_3 == 'archive' && segment_4 ~ "/^\d\d\d\d$/"}
+                    {!-- ### POSTS LISTING BY DATE ### --}
+                    <section>
+                        {embed="{segment_1}/.news-listing-archive" year="{segment_4}"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:elseif segment_3 ~ "/^P\d+/"}
+                    {!-- ### PAGINATED POSTS LISTING ### --}
+                    <section>
+                        {embed="{segment_1}/.news-listing"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </section>
+
+                {if:else}
+                    {!-- ### INDIVIDUAL POST PAGE ### --}
+                    <article role="article" class="clearFix">
+                        {embed="{segment_1}/.news-events-full-entry"}
+                        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                    </article>
+                {/if}
+
+            {if:else}
+
+                {!-- ### DEFAULT POSTS LISTING ### --}
+                <section>
+                    {embed="{segment_1}/.news-listing"}
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </section>
+
+            {/if}
+        </div>
+
+        <div class="rightColumn">
+            <aside class="clearFix">
+
+                <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+                <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="1" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+
+                <div class="secondarySupporting">
+                    <div class="secondaryColumnHeader">News Archive</div>
+                    <ul class="secondaryNav clearFix">
+                        {exp:wscal:news_events_archive_years}
+                            <li {if segment_4 == '{year}'}class="here"{/if}><a href="/{segment_1}/{segment_2}/archive/{year}">{year}<span class="arrowDotRight"></span></a></li>
+                        {/exp:wscal:news_events_archive_years}
+                    </ul>
+                </div>
+
+                <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+
+            </aside>
+        </div>
+
+    </div>
+</div>
+
+
+

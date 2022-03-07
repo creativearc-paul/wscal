@@ -1,0 +1,50 @@
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" dynamic="no" entry_id="{embed:entry_id}"}
+
+    <section class="pageSectionBandWhite">
+        <div class="constrainedContent clearFix">
+
+            {if landing_tiles_section_title != ""}
+                <h2 class="pageSectionTitleDouble"><span>{landing_tiles_section_title}</span></h2>
+            {/if}
+
+            {if landing_tiles_section_copy != ""}
+                <div class="landingTilesSectionCopy">{landing_tiles_section_copy}</div>
+            {/if}
+
+            <div class="clearFix tilesWrapperThreeWide equalHeightChildren alumniTiles sectionTiles">
+                {landing_tiles}
+                    <div class="tile equalHeightChild">
+                        <div>
+                            {if landing_tiles:image != ""}
+                                <div class="tileImage">
+                                    {exp:imgsizer:size src="{landing_tiles:image}" alt="{landing_tiles:title}" height="130"}
+                                </div>
+                            {/if}
+                            {if landing_tiles:title != ""}
+                                <div class="tileTitle">{landing_tiles:title}</div>
+                            {/if}
+                            {if landing_tiles:tile_text != ""}
+                                <div class="tileText">{landing_tiles:tile_text}</div>
+                            {/if}
+                            {if landing_tiles:button_url != ""}
+                                <a href="{landing_tiles:button_url}" class="flatBlueButton">{landing_tiles:button_text}</a>
+                            {/if}
+                        </div>
+                    </div>
+                {/landing_tiles}
+            </div>
+
+        </div>
+    </section>
+
+    {if landing_body_copy != ""}
+        <section class="pageSectionBandWhite">
+            <div class="clearFix constrainedContent">
+
+                {landing_body_copy}
+
+            </div>
+        </section>
+    {/if}
+
+{/exp:channel:entries}

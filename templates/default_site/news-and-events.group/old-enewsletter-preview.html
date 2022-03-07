@@ -1,0 +1,16 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+    
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+    
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+    {embed="includes/.enewsletter-preview"}
+
+{/exp:channel:entries}

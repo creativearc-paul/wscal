@@ -1,0 +1,95 @@
+{preload_replace:root_channel="main-content"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="7987" dynamic="no"}
+{layout:set name="seo"}
+{exp:neoseo:meta_tags entry_id="{entry_id}"}
+{/layout:set}
+{/exp:channel:entries}
+
+{layout:set name="body_id"}{if segment_1 != ''}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage {if:elseif segment_2 == 'category'}categoryPage {if:elseif segment_2 != ''}{segment_2} {/if}{if segment_3 != ''}{segment_3} {/if}{/layout:set}
+
+<div class="equalHeightChildren">
+    <div class="primaryColumn clearFix equalHeightChild">
+        <div class="primaryColumnInner">
+
+            <a href="/resource-center/westminster-answers"><img src="/assets/graphics/WestminsterAnswers_banner.png" alt="Westminster Answers" /></a>
+            
+            <article role="article" class="clearFix primaryColumnHasAside">
+                <div class="bodyCopyPrimary">
+                    <div class="bodyCopyPrimaryInner">
+                    
+                        <div class="overviewSectionBlockTitle allUpperCase">Recent Episodes</div>
+
+                        {exp:channel:entries channel="resources" category="1333" dynamic="off" limit="3"}
+                            <div style="width: 235px;float: left;margin-bottom:10px;">
+                                {exp:imgsizer:size src="{resource_image}" alt="{title}" style="display:block;" width="160"}                     
+                            </div>
+                            <div style="width: 215px;float: left;margin-bottom:10px;" class="sansSerif">
+                                <a href="{title_permalink='/resource-center'}" class="indexNewsPostTitle">{title}</a><br />
+                                <em>{resource_display_date format="%F %j"}</em><br />
+                                <img src="/assets/graphics/watch-icon-color.png">&nbsp; <a href="{title_permalink='/resource-center'}" class="indexNewsPostTitle"> Watch Now</a>
+                            </div>
+                            <hr style="clear:left;margin:10px 0 10px 0;" />
+                        {/exp:channel:entries}
+
+                    </div>
+                </div>
+                <aside class="bodyCopySecondary">
+
+                    <div class="sansSerif goDeeper">
+                        <div class="goDeeperHeading">Go Deeper</div>
+                        <div class="goDeeperLinks">
+                            <div style="padding:10px 15px 0 15px"><iframe src="https://www.facebook.com/plugins/like.php?href={current_url}&amp;layout=button_count&amp;show_faces=false&amp;width=80&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;margin:0px;padding:0px;vertical-align:middle;" allowTransparency="true"></iframe></div>
+                        </div>
+
+                        <div class="goDeeperHeading">Subscribe</div>
+                        <div class="goDeeperLinks">
+                            <a href="/feeds/ftf-feed" class="socialIcon" rel="external"><img src="/assets/graphics/icon-feed.png" alt="subscribe">RSS Feed</a>
+                        </div>
+
+                        <div class="goDeeperHeading">Share</div>
+                        <div class="goDeeperLinks">
+                            <a href="https://www.facebook.com/sharer.php?u={current_url}&amp;t={title}" rel="external"><img src="/assets/graphics/icon-facebook.png" alt="Facebook" />&nbsp;&nbsp;Facebook</a>
+                            <a href="https://twitter.com/?status={current_url}" rel="external"><img src="/assets/graphics/icon-twitter.png" alt="Twitter" />&nbsp;&nbsp;Twitter</a>
+                        </div>
+
+                        <div class="goDeeperHeading">About</div>
+                        <div class="tinyText goDeeperText">
+                            {exp:channel:entries channel="page-blocks" dynamic="no" entry_id="7758" disable="categories|member_data|pagination"}{page_block_content}{/exp:channel:entries}
+                        </div>
+                    </div>
+
+                </aside>
+
+                <img src="/assets/graphics/spacer.png" alt="">
+            </article>
+            
+            <div class="pastEpisodes clearFix">
+                <div class="overviewSectionBlockTitle allUpperCase">Past Episodes</div>
+                {exp:channel:entries channel="resources" category="1333" dynamic="no" limit="200"}
+                    <div style="display:block;float:left;padding:5px 5px 10px 5px;margin-right: 10px; width:150px;height:65px; border-bottom: 1px dashed #ccc;" class="sansSerif">
+                        <a href="{title_permalink='/resource-center'}" class="indexNewsPostTitle sansSerif" style="font-size: 11px;">{title}</a><br />
+                        <em>{resource_display_date format="%F %j"}</em>
+                    </div>
+                {/exp:channel:entries}
+                <div class="clearFix">
+                    <a href="/resource-center/category/wesminster-answers" class="sansSerif allUpperCase tinyText">View More<span class="arrowDotRight"></span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<div class="secondaryColumn clearFix equalHeightChild">
+    <div class="secondaryColumnInner">
+        <aside class="clearFix">
+            {embed="resource-center/.aside-menu}
+        </aside>
+    </div>
+    <div class="secondaryWatermark"></div>
+</div>
+
+</div>

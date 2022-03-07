@@ -1,0 +1,155 @@
+body#page-product .shadowBox {
+    background: transparent url(http://wscal.edu/images/shopify/WSC_BookShadow_230_light.png) no-repeat center 207px;
+}
+body#page-product h3 {
+    color: #444444;
+    font-weight: bold;
+}
+h2 p,
+.productAuthor p{
+    margin: 0;
+    padding: 0;
+}
+p.product-description {
+    line-height: 12px;
+    margin-top: 0;
+}
+.featured-details {
+    padding-top: 20px;
+}
+.featured-details {
+    float: right;
+    padding-right: 20px;
+    width: 400px;
+}
+.featured-details p a.read-more {
+    background: transparent url(http://wscal.edu/images/shopify/read-more-button.jpg) no-repeat left top;
+    display: block;
+    height: 42px;
+    text-indent: -9999px;
+    width: 88px;
+}
+.featured-wrapper {
+    background: transparent url(http://wscal.edu/images/shopify/featured-product-watermark.jpg) repeat-y left -50px;
+}
+.featured-wrapper {
+    background: none;
+    border-left: none;
+    border-top: none;
+    height: auto;
+    padding-bottom: 20px;
+}
+.featured-wrapper {
+    background: #f7f5e9 url(http://wscal.edu/images/shopify/featured-product-watermark.jpg) no-repeat left bottom;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+    margin: 20px 0 20px -20px;
+    padding: 5px 20px 0 20px;
+    width: 680px;
+}
+.gallery-image {
+    background: transparent url(http://wscal.edu/images/shopify/WSC_BookShadow_150.png) no-repeat center 152px;
+    height: 173px;
+    position: relative;
+    text-align: center;
+}
+.gallery-image img {
+    display: block;
+    margin: 0 auto 0 auto;
+}
+.gallery-info {
+    font-size: 12px;
+    height: 50px;
+    line-height: 14px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.gallery-info a, .expressrex-title-cell a, .expressrex-title-cell {
+    color: #005581;
+    font-family: Helvetica,'Liberation Sans',FreeSans,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+}
+.gallery-info em {
+    font-size: 10px;
+    text-align: left;
+}
+.level-2-products .gallery-image {
+    background: transparent url(http://wscal.edu/images/shopify/WSC_BookShadow_115.png) no-repeat 4px 152px;
+    display: table-cell;
+    height: 185px;
+    max-height: 175px;
+    vertical-align: bottom;
+    width: 120px;
+}
+.level-2-products .gallery-image img {
+    bottom: 105px;
+    position: absolute;
+}
+.level-2-products .gallery-info {
+    height: 75px;
+}
+.level-3-products .gallery-info {
+    width: 210px;
+}
+.productAuthor {
+    font-size: 11px;
+    margin-bottom: 13px;
+}
+.product-price {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Helvetica,'Liberation Sans',FreeSans,sans-serif;;
+    text-transform: uppercase;
+}
+.listPrice {
+    font-size: 12px;
+    font-family: Helvetica,'Liberation Sans',FreeSans,sans-serif;;
+    text-transform: uppercase;
+}
+.shadowBox {
+    background: transparent url(http://wscal.edu/images/shopify/book-shadow.gif) no-repeat center 210px;
+    display: table-cell;
+    float: left;
+    padding-bottom: 25px;
+    padding-top: 10px;
+    text-align: center;
+    vertical-align: bottom;
+    width: 250px;
+}
+.shadowBox a img {
+    vertical-align: bottom;
+}
+#gallery {
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+#gallery .col4 {
+    border-right: none !important;
+}
+#gallery tr {
+    text-align: left;
+}
+#product-details {
+    margin-top: 20px;
+}
+#product-image {
+    margin-bottom: 20px;
+}
+#product-left {
+    display: block;
+    float: left;
+}
+#product-right {
+    float: right;
+    width: 400px;
+}
+#resourcePaginate #paginationContainer a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+#resourcePaginate a {
+    text-decoration: underline;
+}

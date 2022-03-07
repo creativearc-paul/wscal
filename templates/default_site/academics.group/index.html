@@ -1,0 +1,169 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+    
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+    
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}sectionLandingPage {if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+    
+    {layout:set name="page_header_band"}
+        <div class="sectionPageHeaderBand">
+            <img src='{exp:imgsizer:size src="{landing_banner_image}" width="1500" alt="{title}" justurl="true"}'
+                    srcset='{exp:imgsizer:size src="{landing_banner_image}" width="1500" height="400" justurl="true"} 1500w, 
+                            {exp:imgsizer:size src="{landing_banner_image}" width="1000" height="267" justurl="true"} 1000w, 
+                            {exp:imgsizer:size src="{landing_banner_image}" width="600" height="160" justurl="true"} 600w'
+                    sizes="100vw"
+                    alt="{title}"
+                    style="display:block;"/>
+            <div class="constrainedContent">
+            </div>
+        </div>
+    {/layout:set}
+    
+    {if landing_banner_text != ''}
+        <div class="blueBanner clearFix">
+            <div class="constrainedContent">{landing_banner_text}</div>
+        </div>
+    {/if}
+
+    {if landing_body_copy != ""}
+        <section class="pageSectionBandWhite">
+            <div class="clearFix constrainedContent">
+                {landing_body_copy}
+            </div>
+        </section>
+    {/if}
+
+{/exp:channel:entries}
+
+<div class="layoutFullWidth">
+    <div class="fullWidthColumn clearFix">
+
+        <div class="landingBlueBand academicProgramsCards">
+            <div class="constrainedContent clearFix">
+                <h2 class="fancyHeader">Academic Programs</h2>
+                <div class="programsCardsWrapper">
+                    <div class="programCard mdiv selected">
+                        <div class="programCardTitle">Master <span>of</span> Divinity</div>
+                        <div class="programUnits">3-4 years | 110 credits</div>
+                        <div><button class="programDetailsButton" data-program="mdiv">mdiv details</button></div>
+                    </div>
+                    <div class="programCard mabs">
+                        <div class="programCardTitle"><span>Master of Arts</span> Biblical Studies</div>
+                        <div class="programUnits">2 years | 72 credits</div>
+                        <div><button class="programDetailsButton" data-program="mabs">mabs details</button></div>
+                    </div>
+                    <div class="programCard mats">
+                        <div class="programCardTitle"><span>Master of Arts</span> Theological Studies</div>
+                        <div class="programUnits">2 years | 72 credits</div>
+                        <div><button class="programDetailsButton" data-program="mats">mats details</button></div>
+                    </div>
+                    <div class="programCard maht">
+                        <div class="programCardTitle"><span>Master of Arts</span> Historical Theology</div>
+                        <div class="programUnits">2-3 years | 72 credits</div>
+                        <div><button class="programDetailsButton" data-program="maht">maht details</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+    </div>
+</div>
+
+<div class="layoutFullWidth">
+    <div class="fullWidthColumn clearFix" style="background-color: #EFEDE3;">
+
+        <div class="constrainedContent clearFix">
+            <div>
+                <div id="mdiv" class="programDetails selected">
+                    {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="9705"}{page_block_content}{/exp:channel:entries}
+                </div>
+                <div id="mabs" class="programDetails">
+                    {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="9706"}{page_block_content}{/exp:channel:entries}
+                </div>
+                <div id="mats" class="programDetails">
+                    {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="9707"}{page_block_content}{/exp:channel:entries}
+                </div>
+                <div id="maht" class="programDetails">
+                    {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="9708"}{page_block_content}{/exp:channel:entries}
+                </div>
+            </div>
+        </div>
+
+        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+    </div>
+</div>
+
+<div class="layoutFullWidth" style="padding-top:70px;padding-bottom:80px;">
+    <div class="fullWidthColumn pageSectionBandWhite clearFix">
+        {exp:channel:entries channel="template_tile_set" dynamic="no" disable="member_data|pagination" entry_id="9704"}
+            <div class="constrainedContent clearFix">
+                
+                <h2 class="pageSectionTitleDouble"><span>{template_tile_set_header}</span></h2>
+            
+                <div>
+                    {template_tile_set_intro_text}
+                </div>
+            
+                <div class="landingCardsWrapper" style="margin-top: 50px;">
+                    {template_tile_set_tiles}
+                        <div class="landingCard" data-program="mdiv">
+                            <div class="ratioWrapper">
+                                <div>
+        
+                                    <div class="landingCardContent">
+        
+                                        <div class="landingCardFront">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img src="{template_tile_set_tiles:tile_front_image}" alt="">
+                                                        <h3>{template_tile_set_tiles:tile_title}</h3>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="landingCardBack" data-program="mdiv">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <img src="{template_tile_set_tiles:tile_back_image}" alt="">
+                                                        {template_tile_set_tiles:tile_text}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+        
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    {/template_tile_set_tiles}
+                </div>
+            
+            </div>
+
+            <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+        {/exp:channel:entries}
+    </div>
+</div>
+
+{exp:channel:entries channel="landing" disable="member_data|pagination" limit="1"}
+    <div class="layoutFullWidth">
+        <div class="fullWidthColumn clearFix">
+
+            {landing_call_to_action}
+                {embed="includes/.call-to-action-band" entry_id="{landing_call_to_action:entry_id}"}
+            {/landing_call_to_action}
+            
+            <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+        </div>
+    </div>
+{/exp:channel:entries}

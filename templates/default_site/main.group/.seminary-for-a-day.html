@@ -1,0 +1,178 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content|landing|faculty|personal-pages|products_books|students|newsletter" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+{if no_results}{redirect="404"}{/if}
+
+{layout:set name="seo"}
+{exp:neoseo:meta_tags entry_id="{entry_id}"}
+{/layout:set}
+
+{layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+{if channel_short_name == 'main-content'}
+
+{layout:set name="page_header_band"}
+<div class="pageHeaderBand">
+    <div class="constrainedContent">
+        <div class="pageHeaderBandTitle">{title}</div>
+    </div>
+</div>
+{/layout:set}
+
+<div class="layoutFullWidth clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="fullWidthColumn clearFix">
+            <article>
+
+                <header><h1>{title}</h1></header>
+                <div class="bodyCopyPrimary">
+                    <div class="bodyCopyPrimaryInner">
+                        {body_copy}
+                    </div>
+                </div>
+
+                <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+            </article>
+        </div>
+
+    </div>
+</div>
+
+{if:elseif channel_short_name == 'landing'}
+
+{layout:set name="page_header_band"}
+<div class="pageHeaderBand">
+    {exp:imgsizer:size src="{landing_banner_image}" width="2000" alt="{title}"}
+    <div class="constrainedContent">
+        <div class="pageHeaderBandTitle">{title}</div>
+    </div>
+</div>
+{/layout:set}
+
+<article>
+    <div class="layoutFullWidth clearFix">
+        <div class="constrainedContent clearFix">
+
+            <div class="fullWidthColumn clearFix sfadPage">
+                <h2>Upcoming Seminary for a Day Events</h2>
+                <ul>
+                    <li>Thursday, March 3, 2016</li>
+                    <li>Thursday, September 22, 2016</li>
+                    <li>Friday, January 13, 2017</li>
+                </ul>
+
+                <a href="{path='forms/request-a-visit'}" class="darkBlueButton">Register</a>
+            </div>
+        </div>
+    </div>
+    <div class="sfadPageCallout">
+        <div class="layoutFullWidth clearFix">
+            <div class="constrainedContent clearFix">
+
+                <div class="fullWidthColumn clearFix">
+                    <!--<div class="linesContainer"><span><h2>What is Seminary for A Day?</h2></span></div>-->
+                    <div class="linesOuter">
+                        <div class="linesInner"><h2><span>What is Seminary for A Day?</span></h2></div>
+                    </div>
+                    <p>Seminary for a Day (SFAD) is a free, campus-wide event that is all about prospective student visitors. You get to experience WSC first hand by being a WSC student for a day.</p>
+                    <div class="sectionLandingTiles clearFix tilesWrapper tilesWrapperFourWide">
+
+                        <div class="tile clearFix">
+                            <img src="/assets/graphics/sfad-visit.png">
+                            <div class="sfadTilesTxt">
+                                <a href="">Visit classes</a>
+                                <p>Study under our top pastor-scholars</p>
+                                <a href="">Tour the Campus</a>
+                                <p>Get to know your way around</p>
+                                <a href="">Morning Devotions</a>
+                                <p>Experience devotional life on campus through morning devotions and weekly prayer groups</p>
+                            </div>
+                        </div>
+                        <div class="tile clearFix">
+                            <img src="/assets/graphics/sfad-learn.png">
+                            <div class="sfadTilesTxt">
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                            </div>
+                        </div>
+                        <div class="tile clearFix">
+                            <img src="/assets/graphics/sfad-meet.png">
+                            <div class="sfadTilesTxt">
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                            </div>
+                        </div>
+                        <div class="tile clearFix">
+                            <img src="/assets/graphics/sfad-explore.png">
+                            <div class="sfadTilesTxt">
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                                <a href="#">subtitle</a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="layoutFullWidth clearFix">
+            <div class="constrainedContent clearFix">
+
+                <div class="fullWidthColumn clearFix">
+                    <div class="sfadConference">
+                        <div class="indexColumns clearFix equalHeightChildren">
+
+                            <div class="equalHeightChild " style="height: 370px;">
+                                <img src="/assets/graphics/sfadconference.jpg">
+                            </div>
+
+                            <div class="equalHeightChild" style="height: 370px;">
+                                <h2>Conference Seminary for a Day</h2>
+                                <p>
+                                    The January Seminary for a Day is held in conjunction with our annual faculty conference. Prospective students who attend Seminary for a Day are able to attend the faculty conference for free! SFAD is held on Friday during the day, and then prospective students are encouraged to attend the conference Friday evening and Saturday during the day. This is a great opportunity to hear many of our faculty teach on an exciting topic.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="sfadGettingThere">
+                        <h2>Getting to Seminary for a Day</h2>
+
+                        <h3>Register for Seminary for a Day Today!</h3>
+                        <p>Fill out the Request a Campus Visit form and we’ll be in touch about the details of your Seminary for a Day experience. Do you have any questions? Contact Kerri Ann Cruse at admissions@wscal.edu or 888/480.8474.</p>
+
+                        <h3>Explore WSC Travel Grant</h3>
+                        <p>We know that a campus visit with face-to-face interaction is invaluable to making a decision about seminary. We also know that travel isn’t cheap. Therefore WSC offers travel grants which provide up to $300 in financial assistance to serious prospective students who wish to experience WSC in person through a personal visit or a Seminary for a Day event. To participate, you need to schedule a campus visit and submit receipts for your travel expenses to the Office of Admissions during or shortly after your visit. We will reimburse you for up to $300 of your travel costs. Eligible expenses include: airfare, car rental and fuel, or mileage if personal vehicle is used, and lodging. Approval of the travel reimbursements is at the discretion of the Office of Admissions.</p>
+
+                        <h3>Lodging</h3>
+                        <p>We offer places to stay with current students, faculty or local church members for free for up to two nights. Staying with members of the seminary community allows you to get to know the community even better. Please email us at admissions@wscal.edu if this arrangement is of interest to you as you plan your campus visit. These accommodations can become scarce during SFAD, so let us know as early as possible. There are also a number of nice hotels near campus recommended by the seminary.</p>
+
+                        <h3>Transportation</h3>
+                        <p>If you are flying in we recommend that you rent a car, especially if you want to explore beautiful Southern California while you’re here. If you just need a ride to and from the San Diego airport and back and forth to campus, the Office of Admissions is happy to offer that for free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+</article>
+
+{/if}
+
+{/exp:channel:entries}

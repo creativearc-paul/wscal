@@ -1,0 +1,38 @@
+<?php
+ee()->output->set_header("HTTP/1.0 404 Not Found");
+?>
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" entry_id="2245" dynamic="no"}
+
+    {if no_results}{redirect="404"}{/if}
+    
+    {layout:set name="seo"}
+    {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+    
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+    
+    {layout:set name="page_header_band"}
+        <div class="pageHeaderBand">
+            <div class="constrainedContent">
+                <div class="pageHeaderBandTitle">{title}</div>
+            </div>
+        </div>
+    {/layout:set}
+    
+    <div class="layoutFullWidth">
+        <div class="fullWidthColumn clearFix">
+            <section class="pageSectionBandWhite">
+                <div class="clearFix constrainedContent">
+    
+                    {body_copy}
+    
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </div>
+            </section>
+        </div>
+    </div>
+
+{/exp:channel:entries}

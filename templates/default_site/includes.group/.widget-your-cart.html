@@ -1,0 +1,16 @@
+<div class="yourCartWidget">
+    {if segment_3 == 'details'}
+        <?php 
+            if(ee()->session->tracker[1]){
+                $segments = explode('/', ee()->session->tracker[1]);
+                // back to the page from whence we came
+                echo '<a href="/' . ee()->session->tracker[1] . '" style="float:left;">&larr; Back</a>';
+            }
+        ?>
+    {/if}
+    {if "{exp:cartthrob:total_items_count}" > 0}
+        <a href="/your-cart">Your Cart ({exp:cartthrob:total_items_count})</a>&nbsp;&nbsp;&nbsp;<a href="/your-information">Checkout</a>
+    {if:else}
+        <a href="/your-cart">Your Cart ({exp:cartthrob:total_items_count})</a>
+    {/if}
+</div>

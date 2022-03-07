@@ -1,0 +1,8 @@
+{exp:channel:entries channel="faculty" disable="member_data|pagination" dynamic="no" order_by="title" sort="asc"}
+    {parents channel="personal-pages"}
+        {if parents:count == 1}
+            <h2 style="border-bottom: 1px solid #076BA7">{title}</h2>
+        {/if}
+        <a href="{path='/personal-pages'}/{parents:url_title}">{parents:title}</a><br>
+    {/parents}
+{/exp:channel:entries}

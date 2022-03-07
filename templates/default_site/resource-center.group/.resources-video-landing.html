@@ -1,0 +1,98 @@
+<div class="resourceLandingBlock">
+    {exp:channel:entries channel="main-content" entry_id="2290" dynamic="no"}
+        <h1 class="sansSerif">{title}</h1>
+        <div class="resourceCenterBodyCopy">{body_copy}</div>
+    {/exp:channel:entries}
+
+    <div class="sansSerif smallHeading dottedBottomLine allUpperCase">Featured Resources<br><br></div>
+</div>
+
+<!-- FEATURED SERMONS -->
+<div class="resourceLandingBlock clearFix">
+    
+    <h2 class="allUpperCase">Morning Devotions <a href="/resource-center/category/morning-devotions" class="viewAllLink">View All Morning Devotions</a></h2>
+
+    <div style="width: 215px;float: right;" class="sansSerif">
+        {exp:channel:entries channel="resources" category="855" dynamic="no" limit="3"}
+            <a href="{title_permalink='/resource-center'}" class="featuredTitle">{title}</a>
+            {resource_summary}
+            {if  {count} != {total_results}}<div class="dottedBottomLine" style="width:100%;margin: 9px 0 5px 0">&nbsp;</div>{/if}
+        {/exp:channel:entries}
+    </div>
+
+    {exp:channel:entries channel="template_images" dynamic="off" entry_id="4324" disable="categories|member_data|pagination"}
+        {exp:imgsizer:size src="{template_image_file}" width="447" height="288" alt="{title}" style="display:block;" base_cache="{image-cache-location}"}
+    {/exp:channel:entries}
+
+</div><!-- end featuredSermons -->
+
+<!-- FEATURED INTERVIEWS -->
+<div class="resourceLandingBlock clearFix">
+
+    <h2 class="allUpperCase">Interviews <a href="/resource-center/category/interviews" class="viewAllLink">View All Interviews</a></h2>
+
+    <div class="sansSerif">					
+        {exp:channel:entries channel="template_images" dynamic="no" entry_id="4325" disable="categories|member_data|pagination"}
+            {exp:imgsizer:size src="{template_image_file}" width="216" height="139" alt="{title}" style="float:left;margin:5px 5px 0 0;" base_cache="{image-cache-location}"}
+        {/exp:channel:entries}
+
+        {exp:channel:entries channel="resources" category="857" dynamic="off" limit="1"}
+            <div class="featuredResourceItem" style="width: 218px;float: left;margin: 5px 5px 0 5px;">
+                <div class="featuredTitle"><a  class="featuredTitle" href="{title_permalink='/resource-center'}">{title}</a></div>
+                {resource_summary}<a class="mediumBlueForwardLink allUpper" href="{title_permalink='/resource-center'}">Continue</a>
+            </div>
+        {/exp:channel:entries}
+    </div>
+
+    {exp:channel:entries channel="resources" category="857" dynamic="no" limit="3" offset="1"}
+        <div class="featuredResourceItem sansSerif dottedBottomLine" style="width: 195px;float: left;margin: 5px 0 0 15px;">
+            <div class="featuredTitle">
+                <a  class="featuredTitle" href="{title_permalink='/resource-center'}">{title}</a>
+            </div>
+        </div>
+    {/exp:channel:entries}
+
+</div><!-- end featuredInterviews -->
+
+<!-- FEATURED ARTICLES -->
+<div class="resourceLandingBlock clearFix">
+
+    <h2 class="allUpperCase">Articles <a href="/resource-center/category/articles" class="viewAllLink">View All Articles</a></h2>
+
+    {exp:channel:entries channel="resources" category="856" dynamic="no" limit="6"}
+        <div class="featuredResourceArticle sansSerif dottedBottomLine">
+            <div class="featuredTitle">
+                <a href="{title_permalink='/resource-center'}" class="featuredTitle">{title}</a>
+            </div>
+            {categories show_group="6" backspace="2"}<a href="/resource-center/category/{category_url_title}" style="color:#524F4B;text-decoration: none;">{category_name}</a>, {/categories}
+        </div>
+    {/exp:channel:entries}
+
+</div><!-- end featuredArticles -->
+
+<div id="accessMoreResources" class="clearFix sansSerif">
+    <div style="border-bottom: 3px solid #D6D5C5;margin-bottom: 10px;">
+        <h2 style="font-size: 18px; font-weight: normal;color: #888888;">Access More Resources</h2>
+    </div>
+    <div id="otherResourceCatsMenu">
+        <div style="font-size: 10px;font-weight:bold;margin:0 0 5px 0">OTHER RESOURCE CATEGORIES</div>
+        <a href="/bookstore" class="dottedBottomLine">Books <img src="/images/graphics/related-arrow.gif" width="11" height="20" alt="" /></a>
+
+        <a href="/resource-center/category/lectures" class="dottedBottomLine">Lectures <img src="/images/graphics/related-arrow.gif" width="11" height="20" alt="" /></a>
+
+        <a href="/resource-center/category/wsc_conferences">WSC Conferences <img src="/images/graphics/related-arrow.gif" width="11" height="20" alt="" /></a>
+    </div>
+    <div style="float: left;  width: 215px; font-size: 11px;margin:0 25px 0 0;">
+        <div style="font-size: 10px;font-weight:bold;margin:0 0 5px 0">BROWSING TOOLS</div>
+        <a href="/resource-center/indices/topic" style="color: #165D88;font-weight: bold;text-decoration:none;font-size: 12px;">Topic Index</a>				
+        <p>Browse all of our resources by topic in our topic index.</p>
+        <a href="/resource-center/indices/scripture" style="color: #165D88;font-weight: bold;text-decoration:none;">Scripture Index</a><br />				
+        See which resources have been translated into other languages in our language index.
+    </div>
+    <div style="float: left;  width: 200px; font-size: 11px;margin:20px 0 0 0;">
+        <a href="/resource-center/indices/name" style="color: #165D88;font-weight: bold;text-decoration:none;font-size: 12px;">Name Index</a>
+        <p>Quickly find all of the resources by each of our professors in our name index.</p>
+        <a href="/resource-center/indices/date" style="color: #165D88;font-weight: bold;text-decoration:none;font-size: 12px;">Date Index</a>
+        <p>Interested in an alphabetical list of every resource we offer? </p>
+    </div>
+</div>

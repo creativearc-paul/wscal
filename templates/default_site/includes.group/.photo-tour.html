@@ -1,0 +1,34 @@
+<div class="cycleSlideshow">
+    <div class="cycle-slideshow"
+        id="cycle-1" 
+        data-cycle-slides="> div"
+        data-cycle-timeout="8000"
+        data-cycle-prev=".cycle-prev"
+        data-cycle-next=".cycle-next"
+        >
+        {exp:channel:entries channel="photo-tour" dynamic="no" disable="member_data|pagination"}
+            <div><div class="cycleSlideCaption sansSerif">{photo_tour_caption}</div>{exp:imgsizer:size src="{photo_tour_file}" width="800" alt="{photo_tour_caption}" title="{title}"}</div>
+        {/exp:channel:entries}
+    </div>
+</div>
+<div class="cycleSlideshowThumbs">
+    <div class="cycle-slideshow"
+        id="cycle-2" 
+        data-cycle-slides="> div"
+        data-cycle-timeout="8000"
+        data-cycle-prev=".cycle-prev"
+        data-cycle-next=".cycle-next"
+        data-cycle-fx="carousel"
+        data-cycle-carousel-visible="5"
+        data-cycle-carousel-fluid=true
+        data-allow-wrap="false"
+        >
+        {exp:channel:entries channel="photo-tour" dynamic="no" disable="member_data|pagination"}
+            <div>{exp:imgsizer:size src="{photo_tour_file}" height="80" alt="{photo_tour_caption}" title="{title}"}</div>
+        {/exp:channel:entries}
+    </div>
+    <div class="clearFix cycleNav sansSerif">
+        <a href="#" class="cycle-prev floatLeft">&laquo; Previous</a>
+        <a href="#" class="cycle-next floatRight">Next &raquo;</a>
+    </div>
+</div>

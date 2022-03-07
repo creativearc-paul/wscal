@@ -1,0 +1,138 @@
+<div style="padding: 25px;">
+    <h2>Member List</h2><hr>
+
+    <!--- Begin Member Search -->
+    <script type="text/javascript">
+        <!--
+        var searchFieldCount = 1;
+        function add_search_field(){
+            if (document.getElementById('search_field_1')){
+                // Find last search field
+                var originalSearchField = document.getElementById('search_field_1');
+                searchFieldCount++;
+                // Clone it, change the id
+                var newSearchField = originalSearchField.cloneNode(true);
+                newSearchField.id = 'search_field_' + searchFieldCount;
+                // Zero the input and change the names of fields
+                var newFieldInputs = newSearchField.getElementsByTagName('input');
+                newFieldInputs[0].value = '';
+                newFieldInputs[0].name = 'search_keywords_' + searchFieldCount;
+                var newFieldSelects = newSearchField.getElementsByTagName('select');
+                newFieldSelects[0].name = 'search_field_' + searchFieldCount;
+                // Append it and we're done
+                originalSearchField.parentNode.appendChild(newSearchField);
+            }
+        }
+        function delete_search_field(obj){
+            if (obj.parentNode && obj.parentNode.id != 'search_field_1'){
+                obj.parentNode.parentNode.removeChild(obj.parentNode)
+            }
+        }
+        //-->
+    </script>
+    <fieldset>
+        <legend>{lang:member_search}</legend>
+
+        {form:form_declaration:do_member_search}
+            <div class="formFieldWrapper">
+                <div id="search_field_1">
+                    <input type="text" name="search_keywords_1" placeholder="keywords" style="max-width: 250px;" />
+                    <select name="search_field_1" style="width: auto;">
+                        <option value='screen_name'>{lang:search_field}</option>
+                        <option value='screen_name'>{lang:mbr_screen_name}</option>
+                        <option value='email'>{lang:mbr_email_address}</option>
+                        <option value='url'>{lang:mbr_url}</option>
+                        <option value='location'>{lang:mbr_location}</option>
+                        {custom_profile_field_options}
+                    </select>
+                    <a href="#" onclick="add_search_field(); return false;">+</a>
+                    <a href="#" onclick="delete_search_field(this); return false;">-</a>
+                </div>
+            </div>
+            <div class="formFieldWrapper">
+                <div>
+                    <select name='search_group_id'>
+                        {group_id_options}
+                    </select>
+                </div>
+            </div>
+            <div class="formFieldWrapper">
+                <div>
+                    <input type="submit" class="profileCssButton" value='{lang:search}' />
+                </div>
+            </div>
+        </form>
+
+    </fieldset>
+
+    {form_declaration}
+        <fieldset>
+            <legend>Members</legend>
+            
+            <div class="formFieldWrapper">
+                <label for="group_id">{lang:show}</label>
+                <div>
+                    <select name="group_id" id="group_id" style="width: auto;">
+                        {group_id_options}
+                    </select>
+                </div>
+            </div>
+            <div class="formFieldWrapper">
+                <label for="order_by">{lang:sort}</label>
+                <div>
+                    <select name="order_by" id="order_by" style="width: auto;">
+                        {order_by_options}
+                    </select>
+                </div>
+            </div>
+            <div class="formFieldWrapper">
+                <label for="sort_order">{lang:order}</label>
+                <div>
+                    <select name="sort_order" id="sort_order" style="width: auto;">
+                        {sort_order_options}
+                    </select>
+                </div>
+            </div>
+            <div class="formFieldWrapper">
+                <label for="row_limit">{lang:rows}</label>
+                <div>
+                    <select name="row_limit" id="row_limit" style="width: auto;">
+                        {row_limit_options}
+                    </select>
+                </div>
+            </div>
+            <div class="formFieldWrapper">
+                <div>
+                    <input type="submit" class="profileCssButton" value='{lang:submit}' />
+                </div>
+            </div>
+
+        </fieldset>
+
+        <table id="memberlist" class="profileTable">
+            <thead>
+                <tr>
+                    <td>{lang:name}</td>
+                    <td>{lang:forum_posts}</td>
+                    <td>{lang:email_short}</td>
+                    <td>{lang:url}</td>
+                    <td>{lang:aol}</td>
+                    <td>{lang:icq}</td>
+                    <td>{lang:yahoo_short}</td>
+                    <td>{lang:join_date}</td>
+                    <td>{lang:last_visit}</td>
+                </tr>
+            </thead>
+            <tbody>
+                {member_rows}
+            </tbody>
+        </table>
+        {paginate}
+            <div class="paginationLinks clearfix">
+                {pagination_links}<br>
+                {current_page} {lang:of} {total_pages}
+            </div>
+        {/paginate}
+    </form>
+</div>
+

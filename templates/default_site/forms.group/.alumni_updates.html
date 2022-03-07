@@ -1,0 +1,182 @@
+<div>
+    <span class="requiredField">*</span>Required Fields
+</div>
+
+{exp:freeform:form form_id="9" return="/forms/submission-thank-you" form:id="alumni_form" required="salutation|first_name|last_name|email|phone|address|city|state|zip_code|country|captcha" require_captcha="yes"}
+
+<fieldset id="contactInfoFieldset">
+    <legend>Personal Information</legend>
+    <div class="formRow">
+        <div class="formFieldInput selectBox">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Salutation
+            </div>
+            <div class="select-style">
+                <select name="salutation" id="salutation">
+                    <option></option>
+                    <option value="Mr."> Mr.</option>
+                    <option value="Mrs."> Mrs.</option>
+                    <option value="Ms."> Ms.</option>
+                    <option value="Miss"> Miss</option>
+                    <option value="Rev."> Rev.</option>
+                    <option value="Dr."> Dr.</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="first_name">First Name</label>
+            </div>
+            <div>
+                <input type="text" id="first_name" name="first_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="last_name">Last Name</label>
+            </div>
+            <div>
+                <input type="text" id="last_name" name="last_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="email">Email</label>
+            </div>
+            <div>
+                <input type="text" id="email" name="email" value="" size="35"/>
+            </div>
+        </div>
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="phone">Phone Number</label>
+            </div>
+            <div>
+                <input id="phone" type="text" size="35" name="phone" value=""/>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="address">Address</label>
+            </div>
+            <div>
+                <input type="text" id="address" name="address" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="address_2">Address 2</label>
+            </div>
+            <div>
+                <input type="text" id="address_2" name="address_2" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="city">City</label>
+            </div>
+            <div>
+                <input type="text" id="city" name="city" value="" size="30"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="zip_code">Zip Code</label>
+            </div>
+            <div>
+                <input type="text" name="zip_code" id="zip_code" value="" size="30"/>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> US States
+            </div>
+            <div class="select-style">
+                {embed="forms/.state-dropdown"}
+                <label for="state" class="error" style="display:none;">Please choose one.</label>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Country
+            </div>
+            <div class="select-style">
+                {embed="forms/.country-dropdown"}
+                <label for="country" class="error" style="display:none;">Please choose one.</label>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <strong class="requiredField">*</strong> <label for="grad_year">Year of Graduation</label>
+            </div>
+            <div>
+                <input id="grad_year" type="text" size="40" name="grad_year" value="" required="required"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="latest_degree">Latest Degree</label>
+            </div>
+            <div>
+                <input id="latest_degree" type="text" size="40" name="latest_degree" value=""/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="current_vocation">Current Vocation</label>
+            </div>
+            <div>
+                <input id="current_vocation" type="text" size="40" name="current_vocation" value=""/>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset id="messageFieldset">
+    <legend>Updates &amp; Feedback</legend>
+
+    <div class="formField formComments" colspan="2">
+        <label for="update_news">Update/News</label><br/>
+        <textarea class="textarea" id="update_news" name="update_news" rows="6" cols="80"></textarea>
+    </div>
+    <div class="formField formComments" colspan="2">
+        <label for="additional_comments">Questions or comments?</label><br/>
+        <textarea class="textarea" id="additional_comments" name="additional_comments" rows="6" cols="80"></textarea>
+    </div>
+
+    {if freeform:captcha}
+    <div class="formRow">
+        <div class="formField formComments">
+            <div class="formFieldTitle">
+                <label for="captcha">Please enter the security code.</label>
+            </div>
+            <div class="formFieldInput">
+                <span style="margin-top: 5px;padding: 5px 5px;display: inline-block;">{freeform:captcha}</span><br>
+                <input type="text" id="captcha" name="captcha" required="required" size="40">
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <div class="formRow">
+        <div class="formField formComments">
+            {exp:channel:entries channel="page-blocks" dynamic="off" entry_id="8057" disable="categories|member_data|pagination"}{page_block_content}{/exp:channel:entries}
+        </div>
+    </div>
+
+    <div class="formRow">
+        <div>
+            <input type="submit" value="Submit" name="submit" id="submit" class="formButton"/>
+        </div>
+    </div>
+</fieldset>
+{/exp:freeform:form}

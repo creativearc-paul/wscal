@@ -1,0 +1,283 @@
+<table class="profileTable">
+    <tr>
+        <td valign='top'>
+            <table class="profileTable">
+                <tr>
+                    {if avatar}<td style="width:{avatar_width}px">
+                        <img src="{path:avatar_url}" width="{avatar_width}" height="{avatar_height}" alt="{name}" title="{name}" />
+                    </td>{/if}
+                    <td valign="top">
+                        <div>{name}</div>
+                        <div>{lang:member_group}&nbsp; <strong>{member_group}</strong>
+                        </div>
+                        <div>
+                            <a href="{search_path}">
+                                <strong>{lang:view_posts_by_member}</strong>
+                            </a>
+                        </div>
+                        {if ignore}
+                        <div>
+                            <strong>{ignore_link}</strong>
+                        </div>
+                        {/if}
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td valign='middle'>
+            <table class="profileTable">
+                <tr>
+                    <td>
+                        <div>
+                            {if photo}
+                            <div>
+                                <img src="{path:photo_url}" width="{photo_width}" height="{photo_height}" title="{name}" />
+                            </div>
+                            <div>{lang:my_photo}</div>
+                            {/if}
+                            {if not_photo}
+                            <div>
+                                <img src="{path:image_url}icon_profile.gif" title="{name}" alt="{lang:no_photo}" />
+                            </div>
+                            <div>{lang:no_photo_exists}</div>
+                            {/if}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<h2>{lang:communications}</h2>
+<table class="profileTable">
+    <tr>
+        <td valign='top'>
+            <table class="profileTable">
+            <tr>
+                <td>
+                    <div>{lang:url}</div>
+                </td>
+                <td>{if url}<a href="{url}" target="_blank">
+                        <img src="{path:image_url}icon_www.gif" alt="{url}" title="{url}" />
+                    </a>{/if}</td>
+            </tr>
+            <tr>
+                <td>
+                    <div>{lang:email}</div>
+                </td>
+                <td>
+                    {if accept_email}
+                    <a href="#" {email_console}>
+                        <img src="{path:image_url}icon_email.gif" alt="{lang:email_console}" title="{lang:email_console}" />
+                    </a>
+                    {/if}
+                </td>
+            </tr>
+            {if can_private_message}
+            <tr>
+                <td>
+                    <div>{lang:private_message}</div>
+                </td>
+                <td>
+                    <a href="{send_private_message}">
+                        <img src="{path:image_url}icon_pm.gif" alt="{lang:send_pm}" title="{lang:send_pm}" />
+                    </a>
+                </td>
+            </tr>
+            {/if}
+            <tr>
+                <td>
+                    <div>{lang:aol_im}</div>
+                </td>
+                <td>
+                    {if aol_im}
+                    <a href="#" {aim_console}>
+                        <img src="{path:image_url}icon_aim.gif" alt="{lang:mbr_aim_console}" title="{lang:mbr_aim_console}" />
+                    </a>
+                    {/if}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>{lang:icq}</div>
+                </td>
+                <td>
+                    {if icq}
+                    <a href="#" {icq_console}>
+                        <img src="{path:image_url}icon_icq.gif" alt="{lang:mbr_icq}" title="{lang:mbr_icq}" />
+                    </a>
+                    {/if}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>{lang:yahoo}</div>
+                </td>
+                <td>
+                    {if yahoo_im}
+                    <a href="{yahoo_console}" target="_blank">
+                        <img src="{path:image_url}icon_yim.gif" alt="{lang:mbr_yahoo}" title="{lang:mbr_yahoo}">
+                    </a>
+                    {/if}
+                </td>
+            </tr>
+            <tr>
+            <td>
+                <div>{lang:msn}</div>
+            </td>
+            <td>{msn_im}</td>
+        </td>
+    </tr>
+</table>
+
+<h2>{lang:personal_info}</h2>
+<table class="profileTable">
+    <tr>
+        <td>
+            <div>{lang:location}</div>
+        </td>
+        <td>
+            <div>{location}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:occupation}</div>
+        </td>
+        <td>
+            <div>{occupation}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:interests}</div>
+        </td>
+        <td>
+            <div>{interests}</div>
+        </td>
+    </tr>
+    {custom_profile_fields}
+</table>
+</td>
+<td>&nbsp;</td>
+<td valign='top'>
+    <table class="profileTable">
+    <tr>
+        <td colspan='2'>{lang:statistics}</td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:member_group}</div>
+        </td>
+        <td>
+            <div>{member_group}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:total_entries}</div>
+        </td>
+        <td>
+            <div>{total_entries}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:total_comments}</div>
+        </td>
+        <td>
+            <div>{total_comments}</div>
+        </td>
+        {if forum_installed}
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:total_forum_topics}</div>
+        </td>
+        <td>
+            <div>{total_forum_topics}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:total_forum_replies}</div>
+        </td>
+        <td>
+            <div>{total_forum_replies}</div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:total_forum_posts}</div>
+        </td>
+        <td>
+            <div>{total_forum_posts}</div>
+        </td>
+        {/if}
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:member_local_time}</div>
+        </td>
+        <td>{local_time format="%F %d, %Y &nbsp;%h:%i %A"}</td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:last_visit}</div>
+        </td>
+        <td>{last_visit format="%F %d, %Y &nbsp;%h:%i %A"}</td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:join_date}</div>
+        </td>
+        <td>{join_date format="%F %d, %Y &nbsp;%h:%i %A"}</td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:most_recent_entry}</div>
+        </td>
+        <td>{last_entry_date format="%F %d, %Y &nbsp;%h:%i %A"}</td>
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:most_recent_comment}</div>
+        </td>
+        <td>{last_comment_date format="%F %d, %Y &nbsp;%h:%i %A"}</td>
+        {if forum_installed}
+    </tr>
+    <tr>
+        <td>
+            <div>{lang:most_recent_forum_post}</div>
+        </td>
+        <td>{last_forum_post_date format="%F %d, %Y &nbsp;%h:%i %A"}</td>
+        {/if}
+    </tr>
+    <tr>
+    <td>
+        <div>{lang:birthday}</div>
+    </td>
+    <td>{birthday}</td>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<h2>{lang:bio}</h2>
+<table class="profileTable">
+    <tr>
+        <td>
+            {if bio != ''}
+            <div>{bio}</div>
+            {/if}
+            {if bio == ''}
+            <div>
+                <div>&nbsp;{lang:no_info_available}</div>
+            </div>
+            {/if}
+        </td>
+    </tr>
+</table>

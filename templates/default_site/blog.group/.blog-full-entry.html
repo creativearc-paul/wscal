@@ -1,0 +1,44 @@
+{!-- show individual post --}
+{exp:channel:entries channel="blog" disable="member_data|pagination" limit="1" require_entry="yes" track_views="one"}
+
+    {if no_results}{redirect="404"}{/if}
+    <header>
+        <h1 class="blogPostTitle">{title}</h1>
+        <h3>{entry_date format="%F %j, %Y"}</h3>
+        {if blog_attributed_author != '' && blog_attributed_author != '-'}
+            <div class="blogByline">
+                {blog_attributed_author}
+            </div>
+        {/if}
+    </header>
+
+    <div class="clearFix">
+
+        <div class="dottedBottomLine">
+            {blog_body_copy}<br>
+        </div>
+        <div class="blogCategoryLinks">
+            {categories show_group="3" backspace="2"}<a href="/blog/category/{category_url_title}" class="sansSerif">{category_name}</a>, {/categories}
+        </div>
+        <iframe src="https://www.facebook.com/plugins/like.php?href={title_permalink='blog'}&amp;layout=button_count&amp;show_faces=false&amp;width=80&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" class="fbLike" allowTransparency="true"></iframe>
+
+    </div>
+
+{/exp:channel:entries}
+
+<footer class="noPrint">
+    <div class="sansSerif blogPrevNext clearFix allUpperCase">
+         <div class="newerPosts">
+            {exp:channel:prev_entry channel="blog"}
+                <a href="{path='blog'}" class="prevArrow">Previous Post</a>
+                <a href="{path='blog'}">{title}</a>
+            {/exp:channel:prev_entry}
+        </div>
+        <div class="olderPosts">
+            {exp:channel:next_entry channel="blog"}
+                <a href="{path='blog'}" class="nextArrow">Next Post</a>
+                <a href="{path='blog'}">{title}</a>
+             {/exp:channel:next_entry}
+        </div>
+    </div>
+</footer>

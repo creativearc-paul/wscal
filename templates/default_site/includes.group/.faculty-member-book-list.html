@@ -1,0 +1,21 @@
+{if embed:cat_url_title != ''}
+<div class="tilesWrapperSixWide clearFix equalHeightChildren">
+    {exp:channel:entries channel="products_books" dynamic="no" category="{exp:wscal:get_catid_from_url_title group_id='11' cat_url_title='{embed:cat_url_title}' random}" disable="member_data" parse="inward"}
+        <div class="tile bookTile clearFix equalHeightChild">
+            <div class="bookTileImage">
+                <a href="/resources/wsc-bookstore/details/{url_title}" title="{product_book_title}">
+                    {if '{product_book_image}' != ''}
+                        {exp:imgsizer:size src="{product_book_image}" class="productBookImage" alt="{title}" height="160"}
+                    {if:else}
+                        {exp:imgsizer:size src="/assets/graphics/missing-cover.gif" class="productBookImage" alt="{title}" height="160"}
+                    {/if}
+                </a>
+            </div>
+            <div class="bookTileDescription">
+                <a href="/resources/wsc-bookstore/details/{url_title}" class="sansSerif">{product_book_title}</a><br>
+                <em>{categories backspace="2"}{category_name}, {/categories}</em>
+            </div>
+        </div>
+    {/exp:channel:entries}
+</div>
+{/if}

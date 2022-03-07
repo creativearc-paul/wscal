@@ -1,0 +1,43 @@
+<section class="callToActionBand">
+
+    {exp:channel:entries channel="call_to_action" dynamic="no" disable="member_data|pagination|categories|category_fields|relationships" entry_id="{embed:entry_id}" limit="1"}
+
+        <img src="{exp:imgsizer:size src="{call_to_action_background_image}" width="1300" alt="{title}" justurl="true"}" 
+                srcset="{exp:imgsizer:size src="{call_to_action_background_image}" width="1300" justurl="true"} 1300w, 
+                {exp:imgsizer:size src="{call_to_action_background_image}" width="800" justurl="true"} 800w, 
+                {exp:imgsizer:size src="{call_to_action_background_image}" width="500" justurl="true"} 500w" 
+                sizes="100vw" 
+                alt="{title}" 
+                class="callToActionImage" />
+
+        <div class="callToActionContent">
+            <div class="clearFix constrainedContent">
+                {if call_to_action_text_placement == 'left'}
+                    <div class="callToActionTextLeft">
+                {if:elseif call_to_action_text_placement == 'right'}
+                    <div class="callToActionTextRight">
+                {if:else}
+                    <div class="callToActionTextCentered">
+                {/if}
+
+                    <div class="callToActionText">
+                        {call_to_action_text}
+
+                        {call_to_action_button}
+                            {if call_to_action_button:button_link != ''}
+                                {if segment_1 == ''}
+                                    <a href="{call_to_action_button:button_link}" class="callToActionButton flatTanButton">{call_to_action_button:button_text}</a>
+                                {if:else}
+                                    <a href="{call_to_action_button:button_link}" class="callToActionButton flatBlueButton">{call_to_action_button:button_text}</a>
+                                {/if}
+                            {/if}
+                        {/call_to_action_button}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {/exp:channel:entries}
+
+</section>

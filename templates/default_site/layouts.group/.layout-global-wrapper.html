@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--base href="{site_url}"-->
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <!--[if IE]><link rel="shortcut icon" href="/favicon.ico"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    {layout:seo}
+
+    <link href='//fonts.googleapis.com/css?family=Oswald:300,400' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+        <link href='//fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Oswald:400' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!--link rel="stylesheet" href="/assets/css/min_css.css" media="all"-->
+
+    <link rel="stylesheet" href="/assets/css/jquery-ui2.css" media="all">
+    <link rel="stylesheet" href="/assets/css/prettyPhoto_316.css" media="all">
+    <link rel="stylesheet" href="/assets/css/global.css" media="all">
+    <link rel="stylesheet" href="/assets/css/base.css" media="all">
+    <link rel="stylesheet" href="/assets/css/cards.css" media="all">
+    <link rel="stylesheet" href="/assets/css/main-menu.css" media="all">
+    <link rel="stylesheet" href="/assets/css/cart.css" media="all">
+    <link rel="stylesheet" href="/assets/css/breaks.css" media="all">
+    <link rel="stylesheet" href="/assets/css/print.css" media="print">
+    <link rel="stylesheet" href="/assets/css/landing-11-2018.css" media="all">
+
+    <!-- yup, putting it here -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    {layout:member_head_includes}
+
+    {layout:head_includes}
+
+</head>
+<body id="{layout:body_id}" class="clearFix {layout:body_class}">
+    <div class="skipNavigation" aria-label="skip to content menu"><a href="#mainContent">Skip to main content</a></div>
+    <div class="pageOuterWrapper" id="pageTop">
+    
+        <nav class="primaryNavigation clearFix noPrint" id="mobileNavigation" aria-label="mobile navigation menu">
+            <ul class="mainMenu clearFix">
+                {exp:structure:nav start_from="/" show_depth="4" max_depth="4" add_unique_ids="yes" include_ul="no" css_id="mobileNavigation" css_class="mobileNavigation" add_level_classes="yes"}
+                <li><a href="/donate/give-to-wsc" class="faIcon iconHeart">Give</a></li>
+                <li><a href="/admissions/apply" class="faIcon iconCircleCheck">Apply</a></li>
+                <li><a href="/login" class="faIcon iconGear">Login</a></li>
+                <li class="headerMobileSearch">
+                    <form action="/search/results" method="post" id="mobileSearchForm">
+                        <input type="hidden" name="csrf_token" value="{csrf_token}" /> <!-- Important! -->
+                        <div class="shownFields clearFix">
+                            <label for="mobileKeywords"><input name="keywords" id="mobileKeywords" placeholder="Search" type="text" aria-label="Search Keywords"></label>
+                            <button type="submit"><span title="Submit">Search</span></button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <input type="checkbox" id="toggleNav" class="toggleNav" title="Toggle Mobile Nav" />
+        <label for="toggleNav"><span></span></label>
+
+        <div id="pageWrapper" class="pageWrapper clearFix">
+
+            <header class="banner clearFix">
+                <div class="bannerContent constrainedContent">
+
+                    <div class="utilityNav sansSerif noPrint">
+                        <a href="/donate/give-to-wsc" class="faIcon iconHeart">Give</a><a href="/admissions/apply" class="faIcon iconCircleCheck">Apply</a><a href="/login" class="faIcon iconGear">Login</a>
+                        <div class="headerDesktopSearch noPrint clearFix">
+                            <form action="/search/results" method="post" id="desktopSearchForm">
+                                <input type="hidden" name="csrf_token" value="{csrf_token}" /> <!-- Important! -->
+                                <input type="text" name="keywords" value="" title="Search" class="keywords sansSerif" placeholder="Search" /><input type="submit" value="go" class="searchGo" />
+                            </form>
+                        </div>
+                    </div>
+
+                    {if "{exp:cartthrob:total_items_count}" > 0}
+                        <div class="headerCartNav"><a href="/your-cart" class="faIcon" title="View Your Cart">Your Cart ({exp:cartthrob:total_items_count})</a></div>
+                    {/if}
+
+                    <a href="/" class="logo">
+                        {exp:imgsizer:size src="/assets/graphics/wsc_logo.png" alt="Westminster Seminary California" width="300" class="screenLogo"}
+						{exp:imgsizer:size src="/assets/graphics/wsc_print_logo.png" alt="Westminster Seminary California" width="300" class="printLogo"}
+                        <div class="tagline">For Christ, His Gospel, and His Church</div>
+                    </a>
+
+                    <nav class="primaryNavigation clearFix noPrint" id="desktopNavigation" aria-label="desktop navigation menu">
+                        {embed="includes/.mega-menus"}
+                    </nav>
+
+                </div>
+            </header>
+
+            <section class="main clearFix">
+
+                {layout:page_header_band}
+
+                {layout:contents}
+
+            </section><!-- #mainContainer -->
+            
+            <footer class="contentinfo clearFix">
+                <div class="constrainedContent clearFix sansSerif">
+
+                    <div class="footerUpper clearFix">
+                        <div class="siteName">{site_name}</div>
+                        <div class="footerUpperLeft clearFix">
+                            <div>
+                                <div>
+                                    1725 Bear Valley Parkway<br />Escondido, CA 92027
+                                </div>
+                                <div>
+                                    PHONE <a href="tel:18884808474">888.480.8474</a> (Toll-Free)<br />
+                                    PHONE <a href="tel:17604808474">760.480.8474</a>
+                                </div>
+                                <div>
+                                    QUESTIONS? <a href="/forms/contact-wsc">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footerUpperRight clearFix">
+                            <a href="/donate" class="footerButton">support wsc</a>
+                            <a href="/admissions/apply" class="footerButton">apply to wsc</a>
+                        </div>
+                    </div>
+                    <div class="footerLower clearFix noPrint">
+                        <div class="footerLowerLeft clearFix">
+                            <div>
+                                {embed="includes/.footer-nav"}
+                            </div>
+                        </div>
+                        <div class="footerLowerRight clearFix">
+                            <div>
+                                <div class="socialBlock clearFix">
+                                    <div>
+                                        <div class="serif footerConnectTitle">CONNECT</div>
+                                        <a href="https://www.facebook.com/westminstercalifornia" class="socialIcon" rel="external"><img src="/assets/graphics/icon-facebook.png" alt="Facebook" class="grayscale"></a>
+                                        <a href="https://twitter.com/wscal" class="socialIcon" rel="external"><img src="/assets/graphics/icon-twitter.png" alt="Twitter" class="grayscale"></a>
+                                        <a href="https://instagram.com/westminsterseminaryca" class="socialIcon" rel="external"><img src="/assets/graphics/icon-instagram.png" alt="Instagram" class="grayscale"></a>
+                                        <a href="https://wscal.populiweb.com" class="socialIcon" rel="external"><img src="/assets/graphics/icon-populi.png" alt="Populi" class="grayscale"></a>
+                                        <a href="https://www.youtube.com/user/wscalontheweb" class="socialIcon" rel="external"><img src="/assets/graphics/icon-you-tube.png" alt="You Tube" class="grayscale"></a>
+                                        <a href="https://www.linkedin.com/edu/school?id=35246&trk" class="socialIcon" rel="external"><img src="/assets/graphics/icon-linked-in.png" alt="Linked in" class="grayscale"></a>
+                                        <a href="https://vimeo.com/wscal" class="socialIcon" rel="external"><img src="/assets/graphics/icon-vimeo.png" alt="Vimeo" class="grayscale"></a>
+                                    </div>
+                                    <div>
+                                        <div class="serif footerConnectTitle">SUBSCRIBE</div>
+                                        <a href="/subscriptions" class="socialIcon"><img src="/assets/graphics/icon-feed.png" alt="" class="grayscale"><span>RSS Feeds</span></a>
+                                        <a href="/forms/subscribe" class="socialIcon"><img src="/assets/graphics/icon-email.png" alt="" class="grayscale"><span>Email</span></a>
+                                        <a href="/subscriptions" class="socialIcon"><img src="/assets/graphics/icon-podcast.png" alt="" class="grayscale"><span>WSC Podcasts</span></a>
+                                    </div>
+                                </div>
+                                <div class="copyright">
+                                    &copy; {current_time format="%Y"} Westminster Seminary California<br />
+                                    <div>Site Design: <a href="https://www.taylordesignworks.com" rel="external">Taylor Design Works</a></div>
+                                    <div>Developer: Creative Arc, <a href="https://creativearc.com"  rel="external">Minneapolis Web Design</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
+            
+        </div><!-- pageWrapper -->
+        
+    </div><!-- pageOuterWrapper -->
+
+    <!--script type="text/javascript" src="/assets/js/min_js.js"></script-->
+    
+    <!--[if lte IE 9]>
+        <script src="/assets/js/libs/flexibility.1.0.6.js"></script>
+        <script src="/assets/js/libs/performance.now.polyfill.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="/assets/js/libs/selectivizr.js"></script>
+        <script src="/assets/js/libs/html5shiv.min.js"></script>
+        <script src="/assets/js/libs/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/assets/js/libs/jquery.validate_1.15.0.min.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/jquery.prettyPhoto_3.1.6.min.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/jquery.cycle2_2.1.6.min.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/jquery.gray_1.5.0.min.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/galleria_1.4.5.min.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/jquery-ui.multidatespicker_1.6.3.js"></script>
+    <script type="text/javascript" src="/assets/js/validation_rules.js"></script>
+    <script type="text/javascript" src="/assets/js/cart.js"></script>
+    <script type="text/javascript" src="/assets/js/global.js"></script>
+	<script type="text/javascript" src="/assets/js/libs/eq.polyfilled.min.js"></script>
+	<script type="text/javascript" src="/assets/js/landing-11-2018.js"></script>
+
+    {google-analytics-code}
+
+    <script src="https://use.typekit.net/ssy6bph.js"></script>
+    <script>try{Typekit.load({});}catch(e){}</script>
+
+</body>
+</html>

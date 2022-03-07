@@ -1,0 +1,88 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+    {layout:set name="page_header_band"}
+        <div class="pageHeaderBand">
+            <div class="constrainedContent"><div class="pageHeaderBandTitle">{title}</div></div>
+        </div>
+    {/layout:set}
+
+    <div class="layoutFullWidth">
+        <div class="fullWidthColumn clearFix">
+            <section class="pageSectionBandWhite">
+                <div class="clearFix constrainedContent">
+    
+                    {body_copy}
+    
+                    {if entry_id == 2875}
+                        {embed="includes/.forms-listing"}
+                    {/if}
+    
+                    {!-- FREEFORM --}
+                    {if entry_id == 8030}
+                        {embed="forms/.contact_form"}
+                    {/if}
+                    
+                    {if entry_id == 8031}
+                        {embed="forms/.email_list"}
+                    {/if}
+                    
+                    {if entry_id == 8039}
+                        {embed="forms/.interlibrary_loan_books"}
+                    {/if}
+    
+                    {if entry_id == 8040}
+                        {embed="forms/.interlibrary_loan_articles"}
+                    {/if}
+                    
+                    {if entry_id == 8032}
+                        {embed="forms/.admissions_information_request"}
+                    {/if}
+                    
+                    {if entry_id == 8056}
+                        {embed="forms/.request_a_campus_visit"}
+                    {/if}
+
+                    {if entry_id == 9081}
+                        {embed="forms/.download_pdf_form"}
+                    {/if}
+
+                    {if entry_id == 9166}
+                        {embed="forms/.download-video-form"}
+                    {/if}
+                                        
+                    {if entry_id == 8036}
+                        {embed="forms/.alumni_questionnaire"}
+                    {/if}
+ 
+                    {if entry_id == 8035}
+                        {embed="forms/.alumni_updates"}
+                    {/if}
+                    
+                    {if entry_id == 8190}
+                        {embed="forms/.graduation-application"}
+                    {/if}
+                    
+                    {!-- NOT FREEFORM --}
+    
+                    {if entry_id == 8460}
+                        {embed="forms/.alumni-winter-refresher"}
+                    {/if}
+    
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </div>
+            </section>
+        </div>
+    </div>
+
+{/exp:channel:entries}

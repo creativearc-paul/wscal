@@ -1,0 +1,15 @@
+<div class="cycleSlideshow">
+        <div class="cycle-slideshow"
+             id="cycle-1"
+             data-cycle-slides="> div"
+             data-cycle-timeout="8000"
+             data-cycle-prev=".cycle-prev"
+             data-cycle-next=".cycle-next"
+        >
+            {exp:channel:entries channel="slideshow" disable="member_data|pagination" limit="1" entry_id="9964"}
+            {slides}
+            <div>{exp:imgsizer:size src="{slides:slide_image}" width="800" alt="{photo_tour_caption}" title="{title}"}</div>
+            {/slides}
+            {/exp:channel:entries}
+        </div>
+</div>

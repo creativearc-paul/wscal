@@ -1,0 +1,14 @@
+{include:toggle_js}
+{include:buddy_search_js}
+<h2>{include:member_search} {lang:list_title}</h2>
+{form:form_declaration:list}
+    <table class="profileTable">
+        <tr>
+            <th>{lang:screen_name}</th>
+            <th>{lang:member_description}</th>
+            <th><input type='checkbox' name='toggleflag' value="" onclick="toggle(this);" /></th>
+        </tr>
+        {include:list_rows}
+    </table>
+    <div>{form:add_button} {form:delete_button} </div>
+</form>

@@ -1,0 +1,78 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+
+    {layout:set name="seo"}
+        {exp:neoseo:meta_tags entry_id="{entry_id}"}
+    {/layout:set}
+
+    {layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+    {layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+    {layout:set name="page_header_band"}
+        <div class="pageHeaderBand">
+            <div class="constrainedContent"><div class="pageHeaderBandTitle">{title}</div></div>
+        </div>
+    {/layout:set}
+
+    <div class="layoutFullWidth">
+        <div class="fullWidthColumn clearFix">
+
+            <article class="constrainedContent clearFix">
+
+                {if main_body_aside_text != ''}
+                    <div class="bodyCopyPrimary">
+                {if:else}
+                    <div class="bodyCopyPrimary" style="width:100%;float:none;">
+                {/if}
+
+                    {if page_header_photo}
+                        <div class="pageHeaderPhoto">
+                            <img src="{exp:imgsizer:size src="{page_header_photo}" width="800" alt="{title}" justurl="true"}" 
+                            srcset="{exp:imgsizer:size src="{page_header_photo}" width="800" justurl="true"} 800w, 
+                            {exp:imgsizer:size src="{page_header_photo}" width="500" justurl="true"} 500w" 
+                            sizes="100vw" 
+                            alt="{title}" 
+                            style="display:block;" />
+                        </div>
+                    {/if}
+
+                    <div style="clear: both;">{embed="includes/.cart-breadcrumbs}</div>
+
+                    {if segment_1 == 'your-cart'}
+                        {embed="includes/.cart-contents" return="/your-cart"}
+                    {/if}
+
+                    {if segment_1 == 'your-information'}
+                        {embed="includes/.your-information"}
+                    {/if}
+
+                    {if segment_1 == 'shipping-options'}
+                        {embed="includes/.shipping-options"}
+                    {/if}
+
+                    {if segment_1 == 'review-and-payment'}
+                        {embed="includes/.review-and-payment"}
+                    {/if}
+
+                    {if segment_1 == 'order-complete'}
+                        {embed="includes/.order-complete"}
+                    {/if}
+
+                </div>
+
+                {if main_body_aside_text != ''}
+                    <aside class="bodyCopySecondary">
+                        {main_body_aside_text}
+                    </aside>
+                {/if}
+
+                <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+            </article>
+
+        </div>
+    </div>
+
+{/exp:channel:entries}

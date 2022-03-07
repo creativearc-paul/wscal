@@ -1,0 +1,62 @@
+<div>
+    {!-- ### FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+    {if segment_2 == 'category'}
+        <h1>{exp:channel:category_heading channel="blog"}Category &ndash; {category_name}{/exp:channel:category_heading}</h1><br>
+    {if:elseif segment_2 == 'contributor'}
+        <h1>Contributor: {embed:contributor}</h1><br>
+    {if:elseif segment_2 == 'archive'}
+        <h1>Archive &ndash; {segment_3}</h1><br>
+    {/if}
+</div>
+
+{exp:channel:entries
+    channel="blog"
+    show_future_entries="no"
+    {if embed:year} year="{embed:year}"{/if}
+    {if embed:year} month="{embed:month}"{/if}
+    {if embed:contributor}search:blog_attributed_author="={embed:contributor}"{/if}
+    {if segment_2 != 'category'}dynamic="no"{/if}
+    limit="10" 
+    {if segment_2 ~ "/^P\d+/"}
+        paginate_base="/{segment_1}" 
+    {if:elseif segment_2 == "contributor" || segment_2 == "archive" || segment_2 == "category"}
+        paginate_base="/{segment_1}/{segment_2}/{segment_3}" 
+    {/if}
+    }
+
+    <div class="clearFix blogListing dottedBottomLine">
+
+        <div class="blogListingPrimaryColumn">
+            <h2 class="blogListingTitle"><a href="{title_permalink='blog'}">{title}</a></h2>
+            <div class="blogListingByline">
+                {if blog_attributed_author != '' && blog_attributed_author != '-'}{blog_attributed_author}{/if}
+            </div>
+            <div class="blogListingSummary">
+                {exp:word_limit:limit_words total="50"}{blog_body_copy}{/exp:word_limit:limit_words}<br>
+                <a href="{title_permalink='blog'}" class="moreLink">CONTINUE</a>
+            </div>
+        </div>
+
+        <div class="blogListingSecondaryColumn">
+            <div class="blogListingDate">{entry_date format="%F %j, %Y"}</div>
+            <div class="blogListingCategoryLinks">
+                {categories show_group="3" backspace="2"}<a href="/blog/category/{category_url_title}" class="sansSerif">{category_name}</a>, {/categories}
+            </div>
+        </div>
+
+    </div>
+
+    {paginate}
+        <div class="blogPrevNext clearFix">
+            {pagination_links}
+                {previous_page}
+                    <div class="newerPosts"><a href="{pagination_url}" class="prevArrow">Newer Posts</a></div>
+                {/previous_page}
+                {next_page}
+                    <div class="olderPosts"><a href="{pagination_url}" class="nextArrow">Older Posts</a></div>
+                {/next_page}
+            {/pagination_links}
+        </div>
+    {/paginate}
+
+{/exp:channel:entries}

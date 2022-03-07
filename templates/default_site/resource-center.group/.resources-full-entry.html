@@ -1,0 +1,144 @@
+{!-- show individual post --}
+{exp:channel:entries channel="resources" track_views="one" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+    {if no_results}{redirect="404"}{/if}
+
+    {!--categories show_group="5"}
+        {if category_id == '1178'}
+            <a href="/resource-center/face-to-face"><img src="/assets/graphics/face-to-face-banner.gif" alt="" /></a>
+        {if:elseif category_id == '1179'}
+            <a href="/resource-center/office-hours"><img src="/assets/graphics/office-hours-banner.gif" alt="" /></a>
+        {/if}
+    {/categories--}
+
+    <h1>{title}</h1>
+
+    <div class="resourceByline">
+        {categories show_group="6" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+        {categories show_group="6" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;{/categories}
+
+        {resource_display_date format="%F %j, "} <a href="{path='/resource-center/year'}/{resource_display_date format='%Y'}">{resource_display_date format="%Y"}</a>
+        {categories show_group="2" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;{/categories}
+        {categories show_group="2" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+
+        {categories show_group="5" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;Type: {/categories}
+        {categories show_group="5" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+    </div>
+
+    <div class="tabs clearFix avTabs">
+        <div>
+            {resource_video}
+                {if resource_video_file != ''}
+                    <div id="tab-video" class="tabContent">
+                        <video controls style="width: 100%;height: auto;">
+                            <source type="video/mp4" src="{resource_video_file}">
+                            Your browser does not support the video element.
+                        </video>
+                    </div>
+                {/if}
+            {/resource_video}
+            {resource_audio}
+                {if resource_audio_file != ''}
+                    <div id="tab-audio" class="tabContent">
+                        <div style="color: #eeeeee;text-align: left;padding: 0px 0px 4px 25px;">{resource_audio_title}</div>
+                        <audio controls title="{resource_audio_title}" style="width: 100%;">
+                            <source src="{resource_audio_file}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                {/if}
+            {/resource_audio}
+        </div>
+
+        {if resource_video || resource_audio}
+            <ul class="clearFix">
+                {resource_video}
+                    {if resource_video_file != ""}
+                        <li><a name="tab-video"><span>WATCH</span></a></li>
+                    {/if}
+                {/resource_video}
+                {resource_audio}
+                    {if resource_audio_file != ""}
+                        <li><a name="tab-audio"><span>LISTEN</span></a></li>
+                    {/if}
+                {/resource_audio}
+            </ul>
+        {/if}
+    </div>
+
+    <div class="bodyCopyPrimary" style="width: 100%">
+
+        {resource_body_copy}
+
+            {if resource_footnote}
+                <hr style="margin: 20px 0 20px 0;"/>
+                <div class="smallText">
+                    {resource_footnote}
+                </div>
+            {/if}
+
+            {if resource_prev_pub_info}
+                <div class="smallText">
+                    {resource_prev_pub_info}
+                </div>
+            {/if}
+        {/exp:channel:entries}
+
+        <div class="smallText">
+            {exp:channel:entries channel="page-blocks" dynamic="off" entry_id="3417" disable="categories|member_data|pagination"}{page_block_content}{/exp:channel:entries}
+        </div>
+
+{exp:channel:entries channel="resources" track_views="one" disable="member_data|pagination" limit="1" require_entry="yes"}
+
+        {exp:tagger:tags entry_id="{entry_id}" limit="1"}{if {count} > 0}<div class="resourceTags"><span>TAGS:</span> {/if}{/exp:tagger:tags}
+        {exp:tagger:tags entry_id="{entry_id}" backspace="2"}<a href="/resource-center/tag/{tagger:urlsafe_tagname}">{tagger:tag_name}</a>, {/exp:tagger:tags}
+        {exp:tagger:tags entry_id="{entry_id}" limit="1"}{if {count} > 0}</div>{/if}{/exp:tagger:tags}
+
+        <div class="goDeeper clearFix">
+            <div>
+                <iframe src="//www.facebook.com/plugins/like.php?href={current_url}&amp;layout=button_count&amp;show_faces=false&amp;width=80&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;margin:0px;padding:0px;vertical-align:middle;" allowTransparency="true"></iframe>
+                {if resource_video || resource_audio || resource_attachments}
+                    <br><br>
+                    <div class="goDeeperHeading">Download</div>
+
+                    {resource_video}
+                        {if resource_video_file != ""}
+                            <a href="{resource_video_file}"><img src="/assets/graphics/watch-icon-color.png" alt="watch" />&nbsp;&nbsp;Video File</a>
+                        {/if}
+                    {/resource_video}
+
+                    {resource_audio}
+                        {if resource_audio_file != ""}
+                            <a href="{resource_audio_file}"><img src="/assets/graphics/listen-icon-color.png" alt="listen" />&nbsp;&nbsp;Audio File</a>
+                        {/if}
+                    {/resource_audio}
+
+                    {resource_attachments}
+                        <a href="{resource_attachment_file}"><img src="/assets/graphics/read-icon-color.png" alt="read" />&nbsp;&nbsp;{resource_attachment_title}</a>
+                    {/resource_attachments}
+                {/if}
+            </div>
+            <div>
+                <div class="goDeeperHeading">Share</div>
+                <div class="goDeeperLinks">
+                    <a href="https://www.facebook.com/sharer.php?u={current_url}&amp;t={title}" rel="external"><img src="/assets/graphics/icon-facebook.png" alt="Facebook" />&nbsp;&nbsp;Facebook</a>
+                    <a href="https://twitter.com/?status={current_url}" rel="external"><img src="/assets/graphics/icon-twitter.png" alt="Twitter" />&nbsp;&nbsp;Twitter</a>
+                </div>
+            </div>
+
+            {if similar_resources}
+                <div>
+                    <div class="goDeeperHeading">Similar</div>
+                    <div class="goDeeperLinks">
+                        {similar_resources show_expired="yes" limit="10"}
+                            <a href="/resource-center/{url_title}">{!--categories show_group="5"}<span style="font-weight: bold;color:#005581;text-transform: uppercase;font-size: 10px;">{category_name}</span> {/categories--} {title}</a>
+                        {/similar_resources}
+                    </div>
+                </div>
+            {/if}
+
+        </div>
+
+    </div>
+
+{/exp:channel:entries}

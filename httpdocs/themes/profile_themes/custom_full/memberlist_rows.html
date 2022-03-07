@@ -1,0 +1,31 @@
+<tr>
+    <td><a href="{path:profile}">{name}</a></td>
+    <td>{total_combined_posts}</td>
+    <td>
+        {if accept_email}
+            <a href="#" {email_console}><img src="{path:image_url}icon-email.png" alt="{lang:email_console}" title="{lang:email_console}" /></a>
+        {/if}
+    </td>
+    <td>
+        {if url}
+            <a href="{url}" target="_blank"><img src="{path:image_url}icon_www.gif" alt="{url}" title="{url}" /></a>
+        {/if}
+    </td>
+    <td>
+        {if aol_im}
+            <a href="#" {aim_console}><img src="{path:image_url}icon_aim.gif" alt="{lang:mbr_aim_console}" title="{lang:mbr_aim_console}" /></a>
+        {/if}
+    </td>
+    <td>
+        {if icq}
+            <a href="#" {icq_console}><img src="{path:image_url}icon_icq.gif" alt="{lang:mbr_icq}" title="{lang:mbr_icq}" /></a>
+        {/if}
+    </td>
+    <td>
+        {if yahoo_im}
+            <a href="{yahoo_console}" target="_blank"><img src="{path:image_url}icon_yim.gif" alt="{lang:mbr_yahoo}" title="{lang:mbr_yahoo}" /></a>
+        {/if}
+    </td>
+    <td>{join_date format="%m/%d/%Y"}</td>
+    <td>{last_visit format="%m/%d/%Y"}</td>
+</tr>

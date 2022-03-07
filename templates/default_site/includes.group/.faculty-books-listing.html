@@ -1,0 +1,32 @@
+<h1 class="facultyBooksListing sansSerif">Faculty Books</h1>
+
+<div class="facultyBooksListing clearFix bottomBorder">
+    <div class="dottedHeader">
+        Filter by Author<a href="/resources/wsc-bookstore/faculty-books" class="viewAllLink">View All Authors</a>
+    </div>
+    {exp:channel:categories channel="products_books" style="linear"}
+        <a href="/resources/wsc-bookstore/faculty-books/{category_url_title}" class="bookstoreAuthor" {if segment_4 == category_url_title} style="font-weight:bold;color:#F5A01A" {/if}>{category_name}</a>
+    {/exp:channel:categories}
+</div><br>
+
+<div class="facultyBooksListing">
+    <div class="bookTiles clearFix">
+        {exp:channel:entries channel="products_books" dynamic="no" category="{exp:wscal:get_catid_from_url_title group_id='11' cat_url_title='{segment_4}' random}" disable="member_data" parse="inward"}
+            <div class="bookTile clearFix">
+                <span class="bookTileImage">
+                    <a href="/resources/wsc-bookstore/details/{url_title}" title="{product_book_title}">
+                        {if '{product_book_image}' != ''}
+                            {exp:imgsizer:size src="{product_book_image}" class="productBookImage" alt="{title}" height="160"}
+                        {if:else}
+                            {exp:imgsizer:size src="/assets/graphics/missing-cover.gif" class="productBookImage" alt="{title}" height="160"}
+                        {/if}
+                    </a>
+                </span>
+                <div class="bookTileDescription">
+                    <a href="/resources/wsc-bookstore/details/{url_title}" class="sansSerif">{product_book_title}</a><br>
+                    <em>{categories backspace="2"}{category_name}, {/categories}</em>
+                </div>
+            </div>
+        {/exp:channel:entries}
+    </div>
+</div>

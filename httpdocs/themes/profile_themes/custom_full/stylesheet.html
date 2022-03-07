@@ -1,0 +1,248 @@
+.iframe {
+    border: 1px solid #6666CC;
+}
+.memberPageContentHeader{
+    padding: 25px;
+}
+
+.memberPagesMenuHeader{
+    border-bottom: 1px solid #666666;
+    font-weight: bold;
+    margin: 15px 0 5px 0;
+}
+.memberPagesMenuHeader:first-child{
+    margin-top: 0;
+}
+.profileCssButton,
+button.buttons {
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    color: #333333;
+    display: inline-block;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 0 2em 0 2em;
+    text-decoration: none;
+}
+.profileCssButton:hover,
+.profileCssButton.here,
+button.buttons:hover,
+button.buttons.here {
+    background-color: #aaaaaa;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.profileCssButton:disabled,
+button.buttons:disabled {
+    background-color: #f3f3f3;
+    color: #eeeeee;
+    cursor: default;
+    opacity: 0.5;
+}
+.profileForm .fieldCellOne{
+    float: left;
+    font-weight: bold;
+    padding: 0 10px 0 0;
+    vertical-align: top;
+    width: 100%;
+}
+.profileForm .fieldCellTwo{
+    float: left;
+    vertical-align: top;
+    width: 100%;
+}
+.profileForm .fieldCellTwo input,
+.profileForm .fieldCellTwo textarea{
+    width: 100%;
+}
+.profileForm .fieldCellTwo textarea{
+    height: 100px;
+}
+.profileTable{
+    margin: 10px 0 10px 0;
+    width: 100%;
+}
+.profileTable td{
+    border: none;
+    padding: 7px;
+    vertical-align: top;
+}
+.profileTable th{
+    background-color: #f8f8f8;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 7px;
+    vertical-align: bottom;
+}
+.requiredField:before{
+    content: "*  ";
+}
+.spellchecked_word{
+    background-color: #fff;
+    border-bottom: 1px dashed #ff0000;
+    cursor: pointer;
+}
+.spellchecked_word_selected{
+    background-color: #ADFF98;
+    cursor: pointer;
+}
+.wordSuggestion{
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 4px;
+}
+.wordSuggestion a, 
+.wordSuggestion a:active{
+    cursor: pointer;
+}
+
+#profileBreadCrumbs {
+    clear: both;
+    height: 18px;
+    line-height: 18px;
+    list-style: none;
+    margin: 0 0 20px 0;
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+}
+#profileBreadCrumbs li {
+    float: left;
+}
+#profileBreadCrumbs li span {
+    background-color: #ffffff;
+    cursor: default;
+    display: block;
+    float: left;
+    padding: 0 0 0 32px;
+    position: relative;
+}
+#profileBreadCrumbs li span a{
+    text-decoration: none;
+}
+#profileBreadCrumbs li:first-child span {
+    padding-left: 0;
+}
+#profileBreadCrumbs li:last-child span {
+    cursor: default;
+    padding-right: 15px;
+}
+#profileBreadCrumbs li.activeBreadcrumb span {
+    background-color: #eaeaea;
+}
+#profileBreadCrumbs li.activeBreadcrumb span:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+#profileBreadCrumbs li.activeBreadcrumb span:hover:after {
+    border-left-color: #eaeaea !important;
+}
+#profileBreadCrumbs li.activeBreadcrumb span:after {
+    border-left-color: #eaeaea;
+}
+#profileBreadCrumbs li.arrowed span:after {
+    border-bottom: 40px solid transparent;
+    border-left: 19px solid #ffffff;
+    border-top: 40px solid transparent;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 100%;
+    margin-top: -40px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    z-index: 2;
+}
+#profileBreadCrumbs li.arrowed span:before {
+    border-bottom: 40px solid transparent;
+    border-left: 19px solid #c6c6c4;
+    border-top: 40px solid transparent;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 100%;
+    margin-left: 2px;
+    margin-top: -40px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    z-index: 1;
+}
+#profileBreadCrumbs li.arrowed.currentProfilePageBreadcrumb span:after {
+    border-left: 19px solid #F4F3F0;
+}
+#profileBreadCrumbs li.currentBreadcrumb span {
+    background-color: #f4f4f4;
+}
+#profileGlobalMenu{
+    margin: 15px 0 15px 0;
+}
+
+.memberNav{
+    list-style: none;
+    margin: 5px 0 0 0;
+    width: 100%;
+    padding: 0;
+}
+.memberNav a{
+    display: block;
+    line-height: normal;
+    text-decoration: none;
+    width: 100%;
+    padding: 5px 5px 5px 10px;
+}
+.memberNav a:hover{
+    background-color: #f1f1f1;
+}
+.memberNav ul a{
+    padding-left: 20px;
+}
+.memberNav li{
+    display: inline;
+    float: left;
+    width: 100%;
+}
+.memberNav li ul{
+    display: none;
+    list-style: none;
+    margin: 5px 0 0 0;
+    width: 100%;
+    padding: 0;
+}
+.memberNav li.here ul,
+.memberNav li.parent-here ul{
+    display: inline;
+}
+
+/**
+* ////////////////////////////////////////////////////////////////
+*  WIDE 600px AND ABOVE
+* ////////////////////////////////////////////////////////////////
+*/
+@media only screen and (min-width: 600px) {
+    .profileForm .fieldCellOne{
+        max-width: 25%;
+        text-align: right;
+    }
+    .profileForm .fieldCellTwo{
+        max-width: 75%;
+    }
+    .profileForm .fieldCellTwo input{
+        width: 300px;
+    }
+    .fieldWrapper {
+        margin: 5px 0 5px 0;
+    }
+}
+
+/**
+* ////////////////////////////////////////////////////////////////
+*  MAXIMUM 930px AND ABOVE
+* ////////////////////////////////////////////////////////////////
+*/
+@media only screen and (min-width: 930px) {
+
+}

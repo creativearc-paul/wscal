@@ -1,0 +1,172 @@
+{layout="layouts/.layout-global-wrapper"}
+
+{exp:channel:entries channel="main-content" disable="member_data|pagination" limit="1" entry_id="148"}
+
+{!--if no_results}{redirect="404"}{/if--}
+
+{layout:set name="seo"}
+{exp:neoseo:meta_tags entry_id="{entry_id}"}
+{/layout:set}
+
+{layout:set name="body_id"}{if segment_1 == '' || segment_1 == 'home'}index{if:else}{segment_1}{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage{/if} {segment_2} {segment_3}{/layout:set}
+
+{if channel_short_name == 'main-content'}
+
+{layout:set name="page_header_band"}
+{if page_header_photo}
+<div class="sectionPageHeaderBand">
+    <img src='{exp:imgsizer:size src="{page_header_photo}" width="1500" height="400" alt="{title}" justurl="true"}'
+         srcset='{exp:imgsizer:size src="{page_header_photo}" width="1500" height="400" justurl="true"} 1500w,
+                                    {exp:imgsizer:size src="{page_header_photo}" width="1000" height="267" justurl="true"} 1000w,
+                                    {exp:imgsizer:size src="{page_header_photo}" width="600" height="160" justurl="true"} 600w'
+         sizes="100vw"
+         alt="{title}"
+         style="display:block;" />
+    <div class="constrainedContent"><div class="sectionPageHeaderBandTitle">{title}</div></div>
+</div>
+{if:else}
+<div class="pageHeaderBand">
+    <div class="constrainedContent"><div class="pageHeaderBandTitle">{title}</div></div>
+</div>
+{/if}
+{/layout:set}
+
+<div class="layoutWideLeftColumn">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+            <article class="clearFix">
+
+                <div class="bodyCopyPrimary"{if main_body_aside_text == ''} style="width:100%;float:none;"{/if}>
+
+                    {body_copy}
+               
+                {if entry_id == 25}
+                {embed="includes/.faculty-listing-tiles"}
+                {/if}
+
+                {if entry_id == 7926}
+                {embed="includes/.staff-listing"}
+                {/if}
+
+                {if entry_id == 17}
+                {embed="includes/.photo-tour"}
+                {/if}
+
+                {if entry_id == 43}
+                {embed="includes/.student-listing"}
+                {/if}
+
+                {if entry_id == 8044}
+                {embed="includes/.past-student-listing"}
+                {/if}
+
+        </div>
+
+        {if main_body_aside_text != ''}
+        <aside class="bodyCopySecondary">
+            {main_body_aside_text}
+        </aside>
+        {/if}
+
+        <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+        </article>
+    </div>
+
+    <div class="rightColumn">
+        <aside class="clearFix">
+
+            <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+            <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="1" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+
+            <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+            <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+
+        </aside>
+    </div>
+
+</div>
+
+{main_call_to_action}
+{embed="includes/.call-to-action-band" entry_id="{main_call_to_action:entry_id}"}
+{/main_call_to_action}
+
+</div>
+
+{if:elseif channel_short_name == 'students'}
+
+{layout:set name="page_header_band"}
+<div class="pageHeaderBand">
+    <div class="constrainedContent"><div class="pageHeaderBandTitle">Meet A Student/Graduate</div></div>
+</div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+            <article class="clearFix">
+                <header><h1>{student_first_name} {student_last_name}</h1></header>
+                {if student_video}
+                <div class="clearFix">
+                    <video controls title="{title}" style="width:100%;height:auto;" poster="{student_photo}" class="studentVideo">
+                        <source type="video/mp4" src="{student_video}">
+                        Your browser does not support the video element.
+                    </video>
+                </div>
+                {if:else}
+                <div class="studentPhoto">{exp:imgsizer:size src="{student_photo}" width="800" alt="{title}"}</div>
+                {/if}
+
+                {if student_education != '' || student_contact_info != '' || student_current_endeavors != '' || student_additional_bio_info != ''}
+                <div class="bodyCopyPrimary">
+                    {if:else}
+                    <div class="bodyCopyPrimary" style="width:100%;float:none;">
+                        {/if}
+
+                        <div class="studentInterview">{student_interview}</div>
+                        <a class="moreLink" href="/{segment_1}/{segment_2}/{segment_3}">View More Profiles</a>
+
+                    </div>
+
+                    {if student_education != '' || student_contact_info != '' || student_current_endeavors != '' || student_additional_bio_info != ''}
+                    <aside class="bodyCopySecondary">
+                        {if student_education != ''}
+                        <div class="allUpperCase studentAsideHeader">Education</div>
+                        <div class="sansSerif studentAsideTextBlock">{student_education}</div>
+                        {/if}
+                        {if student_contact_info != ''}
+                        <div class="allUpperCase studentAsideHeader">Contact</div>
+                        <div class="sansSerif studentAsideTextBlock">{student_contact_info}</div>
+                        {/if}
+                        {if student_current_endeavors != ''}
+                        <div class="allUpperCase studentAsideHeader">Current Endeavors</div>
+                        <div class="sansSerif studentAsideTextBlock">{student_current_endeavors}</div>
+                        {/if}
+                        {if student_additional_bio_info != ''}
+                        <div class="allUpperCase studentAsideHeader">Additional Info</div>
+                        <div class="sansSerif studentAsideTextBlock">{student_additional_bio_info}</div>
+                        {/if}
+                    </aside>
+                    {/if}
+
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+            </article>
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+                <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="5" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+
+                <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+            </aside>
+        </div>
+
+    </div>
+</div>
+{/if}
+
+{/exp:channel:entries}

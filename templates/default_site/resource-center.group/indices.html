@@ -1,0 +1,105 @@
+{preload_replace:root_channel="main-content"} {!-- ### CHANNEL FOR MAIN LANDING ENTRY, I.E. STRUCTURE ROOT PAGE ### --}
+{preload_replace:landing_entry_id="2290"} {!-- ### Entry ID for main structure page ### --}
+{preload_replace:entry_channel="resources"} {!-- ### CHANNEL FOR INDIVIDUAL POST ### --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{!-- ### SEO FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+{exp:channel:entries channel="{root_channel}" disable="member_data" limit="1" entry_id="{landing_entry_id}" dynamic="no"}
+    {layout:set name="seo"}
+        {if segment_2 == "category"}
+            <title>{exp:channel:category_heading channel="{entry_channel}"}{category_name}{/exp:channel:category_heading} </title>
+            <meta name="description" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+            <meta name="keywords" content="{exp:channel:category_heading channel='{entry_channel}'}{category_description}{/exp:channel:category_heading} " />
+        {if:else}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/if}
+    {/layout:set}
+{/exp:channel:entries}
+
+{layout:set name="body_id"}{if segment_1 != ""}{segment_1}{if:else}index{/if}{/layout:set}
+{layout:set name="body_class"}{if !segment_2}topLevelPage {if:elseif segment_2 == "category"}categoryPage {if:elseif segment_2 != ""}{segment_2} {/if}{if segment_3 != ""}{segment_3} {/if}{/layout:set}
+
+{layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent"><div class="pageHeaderBandTitle">Resource Center</div></div>
+    </div>
+{/layout:set}
+
+<div class="layoutWideLeftColumn clearFix">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+
+            <article class="clearFix">
+
+                <header>
+                    {if segment_3 == "topic"}
+                        <h1>Resource Topics</h1>
+                    {if:elseif segment_3 == "name"}
+                        <h1>Resource Authors</h1>
+                    {if:elseif segment_3 == "scripture"}
+                        <h1>Scripture</h1>
+                    {if:elseif segment_3 == "date"}
+                        <h1>Resource Dates</h1>
+                    {/if}
+                </header>
+
+                <div class="resourceIndexTabs clearFix">
+
+                    <ul class="clearFix tabList">
+                        <li {if segment_3=="topic"} class="active"{/if}><a href="/resource-center/indices/topic"><span>TOPIC</span></a></li>
+                        <li {if segment_3=="name"} class="active"{/if}><a href="/resource-center/indices/name"><span>NAME</span></a></li>
+                        <li {if segment_3=="scripture"} class="active"{/if}><a href="/resource-center/indices/scripture"><span>SCRIPTURE</span></a></li>
+                        <li {if segment_3=="date"} class="active"{/if}><a href="/resource-center/indices/date"><span>DATE</span></a></li>
+                    </ul>
+
+                    <!-- TOPIC -->
+                    <div id="tabContentTopic" class="resourceIndexTabContent clearFix" {if segment_3=="topic"}style="display:block;"{if:else}style="display:none;"{/if}>
+                        {exp:channel:categories channel="resources" category_group="3" id="tabContentTopicUl" show_empty="no" restrict_channel="yes"}<a href="/{segment_1}/category/{category_url_title}">{category_name}</a>{/exp:channel:categories}
+                        <div>
+                            <div class="serif">FILTER <em>by</em> NAME</div>
+                            <div class="filterByNameList">
+                                {exp:channel:categories channel="resources" category_group="6" id="filterByNameListUl" show_empty="no" restrict_channel="yes"}<a href="/{segment_1}/category/{category_url_title}">{category_name}</a>{/exp:channel:categories}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--NAME-->
+                    <div id="tabContentName" class="resourceIndexTabContent clearFix" {if segment_3=="name"}style="display:block;"{if:else}style="display:none;"{/if}>
+                        {exp:channel:categories channel="resources" category_group="6" id="tabContentNameUl" show_empty="no" restrict_channel="yes"}<a href="/{segment_1}/category/{category_url_title}">{category_name}</a>{/exp:channel:categories}
+                    </div>
+
+                    <!--SCRIPTURE-->
+                    <div id="tabContentScripture" class="resourceIndexTabContent clearFix" {if segment_3=="scripture"}style="display:block;"{if:else}style="display:none;"{/if}>
+                        {exp:channel:categories channel="resources" category_group="2" id="tabContentScriptureUl" show_empty="no" restrict_channel="yes"}<a href="/{segment_1}/category/{category_url_title}">{category_name}</a>{/exp:channel:categories}
+                    </div>
+
+                    <!--DATE-->
+                    <div id="tabContentDate" class="resourceIndexTabContent clearFix" {if segment_3=="date"}style="display:block;"{if:else}style="display:none;"{/if}>
+                        <ul>
+                            <li><a>Year</a>
+                                <ul>
+                                    {exp:wscal:resource_years}
+                                        <li><a href="/{segment_1}/year/{year}">{year}</a></li>
+                                    {/exp:wscal:resource_years}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <div class="rightColumn clearFix">
+            <aside class="clearFix">
+                {embed="resource-center/.aside-menu}
+            </aside>
+        </div>
+
+    </div>
+</div>
+

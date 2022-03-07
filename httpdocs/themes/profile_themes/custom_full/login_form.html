@@ -1,0 +1,24 @@
+<h2>{lang:sign_in}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <td><a href="{path:register}">{lang:member_registration}</a></td>
+            <td><a href="{path:forgot}">{lang:forgot_password}</a></td>
+        </tr>
+        <tr>
+            <td><strong>{lang:username}</strong></td>
+            <td><input type="text" name="username" size="20" value="" maxlength="50" required="required" /></td>
+        </tr>
+        <tr>
+            <td><strong>{lang:password}</strong></td>
+            <td><input type="password" name="password" size="20" value="" maxlength="40" autocomplete="off" required="required" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" class="profileCssButton" value="{lang:submit}" /></td>
+            <td>
+                <input type="checkbox" name="auto_login" value="1" checked="checked" /> {lang:auto_login}<br />
+                <input type="checkbox" name="anon" value="1" checked="checked" /> {lang:show_name}
+            </td>
+        </tr>
+    </table>
+</form>

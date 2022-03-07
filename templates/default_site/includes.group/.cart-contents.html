@@ -1,0 +1,139 @@
+{if "{exp:cartthrob:total_items_count}" > 0}
+
+    {if embed:return}
+
+        {!-- IF WE HAVE A RETURN VALUE, WE NEED A FORM --}
+        {exp:cartthrob:update_cart_form return="{embed:return}" id="updateCartForm" name="updateCartForm"}
+            <table class="cartTable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="width: 80px;">Qty.</th>
+                        <th>Price (ea.)</th>
+                        <th>Item Total</th>
+                        <th style="width:110px;"> </th>
+                    </tr>
+                </thead>
+
+                {exp:cartthrob:cart_items_info}
+                    <tr class="productRow {switch='even|odd'}">
+                        <td class="cartItemDetails clearFix">
+                            <div>
+                                {embed="includes/.purchased-product-image" entry_id="{entry_id}"}
+                            </div>
+                            <div>
+
+                                {embed="includes/.purchased-product-row" entry_id="{entry_id}"}
+
+                                {exp:cartthrob:item_options row_id="{row_id}"}
+                                    {if options_exist}
+                                        <div class="cartOptionsHeader">Options</div>
+                                        <div>
+                                            {if dynamic}
+                                                <div class="cartEditOption"><label>{option_label}</label>{input}</div>
+                                            {if:else}
+                                                {if option_label != "Site Id" && option_label != "Discount"}&nbsp;&nbsp;&nbsp;{option_label}: {option_value}<br>{/if}
+                                            {/if}
+                                        </div>
+                                    {/if}
+                                {/exp:cartthrob:item_options}
+
+                            </div>
+                        </td>
+                        <td class="cartEditQuantity"><input type="text" size="2" value="{quantity}" name="quantity[{row_id}]"></td>
+                        <td class="cartItemPrice">{item_price}</td>
+                        <td class="cartItemSubtotal">{item_subtotal}</td>
+                        <td>
+                            <div class="editCartItemButtons">
+                                <a class="faIcon iconEdit editCartItem"></a>
+                                <label class="faIcon iconDelete deleteCartItem" for="delete_{row_id}"><input type="checkbox" id="delete_{row_id}" name="delete[{row_id}]" style="visibility:hidden;margin: 0;" class="deleteCartItem" /></label>
+                            </div>
+                            <div class="editCartItemActionButtons">
+                                <a class="cancelUpdateCartButton cartActionButton faIcon">Cancel</a>
+                                <a class="updateCartButton cartActionButton faIcon">Save</a>
+                            </div>
+                        </td>
+                    </tr>
+                {/exp:cartthrob:cart_items_info}
+
+            </table>
+        {/exp:cartthrob:update_cart_form}
+
+        <div class="cartTotalsRow">
+            {exp:cartthrob:cart_info}
+                <div><strong>Sub-total:</strong> {cart_subtotal}</div>
+            {/exp:cartthrob:cart_info}
+            <div class="disclaimer">Tax and Shipping will be shown on the payment details page.</div>
+        </div>
+
+        <div class="cartPageButtons">
+            <a href="/your-information" class="flatBlueButton"><span>Proceed to checkout&nbsp;&nbsp;&gt;&gt;</span></a>
+        </div>
+        
+    {if:else}
+
+        {!-- NO RETURN VALUE, SO WE JUST NEED REVIEW DATA --}
+        <div class="cartFieldsetWrapper clearFix">
+            <fieldset id="cartContents" class="cartFieldset">
+                <legend>Order Items <a href="/your-cart" class="faIcon iconEdit">Edit</a></legend>
+                <table class="cartTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="width: 80px;">Qty.</th>
+                            <th>Price (ea.)</th>
+                            <th>Item Total</th>
+                        </tr>
+                    </thead>
+
+                    {exp:cartthrob:cart_items_info}
+                        <tr class="productRow {switch='even|odd'}">
+                            <td class="cartItemDetails clearFix">
+                                <div>
+                                    {embed="includes/.purchased-product-image" entry_id="{entry_id}"}
+                                </div>
+                                <div>
+
+                                    {embed="includes/.purchased-product-row" entry_id="{entry_id}"}
+
+                                    {exp:cartthrob:item_options row_id="{row_id}"}
+                                        {if options_exist}
+                                            <div class="cartOptionsHeader">Options</div>
+                                            <div>
+                                                {if option_label != "Site Id" && option_label != "Discount"}&nbsp;&nbsp;&nbsp;{option_label}: {option_value}<br>{/if}
+                                            </div>
+                                        {/if}
+                                    {/exp:cartthrob:item_options}
+
+                                </div>
+                            </td>
+                            <td class="cartEditQuantity">{quantity}</td>
+                            <td class="cartItemPrice">{item_price}</td>
+                            <td class="cartItemSubtotal">{item_subtotal}</td>
+                        </tr>
+                    {/exp:cartthrob:cart_items_info}
+
+                </table>
+
+                <div class="cartTotalsRow">
+                    {exp:cartthrob:cart_info}
+                        <div><strong>Sub-total:</strong> {cart_subtotal}</div>
+                        {if cart_tax_numeric > 0}<div><strong>Tax:</strong> {cart_tax}</div>{/if}
+                        {if cart_shipping_numeric > 0}<div><strong>Shipping:</strong> {cart_shipping}</div>{/if}
+                        <div><strong>Total:</strong> {cart_total}</div>
+                    {/exp:cartthrob:cart_info}
+                </div>
+    
+            </fieldset>
+        </div>
+        
+    {/if}
+
+{if:else}
+
+    <div class="cartPageButtons">
+        <div class="nothingInCart">Your cart is empty.</div>
+
+    </div>
+    
+{/if}

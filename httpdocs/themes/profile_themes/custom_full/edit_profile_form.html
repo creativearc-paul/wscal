@@ -1,0 +1,80 @@
+<h2>{lang:edit_your_profile}</h2>
+
+{form_declaration}
+
+    <div class="required">{lang:required}</div>
+
+    <div class="profileForm clearfix">
+
+        <div class="formFieldWrapper">
+            <label for="url">{lang:url}</label>
+            <div>
+                <input type="url" name="url" value='{url}' maxlength="75" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label>{lang:birthday}</label>
+            <div>
+                {form:birthday_month} {form:birthday_day} {form:birthday_year}
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="location">{lang:location}</label>
+            <div>
+                <input type="text" name="location" value='{location}' maxlength="50" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="occupation">{lang:occupation}</label>
+            <div>
+                <input type="text" name="occupation" value='{occupation}' maxlength="80" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="interests">{lang:interests}</label>
+            <div>
+                <input type="text" name="interests" value='{interests}' maxlength="120" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="aol_im">{lang:aol_im}</label>
+            <div>
+                <input type="text" name="aol_im" value='{aol_im}' maxlength="50" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="icq">{lang:icq}</label>
+            <div>
+                <input type="text" name="icq" value='{icq}' maxlength="50" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="yahoo_im">{lang:yahoo_im}</label>
+            <div>
+                <input type="text" name="yahoo_im" value='{yahoo_im}' maxlength="50" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="msn_im">{lang:msn_im}</label>
+            <div>
+                <input type="text" name="msn_im" value='{msn_im}' maxlength="50" />
+            </div>
+        </div>
+        <div class="formFieldWrapper">
+            <label for="bio">{lang:bio}</label>
+            <div>
+                <textarea name="bio" rows="12" cols="90">{bio}</textarea>
+            </div>
+        </div>
+
+        {custom_profile_fields}
+        
+        <div class="formFieldWrapper">
+            <div>
+                <input type="submit" class="profileCssButton" value='{lang:update}' />
+            </div>
+        </div>
+
+    </div>
+
+</form>

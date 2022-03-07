@@ -1,0 +1,10 @@
+<div class="{style}" id="bulletin_div_{bulletin_id}">
+    <strong>{lang:message_sender}</strong>: {bulletin_sender}<br />
+    <strong>{lang:message_date}</strong>: {bulletin_date}<br />
+    {if can_delete_bulletin}
+        <strong>{lang:delete_bulletin}:</strong> <a href='{path:delete_bulletin}' onclick='if( ! confirm("{lang:delete_bulletin_popup}")) return false;'>{lang:yes}</a><br />
+    {/if}
+    <div>
+        <textarea name='bulletin_{bulletin_id}' readonly='readonly' rows='8' cols="90">{bulletin_message}</textarea>
+    </div>
+</div>

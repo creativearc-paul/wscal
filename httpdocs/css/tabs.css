@@ -1,0 +1,290 @@
+/* 
+*******************************
+FACULTY TABS 
+*******************************
+*/
+#facultyTabs ul{
+	margin: 0px;
+	padding: 0px;
+}
+#facultyTabs .tab_content a{
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 130%;
+	color: #165d88;
+	/*display: block;
+	float: left;
+	width: 155px;
+	margin: 0px 15px 7px 0px;*/
+}
+#facultyTabs ul.tabs {
+	float: left;
+	list-style: none;
+	height: 23px; /*--Set height of tabs--*/
+	/*width: 100%;*/
+	margin: 0px 0px 0px 15px;
+}
+#facultyTabs ul.tabs li {
+	float: left;
+	display: inline;
+	border-top: 1px solid #EAE9D7;
+	border-right: 1px solid #EAE9D7;
+	border-left: 1px solid #EAE9D7;
+	border-bottom: none;
+	margin: 0px 2px 0px 0px; 
+	position: relative;
+	background-color: #FAFAF6;
+}
+#facultyTabs ul.tabs li.active {
+	border-top: 1px solid #D6D5C5;
+	border-right: 1px solid #D6D5C5;
+	border-left: 1px solid #D6D5C5;
+}
+#facultyTabs ul.tabs li a {
+	text-decoration: none;
+	display: block;
+	padding: 0px 8px 0px 8px;
+	outline: none;
+	font-size: 10px;
+	color: #CBC9BE;
+	font-weight: bold;
+	height: 22px;
+	line-height: 22px;
+}
+#facultyTabs ul.tabs li a:hover {
+	color: #5D5A57;
+}
+#facultyTabs ul.tabs li.active a, 
+#facultyTabs ul.tabs li.active a:hover  {
+	background-color: #F8F7ED;
+	background-image: none;
+	color: #5D5A57;
+	border-bottom: 1px solid #F8F7ED;
+}
+#facultyTabs .tab_container {
+	width: 690px;
+	clear: both;
+	padding: 15px;
+	border-top: 1px solid #D6D5C5;
+	background-color: #F8F7ED;
+    min-height: 100px;
+}
+#facultyTabs .tab_content {
+	display: none;
+}
+#facultyTabs #tab1 td {
+	vertical-align: top;
+	width: 155px;
+	padding: 10px 15px 15px 0px;
+}
+#facultyTabs #tab1 a {
+	display: block;
+	margin: 5px 0px 5px 0px;
+	line-height: 135%;
+}
+#facultyTabs #tab1 span {
+	color: #737271;
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#facultyTabs .facultyTabsViewAll a{
+	color: #737271 !important;
+	font-size: 9px !important;
+	padding: 0px 0px 5px 0px;
+	display: block;
+	border-bottom: 2px solid #D6D5C5;
+}
+#facultyTabs td.facultyTabsViewAll{
+	padding: 0px 15px 0px 0px !important;
+}
+
+/* 
+*******************************
+RESOURCE TABS 
+*******************************
+*/
+#resourceTabs ul{
+	margin: 0px;
+	padding: 0px;
+}
+#resourceTabs .tab_content a{
+	text-decoration: none;
+	font-size: 12px;
+	color: #165d88;
+	display: block;
+	float: left;
+	width: 170px;
+}
+#resourceTabs #namelist a{
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 18px;
+	color: #524F4B;
+	display: block;
+	float: left;
+	width: 133px;
+	padding: 0px 15px 0px 15px;
+}
+#resourceTabs ul.tabs {
+	float: left;
+	list-style: none;
+	height: 23px; /*--Set height of tabs--*/
+	width: 100%;
+}
+#resourceTabs ul.tabs li {
+	float: left;
+	display: inline;
+	border-top: 1px solid #D6D5C5;
+	border-right: 1px solid #D6D5C5;
+	border-left: 1px solid #D6D5C5;
+	border-bottom: none;
+	margin: 0px 2px 0px 0px; 
+	position: relative;
+	background-image: url('/images/graphics/resource-tab-background.gif');
+	background-repeat: repeat-x;
+}
+#resourceTabs ul.tabs li a {
+	text-decoration: none;
+	display: block;
+	padding: 0px 10px 0px 10px;
+	outline: none;
+	font-size: 10px;
+	color: #5d5a57;
+	font-weight: bold;
+	height: 22px;
+	line-height: 22px;
+}
+#resourceTabs ul.tabs li a:hover {
+	background: #ffffff;
+	color: #005581;
+}
+#resourceTabs ul.tabs li.active a, 
+#resourceTabs ul.tabs li.active a:hover  {
+	background-color:#ffffff;
+	background-image: none;
+	color: #005581;
+	border-bottom: 1px solid #ffffff;
+}
+#resourceTabs .tab_container {
+	width: 720px;
+	margin: 0px -15px 0px -15px;
+	clear: both;
+	border-top: 1px solid #D6D5C5;
+}
+#resourceTabs .tab_content {
+	display: none;
+}
+
+/* 
+*******************************
+AV TABS 
+*******************************
+*/
+#avTabs ul.tabs {
+	list-style: none;
+	margin: 0px;
+	padding: 0px 0px 0px 35px;
+}
+#avTabs ul.tabs li {
+	float: left;
+	display: inline;
+	position: relative;
+}
+#avTabs ul.tabs li a {
+	text-decoration: none;
+	display: block;
+	padding: 0px 15px 0px 15px;
+	outline: none;
+	font-size: 10px;
+	height: 24px;
+	line-height: 24px;
+	color: #999999;
+	letter-spacing: 1px;
+}
+#avTabs ul.tabs li a:hover {
+	background:#ffffff;
+	background-color:#666666;
+}
+#avTabs ul.tabs li.active a, 
+#avTabs ul.tabs li.active a:hover  {
+	background-color:#444444;
+	background-image: none;
+}
+#avTabs .tab_content {
+	display: none;
+}
+
+/* 
+*******************************
+LIBRARY SEARCH TABS 
+*******************************
+*/
+#libSearchTabs{
+    margin: 0;
+    padding: 25px 0 25px 0;
+}
+#libSearchTabs ul{
+    margin: 0;
+    padding: 0 0 0 15px;
+}
+#libSearchTabs .tab_content a{
+    text-decoration: none;
+    color: #165d88;
+    display: block;
+    float: left;
+    width: 170px;
+}
+#libSearchTabs ul.tabs {
+    float: left;
+    list-style: none;
+    height: 23px; /*--Set height of tabs--*/
+    width: 708px;
+}
+#libSearchTabs ul.tabs li {
+    float: left;
+    display: inline;
+    border-top: 1px solid #D6D5C5;
+    border-right: 1px solid #D6D5C5;
+    border-left: 1px solid #D6D5C5;
+    border-bottom: none;
+    margin: 0px 2px 0px 0px; 
+    position: relative;
+    background-image: url('/images/graphics/resource-tab-background.gif');
+    background-repeat: repeat-x;
+}
+#libSearchTabs ul.tabs li a {
+    text-decoration: none;
+    display: block;
+    padding: 0px 10px 0px 10px;
+    outline: none;
+    color: #5d5a57;
+    font-weight: bold;
+    height: 22px;
+    line-height: 22px;
+}
+#libSearchTabs ul.tabs li a:hover {
+    background: #ffffff;
+    color: #005581;
+}
+#libSearchTabs ul.tabs li.active a, 
+#libSearchTabs ul.tabs li.active a:hover  {
+    background-color:#efefe7;
+    background-image: none;
+    color: #005581;
+    border-bottom: 1px solid #efefe7;
+}
+#libSearchTabs .tab_container {
+    width: 708px;
+    margin: 0;
+    clear: both;
+    border-top: 1px solid #D6D5C5;
+    border-bottom: 1px solid #D6D5C5;
+    background-color: #efefe7;
+}
+#libSearchTabs .tab_content {
+    display: none;
+}
+#libSearchTabs .tab_content table td{
+    padding:5px;
+}

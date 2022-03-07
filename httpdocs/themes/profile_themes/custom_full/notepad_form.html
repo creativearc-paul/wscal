@@ -1,0 +1,18 @@
+<h2>{lang:notepad}</h2>
+{form_declaration}
+    <table class="profileTable">
+        <tr>
+            <td colspan="2">{lang:notepad_blurb}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><textarea name="notepad" rows='{notepad_size}' cols="90">{notepad_data}</textarea></td>
+        </tr>
+        <tr>
+            <td>{lang:notepad_size}</td>
+            <td><input type="text" name="notepad_size" value='{notepad_size}' maxlength="2" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" class="profileCssButton" value='{lang:update}' /></td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,147 @@
+{if group_id=="1" OR "ORDER_ID" != ""}
+    {exp:cartthrob:submitted_order_info}
+        <table width="700" cellpadding="5" cellspacing="0">
+            <tr>
+                <td valign="top" align="left" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                
+                    <p>Order from wscal.edu</p>
+
+                    <table cellspacing="0" cellpadding="3" width="100%" style="font-size:10pt;color:#000000;font-family:arial,sans-serif;">
+                        <tr>
+                            <td style="border-bottom: 2px solid #000000;padding-bottom:5px;">Order Details</td>
+                        </tr>
+                    </table><br>
+                    
+                    <table cellspacing="0" cellpadding="3" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                        <tr>
+                            <td valign="top" colspan="2"><strong>{title}</strong></td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><strong>Order Date:</strong></td><td>{entry_date format="%F %j, %Y"}</td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><strong>Customer Email:</strong></td><td>{order_customer_email}</td>
+                        </tr>
+                        <tr>
+                            <td valign="top"><strong>Customer Phone:</strong></td><td>{order_customer_phone}</td>
+                        </tr>
+                    </table><br>
+                    
+                    <table cellspacing="0" cellpadding="3" width="100%" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                        <tr>
+                            <td valign="top">
+                                <strong>Payment Information</strong>
+                                <div style="padding: 10px;">
+                                    <table cellspacing="0" cellpadding="2" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                                        <tr>
+                                            <td valign="top">Transaction ID:</td><td>{order_transaction_id}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table><br>
+
+                    <table cellspacing="0" cellpadding="3" width="100%" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                        <tr>
+                            <td valign="top">
+                                <strong>Billing Information</strong>
+                                <div style="padding: 10px;">
+                                    <table cellspacing="0" cellpadding="2" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                                        <tr><td>Name:</td><td>{order_billing_first_name} {order_billing_last_name}</td></tr>
+                                        <tr><td>Email:</td><td>{order_customer_email}</td></tr>
+                                        <tr><td>Phone:</td><td>{order_customer_phone}</td></tr>
+                                        <tr><td>Address:</td><td>{order_billing_address}</td></tr>
+                                        {if order_billing_address2}<tr><td>&nbsp;</td><td>{order_billing_address2}</td></tr>{/if}
+                                        <tr><td>City:</td><td>{order_billing_city}</td></tr>
+                                        <tr><td>State:</td><td>{order_billing_state}</td></tr>
+                                        <tr><td>Zip:</td><td>{order_billing_zip}</td></tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top">
+                                <strong>Shipping Information</strong>
+                                <div style="padding: 10px;">
+                                    <table cellspacing="0" cellpadding="2" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                                        <tr><td>Name:</td><td>{order_shipping_first_name} {order_shipping_last_name}</td></tr>
+                                        <tr><td>Address:</td><td>{order_shipping_address}</td></tr>
+                                        {if order_shipping_address2}<tr><td>&nbsp;</td><td>{order_shipping_address2}</td></tr>{/if}
+                                        <tr><td>City:</td><td>{order_shipping_city}</td></tr>
+                                        <tr><td>State:</td><td>{order_shipping_state}</td></tr>
+                                        <tr><td>Zip:</td><td>{order_shipping_zip}</td></tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        {if order_note}
+                            <tr>
+                                <td valign="top">
+                                    <strong>Order Note</strong><br>
+                                    <div style="padding: 10px;">{order_note}</div>
+                                </td>
+                            </tr>
+                        {/if}
+                    </table><br><hr><br>
+
+                    <table cellspacing="0" cellpadding="3" width="100%" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                        <thead>
+                            <tr>
+                                <td style="border-bottom:1px solid #aaaaaa;"><strong>Product Description</strong></td>
+                                <td style="border-bottom:1px solid #aaaaaa;" align="right"><strong>Price (each)</strong></td>
+                                <td style="border-bottom:1px solid #aaaaaa;" align="center"><strong>Qty.</strong></td>
+                                <td style="border-bottom:1px solid #aaaaaa;" align="right"><strong>Item Total</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {exp:cartthrob:order_items order_id="{entry_id}"}
+                                <tr class="{item:switch='odd|even'}">
+                                    <td>
+                                        <strong>{item:title}</strong><br>
+                                        {item_options}
+                                            {if option_label != "Site Id" && option_label != "Discount" && option_label != "Entry Date"}&nbsp;&nbsp;&nbsp;&nbsp;{option_label}: {option_value}<br>{/if}
+                                        {/item_options}
+                                    </td>
+                                    <td align="right">{item:price}</td>
+                                    <td align="center">{item:quantity}</td>
+                                    <td align="right">{exp:cartthrob:arithmetic num1="{item:price_numeric}" num2="{item:quantity}" operator="*"}</td>
+                                </tr>
+                            {/exp:cartthrob:order_items}
+                        </tbody>
+                    </table><hr>
+
+                    <table cellspacing="0" cellpadding="3" width="100%" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                        <tr>
+                            <td align="right">
+                                <table cellspacing="0" cellpadding="3" style="font-size:9pt;color:#000000;font-family:arial,sans-serif;">
+                                    <tr>
+                                        <td valign="top" align="right"><span>Sub-Total:</span></td>
+                                        <td valign="top" align="right">&nbsp;</td>
+                                        <td valign="top" align="right"><span>{order_subtotal}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" align="right"><span>Shipping:</span></td>
+                                        <td valign="top" align="right">&nbsp;</td>
+                                        <td valign="top" align="right"><span>{order_shipping}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" align="right"><span>Tax:</span></td>
+                                        <td valign="top" align="right">&nbsp;</td>
+                                        <td valign="top" align="right"><span>{order_tax}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td valign="top" align="right"><span>Total:</span></td>
+                                        <td valign="top" align="right">&nbsp;</td>
+                                        <td valign="top" align="right"><span>{order_total}</span></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+    {/exp:cartthrob:submitted_order_info}
+{/if}

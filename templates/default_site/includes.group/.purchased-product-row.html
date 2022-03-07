@@ -1,0 +1,7 @@
+{exp:channel:entries channel="products_books" disable="member_data|pagination" limit="1" dynamic="no" entry_id="{embed:entry_id}"}
+    <div class="cartItemName">{product_book_title}</div>
+    <div class="cartItemAuthor"><em>{categories backspace="2"}{category_name}, {/categories}</em></div>
+    <div class="cartItemDescription">
+        {exp:word_limit:limit_words total="17"}{product_book_description}{/exp:word_limit:limit_words}
+    </div>
+{/exp:channel:entries}

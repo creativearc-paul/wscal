@@ -1,0 +1,11 @@
+/httpdocs/formtools/securimage/audio/
+/httpdocs/formtools/themes/default/cache/
+/httpdocs/formtools/themes/classicgrey/cache/
+/httpdocs/formtools/themes/deepblue/cache/
+/.idea/.gitignore
+/.idea/deployment.xml
+/.idea/modules.xml
+/.idea/sshConfigs.xml
+/.idea/vcs.xml
+/.idea/webServers.xml
+/.idea/wscal.iml

@@ -1,0 +1,247 @@
+<div>
+    <span class="requiredField">*</span>Required Fields
+</div>
+
+{exp:freeform:form form_id="21" return="/news-and-events/wsc-live" form:id="download_video" required="first_name|last_name|email|phone|address|city|zip_code|state|country|church_affiliation|how_heard_about|prospective_student" require_captcha="yes"}
+
+<fieldset id="yourInfo">
+    <legend>Your Information</legend>
+    <div class="formRow">
+        <div class="formFieldInput selectBox">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Salutation
+            </div>
+            <div class="select-style">
+                <select name="salutation" id="salutation">
+                    <option></option>
+                    <option value="Mr.">Mr.</option>
+                    <option value="Mrs.">Mrs.</option>
+                    <option value="Ms.">Ms.</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Rev.">Rev.</option>
+                    <option value="Dr.">Dr.</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="first_name">First Name</label>
+            </div>
+            <div>
+                <input type="text" id="first_name" name="first_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="last_name">Last Name</label>
+            </div>
+            <div>
+                <input type="text" id="last_name" name="last_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="email">Email</label>
+            </div>
+            <div>
+                <input type="text" id="email" name="email" value="" size="35"/>
+            </div>
+        </div>
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="phone">Phone Number</label>
+            </div>
+            <div>
+                <input id="phone_number " type="text" size="35" name="phone_number" value=""/>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="address">Address</label>
+            </div>
+            <div>
+                <input type="text" id="address" name="address" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="address_2">Address 2</label>
+            </div>
+            <div>
+                <input type="text" id="address_2" name="address_2" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="city">City</label>
+            </div>
+            <div>
+                <input type="text" id="city" name="city" value="" size="30"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="zip_code">Zip Code</label>
+            </div>
+            <div>
+                <input type="text" name="zip_code" id="zip_code" value="" size="30"/>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> US States
+            </div>
+            <div class="select-style">
+                {embed="forms/.state-dropdown"}
+                <label for="state" class="error" style="display:none;">Please choose one.</label>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Country
+            </div>
+            <div class="select-style">
+                {embed="forms/.country-dropdown"}
+
+                <label for="country" class="error" style="display:none;">Please choose one.</label>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Current church affiliation
+            </div>
+            <div>
+                <input type="text" name="church_affiliation" id="church_affiliation" value="" size="30"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                Denomination (if applicable)
+            </div>
+            <div>
+                <input type="text" name="denomination" id="denomination" value="" size="30"/>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> How did you hear about us?
+            </div>
+            <div class="select-style">
+                <select name="how_heard_about" id="how_heard_about">
+                    <option value=""></option>
+                    <option value="Church/Denomination">Church/Denomination</option>
+                    <option value="Individual Friend Referral">Individual Friend Referral</option>
+                    <option value="Print Advertisement">Print Advertisement</option>
+                    <option value="White Horse Media">White Horse Media</option>
+                    <option value="WSC Alum">WSC Alum</option>
+                    <option value="WSC Event">WSC Event</option>
+                    <option value="WSC Publication">WSC Publication</option>
+                    <option value="WSC Staff/Faculty Referral">WSC Staff/Faculty Referral</option>
+                    <option value="WSC Student Referral">WSC Student Referral</option>
+                    <option value="WSC Website">WSC Website</option>
+                    <option value="Internet Search">Internet Search</option>
+                </select>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                How did you hear: Other
+            </div>
+            <div>
+                <input type="text" name="how_heard_about_other" value="" size="30"/>
+            </div>
+        </div>
+    </div>
+    
+    <fieldset id="academicInterests">
+        <legend>Academic Interests</legend>
+        
+        <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> Are you a prospective student?
+                <div class="myRadio">
+                    <input required="required" type="radio" name="prospective_student_yes_no" value="Yes" id="prospective_student_yes_no" class="radio"/>Yes
+                    <input type="radio" name="prospective_student_yes_no" value="No" id="prospective_student_yes_no" class="radio"/>No
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="formRow programInterest clearFix">
+            <div class="formFieldTitle">Program of Interest</div>
+            <label class="formButton">
+                Master of Divinity
+                <input type="radio" name="degree_program_of_interest" value="Master of Divinity" class="myRadio2">
+            </label>
+            <label class="formButton">
+                M.A. Biblical Studies
+                <input type="radio" name="degree_program_of_interest" value="M.A. Biblical Studies" class="myRadio2">
+            </label>
+            <label class="formButton">
+                M.A. Theological Studies
+                <input type="radio" name="degree_program_of_interest" value="M.A. Theological Studies" class="myRadio2">
+            </label>
+            <label class="formButton">
+                M.A. Historical Theology
+                <input type="radio" name="degree_program_of_interest" value="M.A. Historical Theology" class="myRadio2">
+            </label>
+            <div class="anticipated_start formFieldInput ">
+                <strong class="requiredField"></strong> Anticipated Starting term for Classes
+
+                <div class="select-style">
+                    <select name="anticipated_starting_term" id="anticipated_starting_term">
+                        <option value=""></option>
+                      <option value="Summer/Fall 2021">Summer/Fall 2021</option>
+                      <option value="Winter/Spring 2022">Winter/Spring 2022</option>
+                      <option value="Summer/Fall 2022">Summer/Fall 2022</option>
+                      <option value="Winter/Spring 2023">Winter/Spring 2023</option>
+                      <option value="Summer/Fall 2023">Summer/Fall 2023</option>
+                    </select>
+                    <label for="anticipated_starting_term" class="error" style="display:none;">Please choose one.</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="formField formComments">
+        <label for="additional_comments">Questions or comments?</label><br/>
+        <textarea class="textarea" id="additional_comments" name="additional_comments" rows="6" cols="80"></textarea>
+    </div>
+
+    {if freeform:captcha}
+    <div class="formRow">
+        <div class="formField formComments">
+            <div class="formFieldTitle">
+                <label for="captcha">Please enter the security code.</label>
+            </div>
+            <div class="formFieldInput">
+                <span style="margin-top: 5px;padding: 5px 5px;display: inline-block;">{freeform:captcha}</span><br><input type="text" id="captcha" name="captcha" required="required" size="40">
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <div class="formRow" colspan="2">
+        {exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="8057"}{page_block_content}{/exp:channel:entries}
+    </div>
+
+    <div>
+        <input type="submit" value="Submit" name="submit" id="submit" class="formButton"/>
+    </div>
+</fieldset>
+{/exp:freeform:form}

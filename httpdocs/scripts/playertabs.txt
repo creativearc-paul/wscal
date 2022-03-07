@@ -1,0 +1,49 @@
+<!--<ul class="tabs">
+	{if resource_video}<li><a href="#videoTab"><span>VIDEO</span></a></li>{/if}
+	{if resource_audio}<li><a href="#audioTab"><span>AUDIO</span></a></li>{/if}
+</ul>
+<div class="tab_container">
+	{if resource_video}
+		{resource_video}
+			<div id="videoTab" class="tab_content">
+				<object id="player" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" name="player" width="640" height="360"> 
+					<param name="movie" value="http://wscal.edu/media/player.swf" /> 
+					<param name="allowfullscreen" value="true" /> 
+					<param name="allowscriptaccess" value="always" /> 
+					<param name='wmode' value='transparent'>
+					<param name="flashvars" value="file=<?php echo urlencode('{resource_video_file}') ?>&backcolor=666666&screencolor=000000&controlbar=over" /> 
+					<embed 
+						type="application/x-shockwave-flash"
+						id="player2"
+						name="player2"
+						src="http://wscal.edu/media/player.swf" 
+						width="640" 
+						height="360"
+						allowscriptaccess="always" 
+						allowfullscreen="true"
+						wmode='transparent'
+						flashvars="file=<?php echo urlencode('{resource_video_file}') ?>&backcolor=666666&screencolor=000000&controlbar=over" 
+					/> 
+				</object> 
+			</div>
+		{/resource_video}
+	{/if}
+	{if resource_audio}
+		{resource_audio}
+			<div id="audioTab" class="tab_content">
+				<script type="text/javascript" src="http://wscal.edu/scripts/audio_player/audio-player.js"></script>  
+				<script type="text/javascript">  
+					AudioPlayer.setup("http://wscal.edu/scripts/audio_player/player.swf", {  
+						width: 649,
+						initialvolume: 100,  
+						transparentpagebg: "yes",  
+						left: "000000",  
+						lefticon: "FFFFFF"
+					});
+					AudioPlayer.embed("audioplayer_1", {soundFile: "{resource_audio_file}",autostart: "yes"});
+				</script>
+				<p id="audioplayer_1">Loading player.</p>
+			</div>
+		{/resource_audio}
+	{/if}
+</div>-->

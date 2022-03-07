@@ -1,0 +1,56 @@
+{exp:channel:entries channel="products_books" dynamic="no" disable="member_data|pagination" limit="1" url_title="{segment_4}"}
+
+    <article role="article" class="clearFix">
+
+        {embed="includes/.widget-your-cart"}
+
+        <aside class="bodyCopySecondary">
+            <div class="clearFix" style="text-align: center;">
+                <span class="bookDetailsCover">
+                    {if product_book_image != ''}
+                        {exp:imgsizer:size src="{product_book_image}" class="productBookImage" alt="{title}" height="225"}
+                    {if:else}
+                        {exp:imgsizer:size src="/images/graphics/missing-cover.gif" class="productBookImage" alt="{title}" height="225"}
+                    {/if}
+                </span>
+            </div>    
+        </aside>
+        
+        <div class="bodyCopyPrimary">
+            <div class="bodyCopyPrimaryInner">
+            
+                {exp:cartthrob:add_to_cart_form entry_id="{entry_id}" return="/your-cart"}
+                
+                    <h2 class="productTitle">{product_book_title}</h2>
+
+                    <div class="productAuthor sansSerif"><em>{categories backspace="2"}{category_name}, {/categories}</em></div>
+
+                    {product_book_description}
+
+                    <div style="padding: 10px 0 10px 0;">
+                        <span class="product-price" style="font-weight: bold;">{product_book_price}</span> &nbsp;&nbsp;&nbsp; {if product_book_compare_to_price}<span class="listPrice">(List price: <strike>{product_book_compare_to_price}</strike>)</span>{/if}
+                    </div>
+                    
+                    <div style="padding: 10px 0 10px 0;" class="allUpperCase sansSerif">
+                        {if product_book_inventory == 0}
+                            <strong>Temporarily out of stock.</strong>
+                        {if:else}
+                            QUANTITY: <input type="text" name="quantity" size="3" maxlength="4" value="1" {if product_book_inventory == 0}disabled="disabled"{/if} style="width:30px;" />&nbsp;&nbsp;&nbsp;<input type="submit" value="Add to Cart" class="cssButton" {if product_book_inventory == 0}disabled="disabled"{/if}>
+                        {/if}
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <iframe src="https://www.facebook.com/plugins/like.php?href=http://wscal.edu/resources/wsc-bookstore/details/{url_title}&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=40" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowtransparency="true"></iframe>
+                    </div>
+                {/exp:cartthrob:add_to_cart_form}
+
+            </div>
+        </div>
+        
+        <img src="/assets/graphics/spacer.png" alt="">
+    </article>
+    
+    {embed="includes/.also-purchased" entry_id="{entry_id}"}
+
+{/exp:channel:entries}
+

@@ -1,0 +1,30 @@
+<br>
+<h3>RESIDENT FACULTY</h3>
+<ul>
+    {exp:channel:entries channel="faculty" status="open" dynamic="no" orderby="faculty_last_name" sort="asc" search:faculty_type="RESIDENT FACULTY"}
+    <li><a href="{title_permalink='/{segment_1}/{segment_2}/'}">{title}</a>, {faculty_position}</li>
+    {/exp:channel:entries}
+</ul>
+
+<h3>PROFESSORS EMERITI</h3>
+<ul>
+    {exp:channel:entries channel="faculty" status="open" dynamic="no" orderby="faculty_last_name" sort="asc" search:faculty_type="PROFESSORS EMERITI"}
+    <li><a href="{title_permalink='/{segment_1}/{segment_2}/'}">{title}</a>, {faculty_position}</li>
+    {/exp:channel:entries}
+</ul>
+
+{exp:channel:entries channel="faculty" status="open" dynamic="no" orderby="faculty_last_name" sort="asc" search:faculty_type="ADJUNCT/VISITING PROFESSORS"}
+    {if count == 1}
+        <h3>ADJUNCT/VISITING PROFESSORS</h3>
+        <ul>
+    {/if}
+            
+    <li><a href="{title_permalink='/{segment_1}/{segment_2}/'}">{title}</a>, {faculty_position}</li>
+            
+    {if count == total_results}
+        </ul>
+    {/if}
+{/exp:channel:entries}
+
+<h3>ADJUNCT/VISITING PROFESSORS</h3>
+{exp:channel:entries channel="page-blocks" dynamic="no" disable="member_data|pagination" entry_id="9610"}{page_block_content}{/exp:channel:entries}

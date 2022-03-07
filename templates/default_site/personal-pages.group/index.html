@@ -1,0 +1,150 @@
+{preload_replace:ROOT_CHANNEL="main-content"}               {!-- *** Channel for the landing/listing entry, i.e. Structure root page *** --}
+{preload_replace:LANDING_ENTRY_ID="8463"}           {!-- *** entry_id for the landing/listing entry, i.e. Structure root page, since we may need inherited items like header image, title, etc., and dynamic wouldn't work  *** --}
+{preload_replace:ENTRY_CHANNEL="personal-pages"}    {!-- *** Channel for Individual Entry *** --}
+
+{layout="layouts/.layout-global-wrapper"}
+
+{!-- ################################
+BODY ID/CLASS LAYOUT SET - KEEP EACH ON ONE LINE OR IT WILL PROBABLY BREAK YOUR PAGE
+##################################### --}
+
+{layout:set name="body_id"}{segment_1}{/layout:set}
+{layout:set name="body_class"}{if !segment_2} {ENTRY_CHANNEL}LandingPage {if:elseif segment_2 == 'category'} {ENTRY_CHANNEL}CategoryPage {if:elseif segment_2 == 'archive'} {ENTRY_CHANNEL}ArchivePage {if:elseif segment_2 == 'tag'} {ENTRY_CHANNEL}TagPage {if:elseif segment_2 != ''} {segment_2} {/if}{if segment_3 != ''} {segment_3} {/if}{/layout:set}
+
+
+{!-- ################################
+SEO LAYOUT SET - since this is the first instance of the exp:channel:entries tag for an Individual Entry or "Landing" page, the 404 redirect is handled here
+##################################### --}
+
+{layout:set name="seo"}
+
+    {!-- ### Landing, Listing, Category, Tagged,  Archive, and Paginated pages ### --}
+    {if !segment_2 || segment_2 == 'category' || segment_2 == 'archive' || segment_2 ~ "/^P\d+/" || segment_2 == 'tag'}
+
+        {if segment_2 == 'category'}
+            <title>{exp:channel:category_heading channel="{ENTRY_CHANNEL}"}{category_name}{/exp:channel:category_heading} </title>
+            <meta name="description" content="{exp:channel:category_heading channel='{ENTRY_CHANNEL}'}{category_description}{/exp:channel:category_heading} " />
+            <meta name="keywords" content="{exp:channel:category_heading channel='{ENTRY_CHANNEL}'}{category_description}{/exp:channel:category_heading} " />
+
+        {if:else}
+            {exp:channel:entries channel="{ROOT_CHANNEL}" disable="categories|category_fields|member_data|pagination" limit="1" entry_id="{LANDING_ENTRY_ID}" dynamic="no" require_entry="yes"}
+                {if no_results}{redirect="404"}{/if}
+                {exp:neoseo:meta_tags entry_id="{entry_id}"}
+            {/exp:channel:entries}
+        {/if}
+
+    {!-- ### Individual Entry ### --}
+    {if:else}
+
+        {exp:channel:entries channel="{ENTRY_CHANNEL}" disable="categories|category_fields|member_data|pagination" limit="1" require_entry="yes"}
+            {if no_results}{redirect="404"}{/if}
+            {exp:neoseo:meta_tags entry_id="{entry_id}"}
+        {/exp:channel:entries}
+
+    {/if}
+
+{/layout:set}
+
+
+{!-- ################################
+PAGE HEADER LAYOUT SET
+##################################### --}
+
+{layout:set name="page_header_band"}
+    <div class="pageHeaderBand">
+        <div class="constrainedContent">
+
+            {!-- ### Landing, Listing, Category, and Paginated pages ### --}
+            {if !segment_2 || segment_2 == 'category' || segment_2 ~ "/^P\d+/"}
+
+                {!-- *** image/title *** --}
+                {exp:channel:entries channel="{ROOT_CHANNEL}" disable="categories|category_fields|member_data|pagination" limit="1" entry_id="{LANDING_ENTRY_ID}" dynamic="no"}
+                    <h1 class="pageHeaderBandTitle">{title}</h1>
+                {/exp:channel:entries}
+
+            {!-- ### Individual Entry ### --}
+            {if:else}
+
+                {!-- *** title of Individual Entry *** --}
+                {exp:channel:entries channel="{ENTRY_CHANNEL}" disable="categories|category_fields|member_data|pagination" limit="1"}
+                    <h1 class="pageHeaderBandTitle">{title}</h1>
+                {/exp:channel:entries}
+
+            {/if}
+
+        </div>
+    </div>
+{/layout:set}
+
+
+{!-- ################################
+LAYOUT CONTENT
+##################################### --}
+
+<div class="layoutWideLeftColumn">
+    <div class="constrainedContent clearFix">
+
+        <div class="leftColumn">
+            <article class="clearFix">
+                <div class="bodyCopyPrimary" style="width:100%;float:none;">
+
+                    {!-- ### Landing, Listing, Category, Tagged,  Archive, and Paginated pages ### --}
+                    {if !segment_2 || segment_2 == 'category' || segment_2 == 'tag' || segment_2 == 'archive' || segment_2 ~ "/^P\d+/"}
+
+                        {!-- *** pass variables to appropriate embed based on segments *** --}
+                        {exp:channel:entries channel="{ROOT_CHANNEL}" disable="member_data" limit="1" entry_id="{LANDING_ENTRY_ID}" dynamic="no"}
+
+                            {!-- *** entry listing by category *** --}
+                            {if segment_2 == 'category'}
+                                {exp:channel:category_heading channel="{ENTRY_CHANNEL}"}<h2>Category &ndash; {category_name}</h2>{/exp:channel:category_heading}
+                                {embed="{segment_1}/.listing" entry_channel="{ENTRY_CHANNEL}"}
+
+                            {!-- *** entry listing by date *** --}
+                            {if:elseif segment_2 == 'archive' && segment_3 ~ "/^\d\d\d\d$/"}
+                                <h2>Archive &ndash; {segment_3}</h2>
+                                {embed="{segment_1}/.listing" year="{segment_3}" entry_channel="{ENTRY_CHANNEL}"}
+
+                            {!-- *** paginated entry listing *** --}
+                            {if:elseif segment_2 ~ "/^P\d+/"}
+                                {embed="{segment_1}/.listing" entry_channel="{ENTRY_CHANNEL}"}
+
+                            {!-- *** entry listing by tag *** --}
+                            {if:elseif segment_2 == 'tag'}
+                                <h2>Pages with matching tag &ldquo;{exp:tagger:entries_quick tag="{segment_3}"}{tagger:tag_name}{/exp:tagger:entries_quick}&rdquo;</h2>
+                                {embed="{segment_1}/.tagged-listing"}
+
+                            {if:else}
+
+                                {embed="{segment_1}/.listing" entry_channel="{ENTRY_CHANNEL}"}
+
+                            {/if}
+
+                        {/exp:channel:entries}
+
+
+                    {!-- ### Individual Entry ### --}
+                    {if:else}
+
+                        {embed="{segment_1}/.full-entry"}
+
+                    {/if}
+
+                    <img src="/assets/graphics/spacer.png" alt="" class="spacerImage">
+                </div>
+            </article>
+        </div>
+
+        <div class="rightColumn">
+            <aside class="clearFix">
+
+                <div class="secondaryColumnHeader">{if '{structure:top:title}' == ''}{title}{if:else}{structure:top:title}{/if}</div>
+                <ul class="secondaryNav sansSerif clearFix">{exp:structure:nav start_from="{segment_1}" max_depth="5" show_depth="1" include_ul="no" add_span="yes" show_level_classes="yes" add_unique_ids="yes"}</ul>
+
+                <a href="/academics/wsc-catalogue" class="tanButton">View Academic Catalogue<span class="sansSerif">&#9002;&#9002;</span></a>
+                <a href="/admissions/apply/apply-online" class="tanButton">Apply to WSC Online<span class="sansSerif">&#9002;&#9002;</span></a>
+
+            </aside>
+        </div>
+
+    </div>
+</div>

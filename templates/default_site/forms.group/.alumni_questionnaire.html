@@ -1,0 +1,605 @@
+<div>
+    <span class="requiredField">*</span>Required Fields
+</div>
+
+{exp:freeform:form form_id="10" return="/forms/submission-thank-you" form:id="questionnaire" required="first_name|last_name|degree_program_of_interest|captcha" require_captcha="yes"}
+
+<fieldset id="">
+    <legend>Information</legend>
+
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="first_name">First Name</label>
+            </div>
+            <div>
+                <input type="text" id="first_name" name="first_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span> <label for="last_name">Last Name</label>
+            </div>
+            <div>
+                <input type="text" id="last_name" name="last_name" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="email">Email</label>
+            </div>
+            <div>
+                <input type="text" id="email" name="email" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput selectBox">
+            <div class="formFieldTitle">
+                <span class="requiredField">*</span>
+                <label for="degree_program_of_interest">Please select your WSC degree</label>
+            </div>
+            <div class="select-style">
+                <select name="degree_program_of_interest" id="degree_program_of_interest">
+                    <option value=""></option>
+                    <option value="Master of Divinity"> Master of Divinity</option>
+                    <option value="Master of Arts Biblical Studies"> Master of Arts Biblical Studies</option>
+                    <option value="Master of Arts Theological Studies"> Master of Arts Theological Studies</option>
+                    <option value="Master of Arts Historical Theology"> Master of Arts Historical Theology</option>
+                    <option value="Master of Arts Christian Studies"> Master of Arts Christian Studies</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="address">Address</label>
+            </div>
+            <div>
+                <input type="text" id="address" name="address" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="address_2">Address 2</label>
+            </div>
+            <div>
+                <input type="text" id="address_2" name="address_2" value="" size="35"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="city">City</label>
+            </div>
+            <div>
+                <input type="text" id="city" name="city" value="" size="30"/>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                <label for="zip_code">Zip Code</label>
+            </div>
+            <div>
+                <input type="text" name="zip_code" id="zip_code" value="" size="30"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="formRow">
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                US States
+            </div>
+            <div class="select-style">
+                {embed="forms/.state-dropdown"}
+                <label for="state" class="error" style="display:none;">Please choose one.</label>
+            </div>
+        </div>
+        <div class="formFieldInput">
+            <div class="formFieldTitle">
+                Country
+            </div>
+            <div class="select-style">
+                {embed="forms/.country-dropdown"}
+
+                <label for="country" class="error" style="display:none;">Please choose one.</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="formField formComments">
+        <label for="present_ministry_vocation">What is your present ministry or vocation?</label>
+        <textarea class="textarea" id="present_ministry_vocation" name="present_ministry_vocation" rows="6" cols="80"></textarea>
+    </div>
+
+    <div class="formField formComments">
+        <label for="ecclesiastical_affiliation">What is your current ecclesiastical affiliation?</label>
+        <textarea class="textarea" id="ecclesiastical_affiliation" name="ecclesiastical_affiliation" rows="6" cols="40"></textarea>
+    </div>
+
+</fieldset>
+
+<fieldset id="alumniQuestions">
+    <legend>Questions</legend>
+
+    <p>
+        Please indicate in your answers below your level of satisfaction or dissatisfaction with the curriculum.
+    </p>
+
+    <p>
+        As a result of my studies at WSC, I...
+    </p>
+    <div class="formRow">
+        <div class="formFieldInput">
+            1. Believe and love God's word more strongly
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="believe_love_gods_word_more" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="believe_love_gods_word_more" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="believe_love_gods_word_more" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="believe_love_gods_word_more" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="believe_love_gods_word_more" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="believe_love_gods_word_more" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            2. Am more able to interpret biblical texts accurately in light of original languages, historical and canonical contexts, scriptures literary structures
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_interpret_biblical_texts_accurately" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_interpret_biblical_texts_accurately" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_interpret_biblical_texts_accurately" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_interpret_biblical_texts_accurately" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_interpret_biblical_texts_accurately" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_interpret_biblical_texts_accurately" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            3. Understand the Bible's main theological themes and their systematic interrelationships
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="understand_bibles_main_theological_themes" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="understand_bibles_main_theological_themes" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="understand_bibles_main_theological_themes" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="understand_bibles_main_theological_themes" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="understand_bibles_main_theological_themes" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="understand_bibles_main_theological_themes" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            4. Am more able to articulate the Reformed system of faith and practice
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="articulate_reformed_system_of_faith_and_practice" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="articulate_reformed_system_of_faith_and_practice" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="articulate_reformed_system_of_faith_and_practice" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="articulate_reformed_system_of_faith_and_practice" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="articulate_reformed_system_of_faith_and_practice" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="articulate_reformed_system_of_faith_and_practice" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            5. Am more consistently able to bring perspective from church history to my study of theology
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="bring_perspective_from_church_history_to_theology" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="bring_perspective_from_church_history_to_theology" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="bring_perspective_from_church_history_to_theology" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="bring_perspective_from_church_history_to_theology" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="bring_perspective_from_church_history_to_theology" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="bring_perspective_from_church_history_to_theology" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            6. Am more able to preach the Bible's message accurately and effectively (if licensed or ordained)
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="preach_bibles_message_accurately" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="preach_bibles_message_accurately" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="preach_bibles_message_accurately" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="preach_bibles_message_accurately" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="preach_bibles_message_accurately" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="preach_bibles_message_accurately" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            7. Am more able to lead worship and administer the sacraments (if licensed or ordained)
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="administer_Sacraments" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="administer_Sacraments" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="administer_Sacraments" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="administer_Sacraments" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="administer_Sacraments" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="administer_Sacraments" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            8. Share the gospel with others more consistently and capably
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="share_the_gospel_with_others" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="share_the_gospel_with_others" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="share_the_gospel_with_others" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="share_the_gospel_with_others" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="share_the_gospel_with_others" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="share_the_gospel_with_others" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            9. Am more able to lead the church, its members and its officers
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_lead_the_church" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_lead_the_church" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_lead_the_church" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_lead_the_church" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_lead_the_church" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_lead_the_church" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            10. Better understand and can function more faithfully within the church's polity (authority/ accountability structures)
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_and_funcation_within_church_polity" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_and_funcation_within_church_polity" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_and_funcation_within_church_polity" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_and_funcation_within_church_polity" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_and_funcation_within_church_polity" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_and_funcation_within_church_polity" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            11. Am more able to nurture others toward Christian maturity through counseling and Christian education
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="nurture_others_toward_maturity" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="nurture_others_toward_maturity" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="nurture_others_toward_maturity" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="nurture_others_toward_maturity" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="nurture_others_toward_maturity" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="nurture_others_toward_maturity" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            12. Am more able to defend the Bible's teaching
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_defend_bible_teaching" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_defend_bible_teaching" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_defend_bible_teaching" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_defend_bible_teaching" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_defend_bible_teaching" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="able_to_defend_bible_teaching" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            13. Value more highly the freedom to examine diverse viewpoints and investigate all relevant evidence in pursuit of truth
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="value_more_highly_freedom" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="value_more_highly_freedom" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="value_more_highly_freedom" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="value_more_highly_freedom" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="value_more_highly_freedom" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="value_more_highly_freedom" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            14. Better understand other Christian traditions and non-Christian systems of thought
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_other_traditions" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_other_traditions" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_other_traditions" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_other_traditions" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_other_traditions" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="better_understand_other_traditions" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            15. Am more able to critique alternative viewpoints fairly and cogently
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="critique_alternative_viewpoints" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="critique_alternative_viewpoints" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="critique_alternative_viewpoints" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="critique_alternative_viewpoints" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="critique_alternative_viewpoints" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="critique_alternative_viewpoints" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput ">
+            16. Am growing more in godly character
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="godly_character" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="godly_character" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="godly_character" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="godly_character" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="godly_character" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="godly_character" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput">
+            17. Am more able to communicate exegetical and theological arguments and themes
+            <div class="radioBox">
+                <div class="myRadio">
+                    <label><input type="radio" name="communicate_exegetical_theological_arguments" value="Strongly Disagree" class="radio"/>&nbsp;Strongly Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="communicate_exegetical_theological_arguments" value="Disagree" class="radio"/>&nbsp;Disagree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="communicate_exegetical_theological_arguments" value="Neutral" class="radio"/>&nbsp;Neutral</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="communicate_exegetical_theological_arguments" value="Agree" class="radio"/>&nbsp;Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="communicate_exegetical_theological_arguments" value="Strongly Agree" class="radio"/>&nbsp;Strongly Agree</label>
+                </div>
+                <div class="myRadio">
+                    <label><input type="radio" name="communicate_exegetical_theological_arguments" value="Does Not Apply" class="radio"/>&nbsp;Does Not Apply</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formField formComments">
+            <label for="reasons_for_disagreeing">If you disagreed with any item above, please explain the reason for your response as specifically as you can.</label><br/>
+            <textarea class="textarea" id="reasons_for_disagreeing" name="reasons_for_disagreeing" rows="6" cols="80"></textarea>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput formComments">
+            <label for="course_suggestions">Do you have suggestions for courses (or other curricular or extracurricular components) that would have enhanced your preparation for your calling?</label><br/>
+            <textarea class="textarea" id="course_suggestions" name="course_suggestions" rows="6" cols="80"></textarea>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput formComments">
+            <label for="recommendations_to_assist_alumni">Please provide suggestions or recommendations concerning how WSC can assist our alumni.</label><br/>
+            <textarea class="textarea" id="recommendations_to_assist_alumni" name="recommendations_to_assist_alumni" rows="6" cols="80"></textarea>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formFieldInput formComments">
+            <label for="expect_ordination_soon">Have you been ordained and if so, on what date?</label><br/>
+            <textarea class="textarea" id="expect_ordination_soon" name="expect_ordination_soon" rows="6" cols="80"></textarea>
+        </div>
+    </div>
+
+    <div class="formRow">
+        <div class="formFieldInput formComments">
+            Thank you for your time to complete this survey.
+        </div>
+    </div>
+
+    {if freeform:captcha}
+    <div class="formRow">
+        <div class="formField formComments">
+            <div class="formFieldTitle">
+                <label for="captcha">Please enter the security code.</label>
+            </div>
+            <div class="formFieldInput">
+                <span style="margin-top: 5px;padding: 5px 5px;display: inline-block;">{freeform:captcha}</span><br><input type="text" id="captcha" name="captcha" required="required" size="40">
+            </div>
+        </div>
+    </div>
+    {/if}
+
+    <div>
+        <input type="submit" value="Submit" name="submit" id="submit" class="formButton"/>
+    </div>
+</fieldset>
+{/exp:freeform:form}

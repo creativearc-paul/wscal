@@ -1,0 +1,48 @@
+{form:form_declaration:view_message}
+    {include:hidden_js}
+    {include:folder_pulldown:move}
+    {include:folder_pulldown:copy}
+    <!--- Action Buttons for Message Top -->
+    <table class="profileTable">
+        <tr>
+            <td>{form:reply_button} {form:reply_all_button} {form:forward_button} {form:move_button} {form:copy_button} {form:delete_button}</td>
+        </tr>
+    </table>
+    <!--- Contents of Message Message -->
+    <table class="profileTable">
+        <tr>
+            <td colspan="2">{lang:private_message}</td>
+        </tr>
+        <tr>
+            <td>{lang:message_sender}:</td>
+            <td>{include:sender}</td>
+        </tr>
+        <tr>
+            <td>{lang:message_subject}:</td>
+            <td>{include:subject}</td>
+        </tr>
+        <tr>
+            <td>{lang:message_date}:</td>
+            <td>{include:date}</td>
+        </tr>
+        <tr>
+            <td>{lang:message_recipients}:</td>
+            <td>{include:recipients}</td>
+        </tr>
+        {if show_cc}
+            <tr>
+                <td>{lang:cc}:</td>
+                <td>{include:cc}</td>
+            </tr>
+        {/if}
+        {if attachments_exist}
+            <tr>
+                <td>{lang:attachments}:</td>
+                <td>{include:attachment_links}</td>
+            </tr>
+        {/if}
+        <tr>
+            <td colspan="2">{include:parsed_message}</td>
+        </tr>
+    </table>
+</form>

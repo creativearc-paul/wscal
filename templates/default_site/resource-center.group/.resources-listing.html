@@ -1,0 +1,96 @@
+{!-- ### FOR LANDING, CATEGORY, AND ARCHIVE PAGES ### --}
+{if segment_2 == 'category'}
+
+    {exp:channel:category_heading channel="resources"}
+        <h1>{category_name}</h1>
+        {if
+            category_id == 1444 ||
+            category_id == 859 ||
+            category_id == 1332 ||
+            category_id == 1350 ||
+            category_id == 1299 ||
+            category_id == 1259 ||
+            category_id == 1222 ||
+            category_id == 1217 ||
+            category_id == 1215 ||
+            category_id == 1221 ||
+            category_id == 1214 ||
+            category_id == 1219 ||
+            category_id == 1220 ||
+            category_id == 1216 ||
+            category_id == 1218 ||
+            category_id == 1324
+            }
+
+            <div id="catSiblings" class="clearFix threeColumnAdaptive">
+            	<a href="/resource-center/category/remembering-the-canons-after-400-years">Remembering the Canons: After 400 Years</a>
+            	<a href="/resource-center/category/the-bible-his-stories-your-life">The Bible: His Stories. Your Life.</a>
+                <a href="/resource-center/category/christ-our-wisdom">Christ Our Wisdom</a>
+                <a href="/resource-center/category/the-lord-and-giver-of-life">The Lord and Giver of Life</a>
+                <a href="/resource-center/category/transforming-grace">Transforming Grace</a>
+                <a href="/resource-center/category/the-whole-armor-of-god">The Whole Armor of God</a>
+                <a href="/resource-center/category/the-unfolding-mystery">The Unfolding Mystery</a>
+                <a href="/resource-center/category/christianity-and-liberalism-revisited">Christianity and Liberalism Revisited</a>
+                <a href="/resource-center/category/christ-kingdom-and-culture">Christ, Kingdom and Culture</a>
+                <a href="/resource-center/category/missional-reformed">Missional &amp; Reformed</a>
+                <a href="/resource-center/category/calvins-legacy">Calvin’s Legacy</a>
+                <a href="/resource-center/category/the-law-of-god-and-the-christian">The Law of God and the Christian</a>
+                <a href="/resource-center/category/meeting-god-on-his-terms">Meeting God on His Terms</a>
+                <a href="/resource-center/category/christ-the-center">Christ the Center</a>
+                <a href="/resource-center/category/the-foolishness-of-the-gospel">The Foolishness of the Gospel</a>
+                <a href="/resource-center/category/the-gospel-driven-life-conference">The Gospel Driven Life</a>
+                <a href="/resource-center/category/is-the-reformation-over">Is The Reformation Over?</a>
+             </div>
+
+        {/if}
+
+    {/exp:channel:category_heading}
+
+{if:elseif segment_2 == 'archive'}
+    <h1>Archive &ndash; {segment_3}</h1>
+
+{if:elseif segment_2 == 'year'}
+    <h1>{segment_3} Resources</h1>
+
+{/if}
+
+{exp:channel:entries
+    channel="resources"
+    show_future_entries="no"
+    {if embed:year} year="{embed:year}"{/if}
+    {if embed:year} month="{embed:month}"{/if}
+    {if segment_2 != 'category'} dynamic="no"{/if}
+    limit="15"
+    paginate_base="/{segment_1}/{segment_2}/{segment_3}"
+    paginate="both"}
+
+    <div class="clearFix resourceListing dottedBottomLine">
+
+        <h2 class="resourceListingTitle"><a href="{title_permalink='resource-center'}">{title}</a></h2>
+
+        <div class="resourceListingByline">
+            {categories show_group="6" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+            {categories show_group="6" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;{/categories}
+
+            {resource_display_date format="%F %j, "} <a href="{path='/resource-center/year'}/{resource_display_date format=" %Y"}">{resource_display_date format="%Y"}</a>
+            {categories show_group="2" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;{/categories}
+            {categories show_group="2" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+
+            {categories show_group="5" limit="1"}&nbsp;&nbsp;|&nbsp;&nbsp;Type: {/categories}
+            {categories show_group="5" backspace="2"}<a href="/resource-center/category/{category_url_title}">{category_name}</a>, {/categories}
+        </div>
+
+        <div class="resourceListingSummary">
+            {if resource_summary}{resource_summary}{if:else}{exp:word_limit:limit_words total="50"}{resource_body_copy}{/exp:word_limit:limit_words}{/if}
+            <a href="{title_permalink='resource-center'}" class="moreLink">Continue {if resource_video}{resource_video}<img src="/assets/graphics/watch-icon-gray.png" title="Video Available" alt="watch"/>{/resource_video}{/if}{if resource_audio}{resource_audio}<img src="/assets/graphics/listen-icon-gray.png" title="Audio Available" alt="listen"/>{/resource_audio}{/if}</a>
+        </div>
+
+    </div>
+
+    {paginate}
+        <div class="resourcePagination clearFix sansSerif dottedBottomLine">
+            Page {current_page} of {total_pages} &nbsp;&nbsp;&nbsp; {if previous_page}<a href="{auto_path}" class="allUpperCase"><span class="arrowDotLeft"></span> Back</a> {/if} {if previous_page && next_page}&nbsp;&nbsp;|&nbsp;&nbsp;{/if} {if next_page} <a href="{auto_path}" class="allUpperCase">Next <span class="arrowDotRight"></span></a>{/if}
+        </div>
+    {/paginate}
+
+{/exp:channel:entries}
